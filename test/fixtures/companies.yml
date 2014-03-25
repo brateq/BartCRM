@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  www: MyString
+  email: MyString
+  legal_form: MyString
+  phone: 1
+  street: MyString
+  postcode: MyString
+  city: MyString
+  country: MyString
+  krs: 1
+  decription: MyText
+  nip: 1
+  regon: 1
+  progress: MyString
+  type_of_training: MyString
+  trade: MyString
+  electronic_invoice: false
+  contact_id: 1
+  user_id: 1
+
+two:
+  name: MyString
+  www: MyString
+  email: MyString
+  legal_form: MyString
+  phone: 1
+  street: MyString
+  postcode: MyString
+  city: MyString
+  country: MyString
+  krs: 1
+  decription: MyText
+  nip: 1
+  regon: 1
+  progress: MyString
+  type_of_training: MyString
+  trade: MyString
+  electronic_invoice: false
+  contact_id: 1
+  user_id: 1

@@ -43,3 +43,14 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "therubyracer"
+gem 'roo' # import xls
+gem 'iconv' #?
+gem 'kaminari' # paginaton
+gem 'bootstrap-kaminari-views' # pagination with bootstrap
+gem 'ransack' # search engine
+gem 'newrelic_rpm' # statistics
+gem 'the_role', '~> 2.3' # roles
+gem 'devise' # login and stuff
+gem 'simple_form' 
