@@ -2,14 +2,24 @@
   <div class="page-header">
       <h1><%= "Companies (#{@how_many_companies})" %></h1>
   </div>
-  <%= search_form_for @search do |f| %>
-  <div class="field">
-    <%= f.text_field :name_cont %>
+  <div class="row">
+    <div class="col-lg-2">
+      <%= link_to 'New company', new_company_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-lg-4">
+      <%= search_form_for @search do |f| %>
+        <div class="input-group">
+          <%= f.text_field :name_cont, :class => "form-control" %>
+            <span class="input-group-btn">
+              <%= f.submit 'Search', :class => "btn btn-default" %>
+            </span>
+         </div>
+       <% end %>
+    </div>
+    <div class="pull-right"><%= paginate @companies %></div>
   </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-  <% end %>
 
-  <div class="pull-right"><%= paginate @companies %></div>
+  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -45,7 +55,5 @@
     </tbody>
   </table>
   <div class="pull-right"><%= paginate @companies %></div>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_company_path,
-              :class => 'btn btn-primary' %>
+  
   </div>

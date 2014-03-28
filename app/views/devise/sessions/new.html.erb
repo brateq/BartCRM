@@ -1,17 +1,11 @@
-<h2>Sign in</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%#= render "devise/shared/links" %>
+<h2><p class="text-right">Sign in</p></h3>
+<div class="bs-example">
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= f.input :email, :autofocus => true %>
+    <%= f.input :password %>
+    <%= f.button :submit, 'Login' %>
+    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+  <% end %>
+  <br />
+  <%= render "devise/shared/links" %>
+</div>

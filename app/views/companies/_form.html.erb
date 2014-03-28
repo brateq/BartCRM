@@ -7,7 +7,6 @@
   <%= f.input :street %>
   <%= f.input :postcode %>
   <%= f.input :city %>
-  <%= f.input :country %>
   <%= f.input :krs %>
   <%= f.input :decription %>
   <%= f.input :nip %>
@@ -16,7 +15,9 @@
   <%= f.input :type_of_training %>
   <%= f.input :trade %>
   <%= f.input :electronic_invoice %>
-  <%= f.input :contact_id %>
+  <form>
+    <%= select_tag "contact-placeholder", options_from_collection_for_select(@contacts_name, "id", "name"), id: "quick-search" %>
+  </form>
   <%= f.input :user_id %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

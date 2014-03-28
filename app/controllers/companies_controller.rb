@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
   # GET /companies
   # GET /companies.json
   def index
@@ -17,6 +18,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @contacts_name = Contact.order('name asc').all
+    respond_with @contacts_name
   end
 
   # GET /companies/1/edit

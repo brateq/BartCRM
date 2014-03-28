@@ -54,3 +54,4 @@ gem 'newrelic_rpm' # statistics
 gem 'the_role', '~> 2.3' # roles
 gem 'devise' # login and stuff
 gem 'simple_form' 
+gem 'select2-rails', '~> 3.5.4'
