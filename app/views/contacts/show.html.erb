@@ -9,7 +9,7 @@
   <strong>Surname:</strong>
   <%= @contact.surname %>
 </p>
-
+<p>Company:  <%= @contact.company.name %></p>
 <p>
   <strong>Mobile number:</strong>
   <%= @contact.mobile_number %>
@@ -75,15 +75,6 @@
   <%= @contact.email %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @contact.user_id %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @contact.company_id %>
-</p>
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
 <%= link_to 'Back', contacts_path %>

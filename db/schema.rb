@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319084759) do
+ActiveRecord::Schema.define(version: 20140329094117) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -31,13 +31,11 @@ ActiveRecord::Schema.define(version: 20140319084759) do
     t.string   "type_of_training"
     t.string   "trade"
     t.boolean  "electronic_invoice"
-    t.integer  "contact_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "companies", ["contact_id"], name: "index_companies_on_contact_id"
   add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
   create_table "contacts", force: true do |t|

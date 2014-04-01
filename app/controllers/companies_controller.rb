@@ -18,8 +18,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-    @contacts_name = Contact.order('name asc').all
-    respond_with @contacts_name
+    @company.contacts.build
   end
 
   # GET /companies/1/edit
@@ -30,7 +29,6 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
@@ -80,6 +78,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :street, :postcode, :city, :country, :krs, :decription, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id)
+      params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :street, :postcode, :city, :country, :krs, :decription, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id])
     end
 end

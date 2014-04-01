@@ -1,11 +1,10 @@
-<h2><p class="text-right">Sign in</p></h3>
-<div class="bs-example">
-  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <%= f.input :email, :autofocus => true %>
-    <%= f.input :password %>
-    <%= f.button :submit, 'Login' %>
+<h2><p class="text-right">Sign in</p></h2>
+
+  <%= bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= f.email_field :email, :autofocus => true %>
+    <%= f.password_field :password %>
+    <%= f.submit 'Login' %>
     <%= f.check_box :remember_me %> <%= f.label :remember_me %>
   <% end %>
   <br />
   <%= render "devise/shared/links" %>
-</div>

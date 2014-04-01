@@ -1,26 +1,27 @@
-<%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
-  <%= f.input :www %>
-  <%= f.input :email %>
-  <%= f.input :legal_form %>
-  <%= f.input :phone %>
-  <%= f.input :street %>
-  <%= f.input :postcode %>
-  <%= f.input :city %>
-  <%= f.input :krs %>
-  <%= f.input :decription %>
-  <%= f.input :nip %>
-  <%= f.input :regon %>
-  <%= f.input :progress %>
-  <%= f.input :type_of_training %>
-  <%= f.input :trade %>
-  <%= f.input :electronic_invoice %>
-  <form>
-    <%= select_tag "contact-placeholder", options_from_collection_for_select(@contacts_name, "id", "name"), id: "quick-search" %>
-  </form>
-  <%= f.input :user_id %>
+<%= bootstrap_form_for(@company, layout: :horizontal)  do |f| %>
+  <%= f.text_field :name  %>
+  <%= f.fields_for :contacts do |builder| %>
+    <%= builder.text_field :name %>
+    <%= builder.text_field :surname %>
+  <% end %>
+  <%= f.text_field :www %>
+  <%= f.text_field :email %>
+  <%= f.text_field :legal_form %>
+  <%= f.text_field :phone %>
+  <%= f.text_field :street %>
+  <%= f.text_field :postcode %>
+  <%= f.text_field :city %>
+  <%= f.text_field :krs %>
+  <%= f.text_field :decription %>
+  <%= f.text_field :nip %>
+  <%= f.text_field :regon %>
+  <%= f.text_field :progress %>
+  <%= f.text_field :type_of_training %>
+  <%= f.text_field :trade %>
+  <%= f.check_box :electronic_invoice %>
+  <%= f.collection_select :user_id, User.all, :id, :email %>
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.submit :submit, class: "btn btn-success" %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 companies_path, :class => 'btn' %>
   </div>

@@ -2,47 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @company.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:www) %>:</strong></dt>
-  <dd><%= @company.www %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @company.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:legal_form) %>:</strong></dt>
-  <dd><%= @company.legal_form %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @company.phone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:street) %>:</strong></dt>
-  <dd><%= @company.street %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:postcode) %>:</strong></dt>
-  <dd><%= @company.postcode %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @company.city %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
-  <dd><%= @company.country %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:krs) %>:</strong></dt>
-  <dd><%= @company.krs %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:decription) %>:</strong></dt>
-  <dd><%= @company.decription %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:nip) %>:</strong></dt>
-  <dd><%= @company.nip %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:regon) %>:</strong></dt>
-  <dd><%= @company.regon %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:progress) %>:</strong></dt>
-  <dd><%= @company.progress %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:type_of_training) %>:</strong></dt>
-  <dd><%= @company.type_of_training %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:trade) %>:</strong></dt>
-  <dd><%= @company.trade %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electronic_invoice) %>:</strong></dt>
-  <dd><%= @company.electronic_invoice %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contact_id) %>:</strong></dt>
-  <dd><%= @company.contact_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @company.user_id %></dd>
-</dl>
+<div>
+  <%= @company.name %><br />
+  <%= link_to @company.www, @company.www %><br />
+  <%= @company.contacts.first.name + ' ' + @company.contacts.first.surname %><br />
+  <%= @company.contacts.first.mobile_number %>
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
