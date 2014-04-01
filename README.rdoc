@@ -8,19 +8,19 @@ BartCRM 1.0
   Full form for contact and company
   Errors for forms
   http before address
-  -- 0.2 20.04
+  Full name for users
+  -- 0.2 17.04
   new account = new base
   Searching companies and contacts in one place
-  Tags for categories
-  Autocomplete
   Notes
   Appointments
-  Tasks
-  Full name for users
   -- 0.3 04.05
   Basic roles
   Training module
   Status
+  Tasks
+  Autocomplete
+  Tags for categories
   -- 0.4 18.05
   Basic export module
   Filter
@@ -50,3 +50,5 @@ BartCRM 2.0
   Main site with 5 photos with main functions
   Notifications
   Additionals fields
+  Change currency
+  
