@@ -3,18 +3,37 @@
 ToDo:
 
 BartCRM 1.0
+  -- 0.1 06.04
+  Search at the menu
+  Full form for contact and company
+  Errors for forms
+  http before address
+  -- 0.2 20.04
   new account = new base
   Searching companies and contacts in one place
-  Where are errors for login form?
-  Search at the menu
   Tags for categories
-  http before address
-  full form for company and contact
-  Login layout
-  Logo
+  Autocomplete
+  Notes
+  Appointments
+  Tasks
+  Full name for users
+  -- 0.3 04.05
   Basic roles
+  Training module
+  Status
+  -- 0.4 18.05
   Basic export module
+  Filter
+  -- 0.5 01.06
   Basic reports
+  File upload and storage
+  -- 0.6 
+  Final layout
+  Logo
+  -- 0.7 final Alpha
+  Debugging!
+  -- 0.8 beggining of the beta
+  -- 0.9 just before commercial relese
   
 BartCRM 2.0
   API
