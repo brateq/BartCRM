@@ -1,3 +1,30 @@
 == README
 
-Crash when 0 companies
+ToDo:
+
+BartCRM 1.0
+  Basic raports
+  Searching companies and contacts in one place
+  Basic export module
+  Basic roles
+  Where are errors for login form?
+  Search at the menu
+  Login layout
+  Logo
+  Tags for categories
+  
+BartCRM 2.0
+  API
+  Integration with email
+  "+" for new company
+  Tutorial for a first drive
+  Hostory of activity
+  "Download visible list"
+  Wiki site
+  Tasks
+  Attachments
+  Avatars
+  Gamifications
+  Main site with 5 photos with main functions
+  Notifications
+  Additionals fields
