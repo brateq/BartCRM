@@ -3,15 +3,18 @@
 ToDo:
 
 BartCRM 1.0
-  Basic raports
+  new account = new base
   Searching companies and contacts in one place
-  Basic export module
-  Basic roles
   Where are errors for login form?
   Search at the menu
+  Tags for categories
+  http before address
+  full form for company and contact
   Login layout
   Logo
-  Tags for categories
+  Basic roles
+  Basic export module
+  Basic reports
   
 BartCRM 2.0
   API

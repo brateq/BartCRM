@@ -54,5 +54,6 @@ gem 'newrelic_rpm' # statistics
 gem 'the_role', '~> 2.3' # roles
 gem 'devise' # login and stuff
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
-gem 'select2-rails', '~> 3.5.4'
-gem 'rails_12factor'
+gem 'select2-rails', '~> 3.5.4' # autocomplete
+gem 'rails_12factor' # heroku gem
+gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
