@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140329094117) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "www"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140329094117) do
     t.datetime "updated_at"
   end
 
-  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -60,14 +63,14 @@ ActiveRecord::Schema.define(version: 20140329094117) do
     t.datetime "updated_at"
   end
 
-  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id"
-  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name",        null: false
     t.string   "title",       null: false
     t.text     "description", null: false
-    t.text     "the_role",    null: false
+    t.json     "the_role",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 20140329094117) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
