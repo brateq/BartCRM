@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include TheRole::Controller
-  before_action :login_required
+  before_action :login_required, :search
   protect_from_forgery with: :exception
   layout :layout_by_resource
   
@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
     flash[:error] = t('the_role.access_denied')
     redirect_to(:back)
   end
-  
+  def search
+    @search = Company.search(params[:q])
+  end
    
 
   protected

@@ -1,0 +1,13 @@
+<%= simple_form_for @company, html: {class: 'form-horizontal'} do |f| %>
+  <%= f.input :name, label: 'Company', :autofocus => true %>
+    <hr>
+   <%= f.input :www %>
+   <%= f.input :street %>
+   <%= f.input :postcode %>
+   <%= f.input :city %>
+   <%= f.input :decription %>
+   <%= f.association :user, label_method: :email, include_blank: false%>
+   <%= f.button :submit, :class => "btn-success" %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  companies_path, :class => 'btn' %>  
+<% end %>

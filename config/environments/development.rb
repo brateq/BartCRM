@@ -28,4 +28,6 @@ Bartcrm::Application.configure do
   config.assets.debug = true
   
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  
+  BetterErrors::Middleware.allow_ip! '192.168.227.1'
 end

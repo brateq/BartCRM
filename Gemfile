@@ -44,6 +44,11 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem "better_errors"
+  gem 'binding_of_caller'
+end
+  
 gem "therubyracer"
 gem 'roo' # import xls
 gem 'iconv' #?
@@ -57,3 +62,4 @@ gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'select2-rails', '~> 3.5.4' # autocomplete
 gem 'rails_12factor' # heroku gem
 gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
+

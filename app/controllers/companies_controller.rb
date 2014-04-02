@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :fullshow, :fulledit]
   respond_to :html, :json
   # GET /companies
   # GET /companies.json
@@ -67,6 +67,12 @@ class CompaniesController < ApplicationController
   def import
     Company.import(params[:file])
     redirect_to companies_path, notice: "Companies imported"
+  end
+  
+  def fullshow
+  end
+  
+  def fulledit
   end
 
   private

@@ -4,11 +4,7 @@ ToDo:
 
 BartCRM 1.0
   -- 0.1 06.04
-  Search at the menu
   Full form for contact and company
-  Errors for forms
-  http before address
-  Full name for users
   -- 0.2 17.04
   new account = new base
   Searching companies and contacts in one place

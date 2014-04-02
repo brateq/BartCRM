@@ -1,6 +1,6 @@
 <h2><p class="text-right">Sign in</p></h2>
   <%= bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <%= f.error_summary %>
+    <%= devise_error_messages! %>
     <%= f.email_field :email, :autofocus => true %>
     <%= f.password_field :password %>
     <%= f.submit 'Login' %>

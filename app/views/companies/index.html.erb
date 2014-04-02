@@ -26,7 +26,7 @@
         <th><%= sort_link @search, :name, "Name" %></th>
         <th><%= sort_link @search, :street, "Street" %></th>
         <th><%= sort_link @search, :city, "City" %></th>
-        <th><%= sort_link @search, :user_id, "User" %></th>
+        <th><%= sort_link @search, :contact_id, "Contact" %></th>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
     </thead>
@@ -37,7 +37,7 @@
           <td><%= link_to company.name, company_path(company) %></td>
           <td><%= company.street %></td>
           <td><%= company.city %></td>
-          <td><%= company.user_id%></td> 
+          <td><%= company.contacts.first.name + ' ' + company.contacts.first.surname %></td> 
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_company_path(company), :class => 'btn btn-mini' %>

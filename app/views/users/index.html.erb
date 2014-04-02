@@ -4,8 +4,6 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Name</th>
-      <th>Surname</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Role</th>
@@ -19,8 +17,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.name %></td>
-        <td><%= user.surname %></td>
         <td><%= user.email %></td>
         <td><%= user.phone %></td>
         <td><%= user.role_id %></td>

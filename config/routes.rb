@@ -6,7 +6,9 @@ Bartcrm::Application.routes.draw do
   resources :contacts
   resources :companies do
     collection { post :import }
+    
   end
+  get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
   resources :users
   resources :import
   get "settings/index"
