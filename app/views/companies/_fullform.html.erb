@@ -1,11 +1,18 @@
-<%= simple_form_for @company, html: {class: 'form-horizontal'} do |f| %>
-  <%= f.input :name, label: 'Company', :autofocus => true %>
-    <hr>
+  <%= simple_form_for @company, html: {class: 'form-horizontal col-md-7'} do |f| %>
+   <%= f.input :name, label: 'Company', :autofocus => true %>
    <%= f.input :www %>
    <%= f.input :street %>
    <%= f.input :postcode %>
    <%= f.input :city %>
    <%= f.input :decription %>
+   <%= f.input :legal_form %>
+   <%= f.input :country, priority: [ "Poland" ] %>
+   <%= f.input :krs %>
+   <%= f.input :nip %>
+   <%= f.input :regon %>
+   <%= f.input :type_of_training %>
+   <%= f.input :trade %>
+   <%= f.input :electronic_invoice %>
    <%= f.association :user, label_method: :email, include_blank: false%>
    <%= f.button :submit, :class => "btn-success" %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

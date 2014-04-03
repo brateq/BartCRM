@@ -62,4 +62,5 @@ gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'select2-rails', '~> 3.5.4' # autocomplete
 gem 'rails_12factor' # heroku gem
 gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
+gem 'country_select' # simple_form addon
 

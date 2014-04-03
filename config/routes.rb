@@ -9,6 +9,7 @@ Bartcrm::Application.routes.draw do
     
   end
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
+  get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit
   resources :users
   resources :import
   get "settings/index"

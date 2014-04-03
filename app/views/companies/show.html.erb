@@ -1,6 +1,6 @@
 <%- model_class = Company -%>
 <div class="page-header">
-    <h1><%= @company.name %>   <small><%= link_to 'More...', fullshow_path %></small></h1>
+    <h1><%= link_to @company.name, fullshow_path %>   <small><%= link_to 'edit', fulledit_path %></small></h1>
 </div>
 <div>
   <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
