@@ -4,7 +4,10 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @search = Contact.search(params[:q])
+    @contacts = Contact.order(:id).page
+    @contacts = @search.result.page params[:page]
+    @how_many_contacts = Contact.count
   end
 
   # GET /contacts/1

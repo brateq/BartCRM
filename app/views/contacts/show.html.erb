@@ -1,79 +1,30 @@
 <h1><%= @contact.name + ' ' + @contact.surname %></h1>
+<p><strong>Name:</strong> <%= @contact.name %></p>
+<p><strong>Surname:</strong> <%= @contact.surname %></p>
+<% if @contact.company %><p>Company:  <%= @contact.company.name %></p><% end %>
+<p><strong>Mobile number:</strong> <%= @contact.mobile_number %></p>
+<p><strong>Office number:</strong> <%= @contact.office_number %></p>
+<p><strong>Street:</strong> <%= @contact.street %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @contact.name %>
-</p>
+<p><strong>Postalcode:</strong><%= @contact.postalcode %></p>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @contact.surname %>
-</p>
-<p>Company:  <%= @contact.company.name %></p>
-<p>
-  <strong>Mobile number:</strong>
-  <%= @contact.mobile_number %>
-</p>
+<p><strong>City:</strong><%= @contact.city %></p>
 
-<p>
-  <strong>Office number:</strong>
-  <%= @contact.office_number %>
-</p>
+<p><strong>Country:</strong><%= @contact.country %></p>
 
-<p>
-  <strong>Street:</strong>
-  <%= @contact.street %>
-</p>
+<p><strong>Dont call:</strong><%= @contact.dont_call %></p>
 
-<p>
-  <strong>Postalcode:</strong>
-  <%= @contact.postalcode %>
-</p>
+<p><strong>Newslatter:</strong><%= @contact.newslatter %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @contact.city %>
-</p>
+<p><strong>Created by:</strong><%= @contact.created_by %></p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @contact.country %>
-</p>
+<p><strong>Modified by:</strong><%= @contact.modified_by %></p>
 
-<p>
-  <strong>Dont call:</strong>
-  <%= @contact.dont_call %>
-</p>
+<p><strong>Know from:</strong><%= @contact.know_from %></p>
 
-<p>
-  <strong>Newslatter:</strong>
-  <%= @contact.newslatter %>
-</p>
+<p><strong>Description:</strong><%= @contact.description %></p>
 
-<p>
-  <strong>Created by:</strong>
-  <%= @contact.created_by %>
-</p>
-
-<p>
-  <strong>Modified by:</strong>
-  <%= @contact.modified_by %>
-</p>
-
-<p>
-  <strong>Know from:</strong>
-  <%= @contact.know_from %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @contact.description %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @contact.email %>
-</p>
+<p><strong>Email:</strong><%= @contact.email %></p>
 
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
