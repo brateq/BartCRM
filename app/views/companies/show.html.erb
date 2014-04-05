@@ -2,12 +2,24 @@
 <div class="page-header">
     <h1><%= link_to @company.name, fullshow_path %>   <small><%= link_to 'edit', fulledit_path %></small></h1>
 </div>
-<div>
+<div class="col-md-3">
   <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
   <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
   <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
   <p><%= link_to @company.www, @company.www %></p>
   <p><%= @company.street %></p>
   <p><%= @company.city %></p>
-
 </div>
+<div class="col-lg-6">
+  <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
+    <%= n.input :text, label: false, :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
+    <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+    <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= n.button :submit %>
+  <% end %>
+  <br /><br /><br /><br /><br /><br /><hr>
+  <% @notes.each do |note| %>
+  <p><%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
+  <hr>
+  <% end %> 
+</div>  

@@ -7,12 +7,13 @@ class CompaniesController < ApplicationController
     @search = Company.where(:business_id => current_user.business_id).search(params[:q])
     #@companies = Company.where(:business_id => current_user.business_id).order(:id).page
     @companies = @search.result.page params[:page]
-    @how_many_companies = Company.count
+    @how_many_companies = @companies.count
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @notes = Note.where(company_id: @company.id).order(:created_at).reverse
   end
 
   # GET /companies/new
@@ -85,6 +86,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :street, :postcode, :city, :country, :krs, :decription, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id])
+      params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :street, :postcode, :city, :country, :krs, :decription, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
     end
 end

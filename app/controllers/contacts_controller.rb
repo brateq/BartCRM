@@ -4,10 +4,10 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @search = Contact.search(params[:q])
-    @contacts = Contact.order(:id).page
+    @search = Contact.where(:business_id => current_user.business_id).search(params[:q])
+    #@contacts = Contact.order(:id).page
     @contacts = @search.result.page params[:page]
-    @how_many_contacts = Contact.count
+    @how_many_contacts = @contacts.count
   end
 
   # GET /contacts/1
@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-
+    @contact.business_id = current_user.business_id
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }

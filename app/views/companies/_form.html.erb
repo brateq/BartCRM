@@ -5,6 +5,7 @@
       <%= builder.input :surname, placeholder: "Last name" %>
       <%= builder.input :mobile_number %>
       <%= builder.input :email %>
+      <%= builder.input :business_id, :as => :hidden, :input_html => { :value => current_user.business_id } %> <%#= uważaj na przeciek %>
   <% end %>
   <hr>
   <%= f.input :www %>
@@ -17,4 +18,4 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 companies_path, :class => 'btn' %>
 
-<% end %>
+<% end %> 

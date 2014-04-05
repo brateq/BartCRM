@@ -37,7 +37,7 @@
           <td><%= link_to company.name, company_path(company) %></td>
           <td><%= company.street %></td>
           <td><%= company.city %></td>
-          <td><%= company.contacts.first.name + ' ' + company.contacts.first.surname %></td> 
+          <td><%= company.contacts.first.name + ' ' + company.contacts.first.surname  %></td> 
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_company_path(company), :class => 'btn btn-mini' %>
