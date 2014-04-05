@@ -1,12 +1,12 @@
 <div class="col-md-12">
   <div class="page-header">
-      <h4><%= "Companies (#{@how_many_companies})" %></h4>
+    <h4><%= "Companies (#{@how_many_companies})" %></h4>
   </div>
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-sm-2">
       <%= link_to 'New company', new_company_path, class: "btn btn-primary" %>
     </div>
-    <div class="col-lg-4">
+    <div class="col-sm-4">
       <%= search_form_for @search do |f| %>
         <div class="input-group">
           <%= f.text_field :name_cont, :class => "form-control" %>

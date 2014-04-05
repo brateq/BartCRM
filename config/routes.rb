@@ -6,13 +6,13 @@ Bartcrm::Application.routes.draw do
   resources :contacts
   resources :companies do
     collection { post :import }
-    
   end
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
-  get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit
+  get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit  
   resources :users
   resources :import
   get "settings/index"
+  get "settings/main"
   
 
   # The priority is based upon order of creation: first created -> highest priority.

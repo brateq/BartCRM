@@ -12,7 +12,7 @@
   <%= f.input :postcode %>
   <%= f.input :city %>
   <%= f.input :decription %>
-  <%= f.association :user, label_method: :email, include_blank: false%>
+  <%= f.association :user, label_method: :email, include_blank: false %>
   <%= f.button :submit, :class => "btn-success" %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 companies_path, :class => 'btn' %>
