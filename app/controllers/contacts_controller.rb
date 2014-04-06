@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @notes = Note.where(contact_id: @contact.id).order(:created_at).reverse
   end
 
   # GET /contacts/new
@@ -75,3 +76,4 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(:name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id)
     end
 end
+ 

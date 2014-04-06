@@ -1,4 +1,6 @@
 Bartcrm::Application.routes.draw do
+  resources :calls
+
   resources :notes
 
   devise_for :users

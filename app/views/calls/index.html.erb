@@ -1,0 +1,37 @@
+<h1>Listing calls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Call type</th>
+      <th>Time</th>
+      <th>User</th>
+      <th>Company</th>
+      <th>Contact</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calls.each do |call| %>
+      <tr>
+        <td><%= call.subject %></td>
+        <td><%= call.call_type %></td>
+        <td><%= call.time %></td>
+        <td><%= call.user_id %></td>
+        <td><%= call.company_id %></td>
+        <td><%= call.contact_id %></td>
+        <td><%= link_to 'Show', call %></td>
+        <td><%= link_to 'Edit', edit_call_path(call) %></td>
+        <td><%= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Call', new_call_path %>

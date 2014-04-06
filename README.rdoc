@@ -5,14 +5,12 @@ ToDo:
 BartCRM 1.0
   -- 0.2 17.04
   new account = new base
-  Searching companies and contacts in one place
-  Notes
   Appointments
+  Calls
   -- 0.3 04.05
   Basic roles
   Training module
   Status
-  Tasks
   Autocomplete
   Tags for categories
   -- 0.4 18.05
@@ -30,6 +28,7 @@ BartCRM 1.0
   -- 0.9 just before commercial relese
   
 BartCRM 2.0
+  Searching companies and contacts in one place
   API
   Integration with email
   "+" for new company
@@ -45,4 +44,5 @@ BartCRM 2.0
   Notifications
   Additionals fields
   Change currency
+  Tasks
   

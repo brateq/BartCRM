@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
     flash[:error] = t('the_role.access_denied')
     redirect_to(:back)
   end
+  
   def search
-    @search = Company.search(params[:q])
+    if user_signed_in?
+      @main_search = Company.where(:business_id => current_user.business_id).search(params[:q]) 
+    end
   end
    
 
@@ -23,3 +26,4 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+     

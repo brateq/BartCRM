@@ -14,6 +14,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @notes = Note.where(company_id: @company.id).order(:created_at).reverse
+    @calls = Call.where(company_id: @company.id).order(:created_at).reverse
   end
 
   # GET /companies/new
@@ -89,3 +90,4 @@ class CompaniesController < ApplicationController
       params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :street, :postcode, :city, :country, :krs, :decription, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
     end
 end
+ 

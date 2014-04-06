@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   has_many :contacts
   belongs_to :user
+  has_many :calls
   accepts_nested_attributes_for :contacts
   before_save :add_http
   

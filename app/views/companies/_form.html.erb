@@ -6,6 +6,7 @@
       <%= builder.input :mobile_number %>
       <%= builder.input :email %>
       <%= builder.input :business_id, :as => :hidden, :input_html => { :value => current_user.business_id } %> <%#= uważaj na przeciek %>
+      <%= builder.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %> <%#= uważaj na przeciek %>
   <% end %>
   <hr>
   <%= f.input :www %>
