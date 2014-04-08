@@ -1,12 +1,12 @@
 class Company < ActiveRecord::Base
   has_many :contacts
   belongs_to :user
-  has_many :calls
+  has_many :schedules
   accepts_nested_attributes_for :contacts
   before_save :add_http
   
   require 'csv'
-  def self.import(file)
+  def self.import(file) 
     CSV.foreach(file.path, headers: true) do |row|
       Company.create! row.to_hash
     end

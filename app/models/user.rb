@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :contacts
   has_many :notes
-  has_many :calls
+  has_many :schedules
   belongs_to :business
   accepts_nested_attributes_for :business
   

@@ -1,4 +1,6 @@
 Bartcrm::Application.routes.draw do
+  resources :schedules
+
   resources :calls
 
   resources :notes

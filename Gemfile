@@ -63,4 +63,5 @@ gem 'select2-rails', '~> 3.5.4' # autocomplete
 gem 'rails_12factor' # heroku gem
 gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
 gem 'country_select' # simple_form addon
-
+gem 'momentjs-rails', '~> 2.5.0' # require for datetimepicker
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0' # datepicker
