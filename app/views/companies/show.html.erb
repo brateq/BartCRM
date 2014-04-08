@@ -5,12 +5,15 @@
 
 
 <div class="col-md-3">
-  <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
-  <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
-  <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
-  <p><%= link_to @company.www, @company.www %></p>
-  <p><%= @company.street %></p>
-  <p><%= @company.city %></p>
+  <% unless @company.contacts.first.nil? %>
+    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
+    <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
+    <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
+  <% end %>
+    <p><%= link_to @company.www, @company.www %></p>
+    <p><%= @company.street %></p>
+    <p><%= @company.city %></p>
+    <%= button_to "Add contact", new_contact_path, :method => :get, :class => " btn btn-primary" %> 
 </div>
 
 
