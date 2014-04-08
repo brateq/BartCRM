@@ -1,9 +1,4 @@
 Bartcrm::Application.routes.draw do
-  resources :schedules
-
-  resources :calls
-
-  resources :notes
 
   devise_for :users
   get '/changelog', to: "static#changelog" 
@@ -19,6 +14,9 @@ Bartcrm::Application.routes.draw do
   resources :import
   get "settings/index"
   get "settings/main"
+  resources :schedules
+  resources :calls
+  resources :notes
   
 
   # The priority is based upon order of creation: first created -> highest priority.
