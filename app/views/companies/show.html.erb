@@ -45,20 +45,28 @@
         <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= c.button :submit %>
       <% end %>
+      
       <script type="text/javascript">
-  $(function() {
-    $('#dt5').datetimepicker({
-      format: 'DD/MM/YYYY HH:mm:ss'
-    });
-  });
+        $(function() {
+          $('#dt5').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm:ss'
+          });
+        });
       </script>
+      
       <hr>
       </div>
     </div>
     
    <div class="panel-body">
     <% @schedules.each do |schedule| %>
-     <p><%= schedule.subject %> by <%= schedule.user.username %><span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %></small></span></p>
+     <p><%= schedule.subject %> <small>by</small> <%= link_to schedule.user.username, user_path(schedule.user.id) %>
+       <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
+         <%= link_to schedule_path(schedule.id), :method => :delete do %>
+           <span class="glyphicon glyphicon-remove" style="color:red"></span>
+         <% end %>
+       </small></span>
+     </p>
     <% end %> 
   </div>
 </div> 

@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
   def show
     @notes = Note.where(company_id: @company.id).order(:created_at).reverse
     @calls = Call.where(company_id: @company.id).order(:created_at).reverse
-    @schedules = Schedule.where(company_id: @company.id).order(:time).reverse
+    @schedules = Schedule.where(company_id: @company.id).order(:time)
   end
 
   # GET /companies/new

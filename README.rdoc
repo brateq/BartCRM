@@ -4,24 +4,27 @@ ToDo:
 
 BartCRM 1.0
   -- 0.2 17.04
-  new account = new base
-  Appointments
-  Calls
-  -- 0.3 04.05
-  Basic roles
-  Training module
   Status
   Autocomplete
   Tags for categories
+  add user / registration
+  debugging
+  -- 0.3 04.05
+  Basic roles
+  Training module
+  debugging
   -- 0.4 18.05
   Basic export module
-  Filter
-  -- 0.5 01.06
-  Basic reports
   File upload and storage
+  Basic reports
+  debugging
+  -- 0.5 01.06
+  Filter
+  debugging
   -- 0.6 
   Final layout
   Logo
+  debugging
   -- 0.7 final Alpha
   Debugging!
   -- 0.8 beggining of the beta
@@ -45,4 +48,3 @@ BartCRM 2.0
   Additionals fields
   Change currency
   Tasks
-  

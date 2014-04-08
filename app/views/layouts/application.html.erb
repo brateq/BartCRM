@@ -51,8 +51,20 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-                          <li><%= link_to "Companies", companies_path  %></li>
+              <li><%= link_to "Companies", companies_path  %></li>
               <li><%= link_to "Contacts", contacts_path  %></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bell"></span></a>
+                  <ul class="dropdown-menu">
+                    <% @schedules_reminder.each do |schedule| %>
+                      <% @time = Time.now - schedule.time %>
+                      <li><%= link_to company_path(schedule.company_id) do %>
+                        <%= schedule.subject %><small class="pull-right"><%= distance_of_time_in_words(@time) %></small>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+              </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
              <li style="padding-top: 7px; "> <%= search_form_for @main_search do |f| %>

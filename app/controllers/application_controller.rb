@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include TheRole::Controller
-  before_action :login_required, :search
+  before_action :login_required, :search, :schedules_reminder
   protect_from_forgery with: :exception
   layout :layout_by_resource
   
@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
     end
   end
    
+  def schedules_reminder
+    @schedules_reminder = Schedule.where(user_id: current_user.id).order(:time).first(5)
+  end
 
   protected
 
@@ -26,4 +29,3 @@ class ApplicationController < ActionController::Base
     end
   end
 end
-     
