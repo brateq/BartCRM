@@ -16,7 +16,9 @@ class ApplicationController < ActionController::Base
   end
    
   def schedules_reminder
-    @schedules_reminder = Schedule.where(user_id: current_user.id).order(:time).first(5)
+    if user_signed_in?
+      @schedules_reminder = Schedule.where(user_id: current_user.id).order(:time).first(5)
+    end
   end
 
   protected

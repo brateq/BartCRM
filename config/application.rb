@@ -11,7 +11,8 @@ Bundler.require(:default, Rails.env)
 module Bartcrm
   class Application < Rails::Application
     config.assets.enabled = true	
-    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.precompile = ['*.js', '*.css', '*.eot', '*.svg', '*.ttf', '*.woff']
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -25,3 +26,4 @@ module Bartcrm
     # config.i18n.default_locale = :de
   end
 end
+

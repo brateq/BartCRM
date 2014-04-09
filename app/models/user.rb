@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :companies
   has_many :contacts
+  has_many :trainings
   has_many :notes
   has_many :schedules
   belongs_to :business

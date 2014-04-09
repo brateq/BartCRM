@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407192729) do
+ActiveRecord::Schema.define(version: 20140409131046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,10 +98,12 @@ ActiveRecord::Schema.define(version: 20140407192729) do
     t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "training_id"
   end
 
   add_index "notes", ["company_id"], name: "index_notes_on_company_id", using: :btree
   add_index "notes", ["contact_id"], name: "index_notes_on_contact_id", using: :btree
+  add_index "notes", ["training_id"], name: "index_notes_on_training_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
@@ -122,11 +124,32 @@ ActiveRecord::Schema.define(version: 20140407192729) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "training_id"
   end
 
   add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
   add_index "schedules", ["contact_id"], name: "index_schedules_on_contact_id", using: :btree
+  add_index "schedules", ["training_id"], name: "index_schedules_on_training_id", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
+
+  create_table "trainings", force: true do |t|
+    t.string   "topic"
+    t.integer  "price"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "training_code"
+    t.integer  "user_id"
+    t.text     "description"
+    t.string   "stage"
+    t.string   "place"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category"
+  end
+
+  add_index "trainings", ["company_id"], name: "index_trainings_on_company_id", using: :btree
+  add_index "trainings", ["user_id"], name: "index_trainings_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

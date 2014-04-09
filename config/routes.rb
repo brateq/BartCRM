@@ -1,5 +1,7 @@
 Bartcrm::Application.routes.draw do
 
+  resources :trainings
+
   devise_for :users
   get '/changelog', to: "static#changelog" 
   get "static/contact"

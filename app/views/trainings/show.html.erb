@@ -1,26 +1,25 @@
-<%- model_class = Company -%>
 <div class="page-header">
-    <h1><%= link_to @company.name, fullshow_path %>   <small><%= link_to 'edit', fulledit_path %></small></h1>
+    <h1><%= link_to @training.topic, "#" %>   <small><%= link_to 'edit', edit_training_path %></small></h1>
 </div>
 
 
 <div class="col-md-3">
-  <% unless @company.contacts.first.nil? %>
-    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
-    <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
-    <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
-  <% end %>
-    <p><%= link_to @company.www, @company.www %></p>
-    <p><%= @company.street %></p>
-    <p><%= @company.city %></p>
-    <%= button_to "Add contact", new_contact_path, :method => :get, :class => " btn btn-primary" %> 
+  <p>Category: <strong><%= @training.category %></strong></p>
+  <p>Price: <strong><%= @training.price %> zł</strong></p>
+  <p>Start: <strong><%= @training.start %></strong></p>
+  <p>End: <strong><%= @training.end %> </strong></p>
+  <p>Training code: <strong><%= @training.training_code %></strong></p>
+  <p>By: <strong><%= @training.user.username %></strong></p>
+  <p>Stage: <strong><%= @training.stage %></strong></p>
+  <p>Place: <strong><%= @training.place %></strong></p>
+  <p><strong><%= @training.description %></strong></p>
 </div>
 
 
 <div class="col-lg-5">
   <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
   <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
-    <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+    <%= n.input :training_id, :as => :hidden, :input_html => { :value => @training.id } %>
     <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <%= n.button :submit %>
   <% end %>
@@ -28,7 +27,7 @@
   <% @notes.each do |note| %>
   <p><%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
   <hr>
-  <% end %> 
+  <% end %>   
 </div>   
 
 
@@ -41,7 +40,7 @@
         <%= c.input :action_type, label: false, collection: ["Meeting"], prompt: "Call" %>
         <%= c.input :subject, label: false, placeholder: 'Subject', :controls_html => { class: "col-lg-12" } %>
         <%= c.input :time, label: false, as: :string, placeholder: 'Date', :input_html => {:id => "dt5"}, :controls_html => { class: "col-lg-8"} %>
-        <%= c.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+        <%= c.input :training_id, :as => :hidden, :input_html => { :value => @training.id } %>
         <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= c.button :submit %>
       <% end %>
@@ -75,7 +74,8 @@
        </small></span>
      </p>
     <% end %> 
-  </div>
+  </div> 
 </div> 
 </div>
   
+ 
