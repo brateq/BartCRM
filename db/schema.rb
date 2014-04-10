@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409131046) do
+ActiveRecord::Schema.define(version: 20140410104204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,26 @@ ActiveRecord::Schema.define(version: 20140409131046) do
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
+  create_table "leads", force: true do |t|
+    t.string   "status"
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "training_id"
+    t.integer  "contact_id"
+    t.integer  "note_id"
+    t.integer  "schedule_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "leads", ["company_id"], name: "index_leads_on_company_id", using: :btree
+  add_index "leads", ["contact_id"], name: "index_leads_on_contact_id", using: :btree
+  add_index "leads", ["note_id"], name: "index_leads_on_note_id", using: :btree
+  add_index "leads", ["schedule_id"], name: "index_leads_on_schedule_id", using: :btree
+  add_index "leads", ["training_id"], name: "index_leads_on_training_id", using: :btree
+  add_index "leads", ["user_id"], name: "index_leads_on_user_id", using: :btree
+
   create_table "notes", force: true do |t|
     t.text     "text"
     t.integer  "user_id"
@@ -105,6 +125,16 @@ ActiveRecord::Schema.define(version: 20140409131046) do
   add_index "notes", ["contact_id"], name: "index_notes_on_contact_id", using: :btree
   add_index "notes", ["training_id"], name: "index_notes_on_training_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
+
+  create_table "participants", force: true do |t|
+    t.string   "role"
+    t.integer  "amount"
+    t.integer  "contact_id"
+    t.integer  "training_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name",        null: false

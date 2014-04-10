@@ -1,0 +1,41 @@
+<h1>Listing leads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Amount</th>
+      <th>User</th>
+      <th>Company</th>
+      <th>Training</th>
+      <th>Contact</th>
+      <th>Note</th>
+      <th>Schedule</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leads.each do |lead| %>
+      <tr>
+        <td><%= lead.status %></td>
+        <td><%= lead.amount %></td>
+        <td><%= lead.user_id %></td>
+        <td><%= lead.company_id %></td>
+        <td><%= lead.training_id %></td>
+        <td><%= lead.contact_id %></td>
+        <td><%= lead.note_id %></td>
+        <td><%= lead.schedule_id %></td>
+        <td><%= link_to 'Show', lead %></td>
+        <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
+        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lead', new_lead_path %>

@@ -1,0 +1,19 @@
+<%= simple_form_for@lead, html: {class: 'form-horizontal col-lg-12'} do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :status %>
+    <%= f.input :amount %>
+    <%= f.input :user_id %>
+    <%= f.association :company %>
+    <%= f.association :training %>
+    <%= f.association :contact %>
+    <%= f.input :note_id %>
+    <%= f.input :schedule_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+ 

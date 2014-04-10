@@ -1,5 +1,9 @@
 Bartcrm::Application.routes.draw do
 
+  resources :leads
+
+  resources :participants
+
   resources :trainings
 
   devise_for :users

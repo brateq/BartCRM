@@ -4,7 +4,7 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.json
   def index
-    @search = Training.all.search(params[:q])
+    @search = Training.search(params[:q])
     @trainings = @search.result.page params[:page]
     @how_many_trainings = @trainings.count
   end
@@ -14,6 +14,7 @@ class TrainingsController < ApplicationController
   def show
     @notes = Note.where(training_id: @training.id).order(:created_at).reverse
     @schedules = Schedule.where(training_id: @training.id).order(:time)
+    @leads = Lead.where(training_id: @training.id)
   end
 
   # GET /trainings/new

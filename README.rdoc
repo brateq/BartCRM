@@ -4,7 +4,6 @@ ToDo:
 
 BartCRM 1.0
   -- 0.2 17.04
-  Training module
   Autocomplete
   Tags for categories
   add user / registration
@@ -14,6 +13,7 @@ BartCRM 1.0
   debugging
   -- 0.4 18.05
   Basic export module
+  Basic reports
   File upload and storage
   Basic reports
   debugging

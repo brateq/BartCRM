@@ -6,13 +6,24 @@
     <div class="col-sm-2">
       <%= link_to 'New training', new_training_path, class: "btn btn-primary" %>
     </div>
+    <div class="col-lg-4">
+      <%= search_form_for @search do |f| %>
+        <div class="input-group">
+          <%= f.text_field :topic_cont, :class => "form-control" %>
+            <span class="input-group-btn">
+              <%= f.submit 'Search', :class => "btn btn-default" %>
+            </span>
+         </div>
+       <% end %>
+    </div>
+    <div class="pull-right"><%= paginate @trainings %></div>
     <br /><br />
   </div>
   <table class="table table-striped">
     <thead>
       <tr>
         <th><%= sort_link @search, :id, "ID" %></th>
-        <th><%= sort_link @search, :subject, "Name" %></th>
+        <th><%= sort_link @search, :topic, "Name" %></th>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
     </thead>
@@ -35,4 +46,6 @@
       <% end %>
     </tbody>
   </table>
+  <div class="pull-right"><%= paginate @trainings %></div>
 </div>
+ 

@@ -12,7 +12,7 @@
   <p>By: <strong><%= @training.user.username %></strong></p>
   <p>Stage: <strong><%= @training.stage %></strong></p>
   <p>Place: <strong><%= @training.place %></strong></p>
-  <p><strong><%= @training.description %></strong></p>
+  <p><%= @training.description %></p>
 </div>
 
 
@@ -35,7 +35,8 @@
   <div class="panel panel-primary">
     <div class="panel-heading" data-toggle="collapse" data-target="#calls">Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
     
-    <div id="calls" class="collapse"> <div class="panel-body">
+    <div id="calls" class="collapse"> 
+      <div class="panel-body">
        <%= simple_form_for Schedule.new, :url => {:controller => "schedules", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |c| %>
         <%= c.input :action_type, label: false, collection: ["Meeting"], prompt: "Call" %>
         <%= c.input :subject, label: false, placeholder: 'Subject', :controls_html => { class: "col-lg-12" } %>
@@ -75,7 +76,58 @@
      </p>
     <% end %> 
   </div> 
-</div> 
+  </div> 
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading" data-toggle="collapse" data-target="#participants">Participants<span class="glyphicon glyphicon-plus pull-right"></span></div>
+        <div id="participants" class="collapse"> 
+          <div class="panel-body">
+
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#contacts" data-toggle="tab">Contacts</a></li>
+              <li><a href="#companies" data-toggle="tab">Companies</a></li>
+            </ul>
+            <p></p>
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="contacts">
+              <%= simple_form_for Lead.new, :url => {:controller => "leads", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |p| %>
+                <%= p.association :contact, label: false, prompt: "Choose a contact", :controls_html => { class: "col-lg-12" } %>
+                <%= p.input :amount, label: false, :placeholder => "Amount of $" %>
+                <%= p.input :training_id, :as => :hidden, :input_html => { :value => @training.id } %>
+                <%= p.button :submit, 'Add participant' %>
+              <% end %>
+              </div>
+              <div class="tab-pane fade" id="companies">
+              <%= simple_form_for Lead.new, :url => {:controller => "leads", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |p| %>
+                <%= p.association :company, label: false, prompt: "Choose a company", :controls_html => { class: "col-lg-12" } %>
+                <%= p.input :amount, label: false, :placeholder => "Amount of $" %>
+                <%= p.input :training_id, :as => :hidden, :input_html => { :value => @training.id } %>
+                <%= p.button :submit, 'Add participant' %>
+              <% end %></div>
+            </div>
+            
+      <hr>
+      </div>
+    </div>
+    <div class="panel-body">
+    <% @leads.each do |lead| %>
+     <p>
+       <% unless lead.contact.blank? #brrrr %>
+         <%= link_to lead.contact.name + ' ' + lead.contact.surname, lead_path(lead.id) %>
+       <% else %>
+         <%= link_to lead.company.name, lead_path(lead.id) %>
+       <% end %>
+       
+       <span class="pull-right"><small>
+         <%= link_to lead_path(lead.id), :method => :delete do %>
+           <span class="glyphicon glyphicon-remove" style="color:red"></span>
+         <% end %>
+       </small></span>
+     </p>
+    <% end %> 
+  </div> 
 </div>
+  </div>
+     
   
  
