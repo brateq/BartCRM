@@ -5,7 +5,6 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @search = Company.where(:business_id => current_user.business_id).search(params[:q])
-    #@companies = Company.where(:business_id => current_user.business_id).order(:id).page
     @companies = @search.result.page params[:page]
     @how_many_companies = @companies.count
   end
@@ -14,7 +13,6 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @notes = Note.where(company_id: @company.id).order(:created_at).reverse
-    #@calls = Call.where(company_id: @company.id).order(:created_at).reverse
     @schedules = Schedule.where(company_id: @company.id).order(:time)
   end
 
