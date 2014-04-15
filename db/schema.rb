@@ -126,16 +126,6 @@ ActiveRecord::Schema.define(version: 20140410104204) do
   add_index "notes", ["training_id"], name: "index_notes_on_training_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
-  create_table "participants", force: true do |t|
-    t.string   "role"
-    t.integer  "amount"
-    t.integer  "contact_id"
-    t.integer  "training_id"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "roles", force: true do |t|
     t.string   "name",        null: false
     t.string   "title",       null: false
