@@ -5,13 +5,20 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :schedules
   has_many :leads
+  
   belongs_to :business
   accepts_nested_attributes_for :business
+  before_create :new_business
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include TheRole::User
+  
+  def new_business
+    Business.create(name: "New business")
+    self.business_id = Business.last.id
+  end
 
 end

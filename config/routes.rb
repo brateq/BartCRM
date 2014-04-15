@@ -18,6 +18,7 @@ Bartcrm::Application.routes.draw do
   get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit  
   resources :users
   resources :import
+  get "import/configuration"
   get "settings/index"
   get "settings/main"
   resources :schedules

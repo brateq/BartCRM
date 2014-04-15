@@ -7,6 +7,7 @@ BartCRM 1.0
   Autocomplete
   Tags for categories
   add user / registration
+  User needs automaticly business_id
   debugging
   -- 0.3 04.05
   Basic roles
