@@ -10,7 +10,7 @@
     <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
     <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
   <% end %>
-    <p><%= link_to @company.www, @company.www %></p>
+    <p><% unless @company.www.nil? %><%= link_to @company.www, @company.www %></p> <% end %>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
     <%= button_to "Add contact", new_contact_path, :method => :get, :class => " btn btn-primary" %> 

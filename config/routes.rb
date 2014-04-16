@@ -18,16 +18,12 @@ Bartcrm::Application.routes.draw do
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
   get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit  
   resources :users
-  
-  resources :import
-  post "import/new"
-  
-  get "import/configuration"
   get "settings/index"
   get "settings/main"
   resources :schedules
   resources :calls
   resources :notes
+  resources :imports
   
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -85,3 +81,4 @@ Bartcrm::Application.routes.draw do
   #     resources :products
   #   end
 end
+ 

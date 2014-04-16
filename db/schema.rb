@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410104204) do
+ActiveRecord::Schema.define(version: 20140416151521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,20 @@ ActiveRecord::Schema.define(version: 20140410104204) do
   add_index "contacts", ["business_id"], name: "index_contacts_on_business_id", using: :btree
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "imports", force: true do |t|
+    t.integer  "user_id"
+    t.string   "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "base_file_name"
+    t.string   "base_content_type"
+    t.integer  "base_file_size"
+    t.datetime "base_updated_at"
+    t.string   "header",            default: [], array: true
+  end
+
+  add_index "imports", ["user_id"], name: "index_imports_on_user_id", using: :btree
 
   create_table "leads", force: true do |t|
     t.string   "status"

@@ -66,3 +66,4 @@ gem 'country_select' # simple_form addon
 gem 'momentjs-rails', '~> 2.5.0' # require for datetimepicker
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0' # datepicker
 gem 'jquery-ui-rails' # require for datetimepicker
+gem "paperclip", "~> 4.1"
