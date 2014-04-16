@@ -1,7 +1,10 @@
 class ImportController < ApplicationController
-
-  def configuration
-    
+  def index
   end
   
-end
+  def new
+    @header = Company.header(params[:file])
+    @sample = Company.prepare(params[:file])
+  end
+   
+end 

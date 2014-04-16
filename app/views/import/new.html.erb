@@ -1,9 +1,20 @@
-<div class="container">
-  <div class="col-md-10">
-    <h1>Companies import</h1>
-    <%= form_tag import_companies_path, multipart: true do %>
-    <%= file_field_tag :file %><br />
-      <%= submit_tag "Import" %>
-    <% end %>
-  </div>
-</div>
+<h1> Import companies </h1>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>BartCRM header</th>
+      <th>Spreedsheet header</th>
+      <th>Sample data</th>
+    </tr>
+  </thead>
+  <% @header.each_with_index do |h, index| %>
+    <tr>
+      <td><%= h %></td> 
+      <td><%= @sample[index] %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+  

@@ -14,10 +14,14 @@ Bartcrm::Application.routes.draw do
   resources :companies do
     collection { post :import }
   end
+  get 'companies/configuration'
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
   get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit  
   resources :users
+  
   resources :import
+  post "import/new"
+  
   get "import/configuration"
   get "settings/index"
   get "settings/main"

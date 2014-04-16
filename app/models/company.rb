@@ -7,6 +7,15 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :contacts
   before_save :add_http
   
+  def self.header(file)
+    s = open_spreadsheet(file)
+    return header = s.row(1)  
+  end
+  
+  def self.prepare(file)
+    s = open_spreadsheet(file)
+    return sample = s.row(2)
+  end
   
   def self.import(file)
     allowed_attributes = ["name","user_id","business_id"]
@@ -22,7 +31,7 @@ class Company < ActiveRecord::Base
   
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
-    when '.csv' then Roo::Csv.new(file.path, nil, :ignore)
+    when '.csv' then Roo::CSV.new(file.path)
     when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
     when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
     else raise "Unknown file type: #{file.original_filename}"
