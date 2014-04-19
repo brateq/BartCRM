@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416151521) do
+ActiveRecord::Schema.define(version: 20140419185426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,26 @@ ActiveRecord::Schema.define(version: 20140416151521) do
   add_index "contacts", ["business_id"], name: "index_contacts_on_business_id", using: :btree
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "documents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "contact_id"
+    t.integer  "lead_id"
+    t.integer  "training_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+  end
+
+  add_index "documents", ["company_id"], name: "index_documents_on_company_id", using: :btree
+  add_index "documents", ["contact_id"], name: "index_documents_on_contact_id", using: :btree
+  add_index "documents", ["lead_id"], name: "index_documents_on_lead_id", using: :btree
+  add_index "documents", ["training_id"], name: "index_documents_on_training_id", using: :btree
+  add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
 
   create_table "imports", force: true do |t|
     t.integer  "user_id"

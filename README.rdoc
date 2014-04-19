@@ -1,9 +1,9 @@
 == README
-
 ToDo:
 
 BartCRM 1.0
   -- 0.2 27.04
+  Add calls to notes
   Basic reports
   File upload and storage
   debugging
@@ -12,8 +12,6 @@ BartCRM 1.0
   debugging
   -- 0.4 18.05
   Basic export module
-  
-  Basic reports
   debugging
   -- 0.5 01.06
   Filter
