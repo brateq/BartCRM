@@ -3,18 +3,14 @@
 ToDo:
 
 BartCRM 1.0
-  -- 0.2 17.04
-  Autocomplete
-  Tags for categories
-  add user / registration
-  User needs automaticly business_id
+  -- 0.2 27.04
+  Basic reports
   debugging
   -- 0.3 04.05
   Basic roles
   debugging
   -- 0.4 18.05
   Basic export module
-  Basic reports
   File upload and storage
   Basic reports
   debugging
@@ -22,6 +18,9 @@ BartCRM 1.0
   Filter
   debugging
   -- 0.6 
+  Autocomplete
+  Tags for categories
+  add user / registration
   Final layout
   Logo
   debugging

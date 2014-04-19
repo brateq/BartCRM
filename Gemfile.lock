@@ -53,6 +53,7 @@ GEM
     bootstrap3-datetimepicker-rails (3.0.0)
       momentjs-rails (~> 2.5.0)
     builder (3.1.4)
+    chartkick (1.2.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -210,6 +211,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap3-datetimepicker-rails (~> 3.0.0)
   bootstrap_form!
+  chartkick
   coffee-rails (~> 4.0.0)
   country_select
   devise
