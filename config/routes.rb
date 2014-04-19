@@ -1,5 +1,7 @@
 Bartcrm::Application.routes.draw do
 
+  get "raports/index"
+  get "raports/calls"
   resources :leads
 
   resources :participants
