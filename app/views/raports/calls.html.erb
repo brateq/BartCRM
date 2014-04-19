@@ -1,2 +1,8 @@
-<h1>Raports#calls</h1>
-<p>Find me in app/views/raports/calls.html.erb</p>
+<h1>Calls raports</h1>
+
+  <%= render "menu" %>
+
+<div class="col-md-9">
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= line_chart  @chart %> 
+</div>

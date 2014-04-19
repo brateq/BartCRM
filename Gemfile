@@ -68,3 +68,4 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0' # datepicker
 gem 'jquery-ui-rails' # require for datetimepicker
 gem "paperclip", "~> 4.1"
 gem "chartkick"
+gem 'groupdate'
