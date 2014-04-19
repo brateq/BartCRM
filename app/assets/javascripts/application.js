@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 //= require jquery
 //= require jquery_ujs
 //= require select2
