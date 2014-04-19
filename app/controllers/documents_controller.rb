@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.html { redirect_to :back, notice: 'Document was successfully created.' }
         format.json { render action: 'show', status: :created, location: @document }
       else
         format.html { render action: 'new' }
@@ -56,7 +56,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:user_id, :company_id, :contact_id, :lead_id, :training_id)
+      params.require(:document).permit(:user_id, :company_id, :contact_id, :lead_id, :training_id, :data)
     end
 end

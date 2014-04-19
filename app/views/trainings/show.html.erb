@@ -127,7 +127,32 @@
     <% end %> 
   </div> 
 </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading" data-toggle="collapse" data-target="#documents">Documents<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    
+    <div id="documents" class="collapse"> <div class="panel-body">
+      <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
+        <%= f.file_field :data, label: false %> <br />
+        <%= f.input :traning_id, :as => :hidden, :input_html => { :value => @training.id } %>
+        <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= f.button :submit %>
+      <% end %>
+      <hr>
+      </div>
+    </div>
+    
+   <div class="panel-body">
+    <% @documents.each do |document| %>
+     <p>
+       <span class="glyphicon glyphicon-file"></span>
+       <%= link_to document.data_file_name, document.data.url %>
+       <span class="pull-right"><small>
+         <%= link_to document_path(document.id), :method => :delete do %>
+           <span class="glyphicon glyphicon-trash"></span>
+         <% end %>
+       </small></span>
+     </p>
+    <% end %> 
   </div>
-     
-  
- 
+</div>
+</div>

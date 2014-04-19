@@ -14,7 +14,8 @@ class TrainingsController < ApplicationController
   def show
     @notes = Note.where(training_id: @training.id).order(:created_at).reverse
     @schedules = Schedule.where(training_id: @training.id).order(:time)
-    @leads = Lead.where(training_id: @training.id)
+    @leads = Lead.where(training_id: @training.id) 
+    @documents = Document.where(training_id: @training.id)
   end
 
   # GET /trainings/new
