@@ -3,9 +3,8 @@ ToDo:
 
 BartCRM 1.0
   -- 0.2 27.04
-  Add calls to notes
+  Add contact to company
   Basic reports
-  File upload and storage
   debugging
   -- 0.3 04.05
   Basic roles
@@ -38,7 +37,6 @@ BartCRM 2.0
   "Download visible list"
   Wiki site
   Tasks
-  Attachments
   Avatars
   Gamifications
   Main site with 5 photos with main functions
@@ -46,3 +44,5 @@ BartCRM 2.0
   Additionals fields
   Change currency
   Tasks
+  Documents in one place
+  Make file a public one

@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @notes = Note.where(company_id: @company.id).order(:created_at).reverse
+    @calls = Call.where(company_id: @company.id).order(:created_at).reverse
     @schedules = Schedule.where(company_id: @company.id).order(:time)
     @documents = Document.where(company_id: @company.id).order(:created_at)
   end

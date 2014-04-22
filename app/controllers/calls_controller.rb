@@ -28,7 +28,7 @@ class CallsController < ApplicationController
 
     respond_to do |format|
       if @call.save
-        format.html { redirect_to @call, notice: 'Call was successfully created.' }
+        format.html { redirect_to :back, notice: 'Call was successfully created.' }
         format.json { render action: 'show', status: :created, location: @call }
       else
         format.html { render action: 'new' }
