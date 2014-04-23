@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
     <%= f.input :name %>
     <%= f.input :surname %>
     <%= f.input :mobile_number %>
@@ -24,6 +23,10 @@
     <%= f.input :know_from %>
     <%= f.input :description %>
     <%= f.input :email %>
-    <%= f.input :company_id, collection: Company.all %>
-<%= f.button :submit %>
-<% end %>
+    <% if @company.nil?  %>
+      <%= f.input :company_id, collection: Company.all %>
+    <% else %>
+      <%= f.input :company_id, input_html: { value: @company.id }, :as => :hidden %>
+    <% end %>
+    <%= f.button :submit %>
+<% end %> 

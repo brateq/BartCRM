@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @company = Company.find params[:company_id] unless params[:company_id].nil?
   end
 
   # GET /contacts/1/edit
@@ -76,4 +77,4 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(:name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id)
     end
 end
- 
+  

@@ -5,15 +5,25 @@
 
 
 <div class="col-md-3">
-  <% unless @company.contacts.first.nil? %>
-    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + @company.contacts.first.name + ' ' + @company.contacts.first.surname, contact_path(@company.contacts.first.id) %></h3></p>
-    <p><span class="glyphicon glyphicon-earphone"></span> <%= @company.contacts.first.mobile_number %></p>
-    <p><a href="mailto:<%= @company.contacts.first.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= @company.contacts.first.email %></a></p>
+  <% @company.contacts.each do |contact| %>
+    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + contact.name + ' ' + contact.surname, contact_path(contact.id) %></h3></p>
+
+    <% unless contact.mobile_number.nil? %>
+      <p><span class="glyphicon glyphicon-earphone"></span> <%= contact.mobile_number %></p>
+    <% end %>
+
+    <% unless contact.email.empty? %>
+      <p><a href="mailto:<%= contact.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= contact.email %></a></p>
+    <% end %>
+
+    <hr>
   <% end %>
+
     <p><% unless @company.www.nil? %><%= link_to @company.www, @company.www %></p> <% end %>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
-    <%= button_to "Add contact", new_contact_path, :method => :get, :class => " btn btn-primary" %> 
+    <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
+
 </div>
 
 
@@ -133,4 +143,4 @@
 </div>
   
 </div>
-  
+   

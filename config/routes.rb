@@ -15,9 +15,10 @@ Bartcrm::Application.routes.draw do
   get '/changelog', to: "static#changelog" 
   get "static/contact"
   root 'companies#index'
-  resources :contacts
+  
   resources :companies do
     collection { post :import }
+    resources :contacts 
   end
   get 'companies/configuration'
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
@@ -29,6 +30,7 @@ Bartcrm::Application.routes.draw do
   resources :calls
   resources :notes
   resources :imports
+  resources :contacts 
   
 
   # The priority is based upon order of creation: first created -> highest priority.
