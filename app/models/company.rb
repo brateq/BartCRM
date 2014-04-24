@@ -17,7 +17,7 @@ class Company < ActiveRecord::Base
     return sample = s.row(2)
   end
   
-  def self.import(file, header)
+  def self.import(file)
     allowed_attributes = ["name","user_id","business_id"]
     spreadsheet = open_spreadsheet(file)
     (2..spreadsheet.last_row).each do |i|
