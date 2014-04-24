@@ -4,7 +4,8 @@ class RaportsController < ApplicationController
 
   
   def calls
-    @calls = Call.all.search(params[:q])
+    @search = Call.all.search(params[:q])
+    @calls = @search.result.page params[:page]
     @chart = Call.group_by_day(:created_at).count
   end
 end

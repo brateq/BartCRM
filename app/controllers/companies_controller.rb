@@ -8,7 +8,6 @@ class CompaniesController < ApplicationController
     @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
     @companies = @search.result.page params[:page]
-     
   end
 
   # GET /companies/1

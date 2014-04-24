@@ -34,6 +34,7 @@ class ImportsController < ApplicationController
   end
 
   def update
+    Company.import(@import.base)
     respond_to do |format|
       if @import.update(import_params)
         format.html { redirect_to :root, notice: 'Import was successfully updated.' }
