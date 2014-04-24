@@ -69,7 +69,7 @@
 
 <div class="col-lg-4">
   <div class="panel panel-primary">
-    <div class="panel-heading" data-toggle="collapse" data-target="#calls">Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    <div class="panel-heading" data-toggle="collapse" data-target="#calls"><span class="glyphicon glyphicon-time"></span> Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
     
     <div id="calls" class="collapse"> <div class="panel-body">
        <%= simple_form_for Schedule.new, :url => {:controller => "schedules", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |c| %>

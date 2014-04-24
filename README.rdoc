@@ -3,7 +3,6 @@ ToDo:
 
 BartCRM 1.0
   -- 0.2 27.04
-  Add contact to company
   Basic reports
   debugging
   -- 0.3 04.05
