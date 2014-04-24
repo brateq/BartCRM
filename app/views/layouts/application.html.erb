@@ -57,19 +57,24 @@
               <li><%= link_to "Trainings", trainings_path %></li>
               <li><%= link_to "Raports", raports_path %></li>
               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bell"></span></a>
-                  <ul class="dropdown-menu">
-                    <% @schedules_reminder.each do |schedule| %>
-                      <li>
-                        <% @time = Time.now - schedule.time %>
-                        <%= link_to company_path(schedule.company_id) do %>
-                          <%= schedule.subject %><small class="pull-right"><%= distance_of_time_in_words(@time) %></small>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </li>
-            </ul>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <% if @schedules_reminder.empty? %>
+                      <span class="glyphicon glyphicon-bell"></span></a>
+                    <% else %>
+                      <span class="glyphicon glyphicon-bell" style="color: red"></span></a>
+                        <ul class="dropdown-menu">
+                          <% @schedules_reminder.each do |schedule| %>
+                            <li>
+                              <% @time = Time.now - schedule.time %>
+                              <%= link_to company_path(schedule.company_id) do %>
+                              <%= schedule.subject %><small class="pull-right"><%= distance_of_time_in_words(@time) %></small>
+                              <% end %>
+                            </li>
+                          <% end %>
+                      </ul>
+                  <% end %>
+                </li>
+              </ul>
             <ul class="nav navbar-nav pull-right">
              <li style="padding-top: 7px; "> <%= search_form_for @main_search do |f| %>
                <%= f.text_field :name_cont, :class => "form-control", :placeholder => 'Search...' %>           
