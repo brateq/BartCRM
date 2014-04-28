@@ -30,4 +30,6 @@ Bartcrm::Application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   
   BetterErrors::Middleware.allow_ip! '192.168.227.1'
+  
+  config.assets.precompile = ['*.js', '*.css', '*.eot', '*.svg', '*.ttf', '*.woff']
 end

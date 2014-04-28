@@ -1,20 +1,20 @@
 <h1>Calls raports</h1>
 
-  <%= render "menu" %>
 
-<div class="col-md-9">
+<div>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= line_chart  @chart %> 
   
   <div class="col-sm-4">
     <%= search_form_for @search do |f| %>
       <div class="input-group">
-        <%= f.text_field :subject_cont, :class => "form-control" %>
+        <%= f.text_field :created_at_gteq %>
           <span class="input-group-btn">
             <%= f.submit 'Search', :class => "btn btn-default" %>
           </span>
        </div>
     <% end %>
+
     </div>
   
    <table class="table table-striped">
@@ -24,23 +24,19 @@
         <th><%= sort_link @search, :call_type, "Call type" %></th>
         <th><%= sort_link @search, :subject, "Subject" %></th>
         <th><%= sort_link @search, :contact_id, "To" %></th>
-        <th></th>
+        <th><%= sort_link @search, :user_id, "By" %></th>
+        <th><%= sort_link @search, :created_at, "Day" %></th>
       </tr>
     </thead>
     <tbody>
       <% @calls.each do |call| %>
         <tr>
-          <td><%= link_to call.id, call_path(call) %></td>
-          <td><%= link_to call.call_type, call_path(call) %></td>
+          <td><%= call.id %></td>
+          <td><%= call.call_type %></td>
           <td><%= call.subject %></td>
           <td><%= call.company.name  %></td> 
-          <td>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        call_path(call),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
-          </td>
+          <td><%= call.user.username %></td>
+          <td><%= call.created_at %></td>
         </tr>
       <% end %>
     </tbody>

@@ -46,7 +46,7 @@
     <div class="tab-pane" id="call">
       <%= simple_form_for Call.new, :url => { :controller => "calls", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
         <%= n.input :subject, label: false, placeholder: 'Call result', controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["Negotiation", "Support"], prompt: "First contact", controls_html: { class: 'col-lg-12' } %>
+        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["First contact", "Negotiation", "Support"], include_blank: false , controls_html: { class: 'col-lg-12' } %>
         <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
         <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= n.button :submit %>

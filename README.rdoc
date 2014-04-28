@@ -2,11 +2,9 @@
 ToDo:
 
 BartCRM 1.0
-  -- 0.2 27.04
-  Basic reports
-  debugging
   -- 0.3 04.05
   Basic roles
+  Basic reports
   debugging
   -- 0.4 18.05
   Basic export module
