@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  price: 1
+  start: 2014-04-28 12:12:57
+  end: 2014-04-28 12:12:57
+  code: MyString
+  user_id: 1
+  description: MyText
+  stage: MyString
+  place: MyString
+  category: MyString
+
+two:
+  name: MyString
+  price: 1
+  start: 2014-04-28 12:12:57
+  end: 2014-04-28 12:12:57
+  code: MyString
+  user_id: 1
+  description: MyText
+  stage: MyString
+  place: MyString
+  category: MyString
