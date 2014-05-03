@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428121257) do
+ActiveRecord::Schema.define(version: 20140503152731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,11 +103,13 @@ ActiveRecord::Schema.define(version: 20140428121257) do
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
+    t.integer  "product_id"
   end
 
   add_index "documents", ["company_id"], name: "index_documents_on_company_id", using: :btree
   add_index "documents", ["contact_id"], name: "index_documents_on_contact_id", using: :btree
   add_index "documents", ["lead_id"], name: "index_documents_on_lead_id", using: :btree
+  add_index "documents", ["product_id"], name: "index_documents_on_product_id", using: :btree
   add_index "documents", ["training_id"], name: "index_documents_on_training_id", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
 
@@ -136,11 +138,13 @@ ActiveRecord::Schema.define(version: 20140428121257) do
     t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   add_index "leads", ["company_id"], name: "index_leads_on_company_id", using: :btree
   add_index "leads", ["contact_id"], name: "index_leads_on_contact_id", using: :btree
   add_index "leads", ["note_id"], name: "index_leads_on_note_id", using: :btree
+  add_index "leads", ["product_id"], name: "index_leads_on_product_id", using: :btree
   add_index "leads", ["schedule_id"], name: "index_leads_on_schedule_id", using: :btree
   add_index "leads", ["training_id"], name: "index_leads_on_training_id", using: :btree
   add_index "leads", ["user_id"], name: "index_leads_on_user_id", using: :btree
@@ -153,10 +157,12 @@ ActiveRecord::Schema.define(version: 20140428121257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "training_id"
+    t.integer  "product_id"
   end
 
   add_index "notes", ["company_id"], name: "index_notes_on_company_id", using: :btree
   add_index "notes", ["contact_id"], name: "index_notes_on_contact_id", using: :btree
+  add_index "notes", ["product_id"], name: "index_notes_on_product_id", using: :btree
   add_index "notes", ["training_id"], name: "index_notes_on_training_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
@@ -196,10 +202,12 @@ ActiveRecord::Schema.define(version: 20140428121257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "training_id"
+    t.integer  "product_id"
   end
 
   add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
   add_index "schedules", ["contact_id"], name: "index_schedules_on_contact_id", using: :btree
+  add_index "schedules", ["product_id"], name: "index_schedules_on_product_id", using: :btree
   add_index "schedules", ["training_id"], name: "index_schedules_on_training_id", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 

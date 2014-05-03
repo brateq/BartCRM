@@ -4,12 +4,18 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @search = Product.search(params[:q])
+    @products = @search.result.page params[:page]
+    @how_many_products = @products.count
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @notes = Note.where(product_id: @product.id).order(:created_at).reverse
+    @schedules = Schedule.where(product_id: @product.id).order(:time)
+    @leads = Lead.where(product_id: @product.id) 
+    @documents = Document.where(product_id: @product.id)
   end
 
   # GET /products/new

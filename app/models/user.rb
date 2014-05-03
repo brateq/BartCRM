@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :schedules
   has_many :leads
+  has_many :products
   
   belongs_to :business
   accepts_nested_attributes_for :business

@@ -2,8 +2,7 @@
 ToDo:
 
 BartCRM 1.0
-  -- 0.3 04.05
-  Products
+  -- 0.3 08.05
   Basic roles
   debugging
   -- 0.4 18.05

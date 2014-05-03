@@ -4,4 +4,5 @@ class Schedule < ActiveRecord::Base
   belongs_to :contact
   belongs_to :training
   belongs_to :lead
+  belongs_to :product
 end
