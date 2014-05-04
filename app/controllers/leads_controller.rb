@@ -4,7 +4,9 @@ class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
   def index
-    @leads = Lead.all
+    @search = Lead.search(params[:q])
+    @leads = @search.result.page params[:page]
+    @how_many_leads = @leads.count
   end
 
   # GET /leads/1

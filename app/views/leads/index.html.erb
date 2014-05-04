@@ -1,41 +1,45 @@
-<h1>Listing leads</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Amount</th>
-      <th>User</th>
-      <th>Company</th>
-      <th>Training</th>
-      <th>Contact</th>
-      <th>Note</th>
-      <th>Schedule</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leads.each do |lead| %>
+<div class="col-md-12">
+  <div class="page-header">
+    <h4><%= "Leads (#{@how_many_leads})" %></h4>
+  </div>
+  <div class="row">
+    <div class="pull-right"><%= paginate @leads %></div>
+    <br /><br />
+  </div>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= lead.status %></td>
-        <td><%= lead.amount %></td>
-        <td><%= lead.user_id %></td>
-        <td><%= lead.company_id %></td>
-        <td><%= lead.training_id %></td>
-        <td><%= lead.contact_id %></td>
-        <td><%= lead.note_id %></td>
-        <td><%= lead.schedule_id %></td>
-        <td><%= link_to 'Show', lead %></td>
-        <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
-        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= sort_link @search, :id, "ID" %></th>
+        <th>Client</th>
+        <th><%= sort_link @search, :status, "Status" %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Lead', new_lead_path %>
+    </thead>
+    <tbody>
+      <% @leads.each do |lead| %>
+        <tr>
+          <td><%= link_to lead.id, lead_path(lead) %></td>
+          <td>
+            <% unless lead.company_id.nil? %>
+              <%= link_to lead.company.name, company_path(lead.company_id) %>
+            <% else %>
+              <%= link_to lead.contact.name + ' ' + lead.contact.surname, contact_path(lead.contact_id) %>
+            <% end %>
+          </td>
+          <td><%= link_to lead.status, lead_path(lead) %></td>
+          <td><%= lead.amount %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_lead_path(lead), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        lead_path(lead),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="pull-right"><%= paginate @leads %></div>
+</div>
