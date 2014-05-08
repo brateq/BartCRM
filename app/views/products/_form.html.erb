@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :category, :collection => ["Open", "Close"] %>
+    <%= f.input :category, :collection => ["Open", "Close"], :prompt => "Choose a category" %>
     <%= f.input :price %>
     <%= f.input :start, as: :string, :input_html => {:id => "start"} %>
     <%= f.input :end, as: :string, :input_html => {:id => "end"} %>
