@@ -11,7 +11,9 @@
       <tr>
         <th><%= sort_link @search, :id, "ID" %></th>
         <th>Client</th>
+        <th><%= sort_link @search, :product, "Product" %></th>
         <th><%= sort_link @search, :status, "Status" %></th>
+        <th><%= sort_link @search, :price, "Price" %></th>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
     </thead>
@@ -26,11 +28,10 @@
               <%= link_to lead.contact.name + ' ' + lead.contact.surname, contact_path(lead.contact_id) %>
             <% end %>
           </td>
+          <td><%= link_to lead.product.name, product_path(lead.product_id) %></td>
           <td><%= link_to lead.status, lead_path(lead) %></td>
           <td><%= lead.amount %></td>
           <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_lead_path(lead), :class => 'btn btn-mini' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         lead_path(lead),
                         :method => :delete,
