@@ -3,7 +3,6 @@ ToDo:
 
 BartCRM 1.0
   -- 0.4 18.05
-  Basic export module
   Basic roles
   Why chart is not always load?
   debugging

@@ -3,6 +3,7 @@ class CompaniesController < ApplicationController
   respond_to :html, :json
   # GET /companies
   # GET /companies.json
+  
   def index
     @companies = Company.where(:business_id => current_user.business_id)
     @how_many_companies = @companies.count

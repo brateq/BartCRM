@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include TheRole::Controller
-  before_action :search, :schedules_reminder
+  before_action :login_required, :search, :schedules_reminder
   protect_from_forgery with: :exception
   protect_from_forgery
   layout :layout_by_resource
@@ -8,9 +8,6 @@ class ApplicationController < ActionController::Base
   def access_denied
     render :text => 'access_denied: requires an role' and return
   end
-
-  alias_method :login_required,     :authenticate_user! 
-  alias_method :role_access_denied, :access_denied
   
   def search
     if user_signed_in?
