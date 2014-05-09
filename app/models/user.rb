@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include TheRole::User
+  
   has_many :companies
   has_many :contacts
   has_many :trainings
@@ -6,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :schedules
   has_many :leads
   has_many :products
+
   
   belongs_to :business
   accepts_nested_attributes_for :business
@@ -15,7 +18,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  include TheRole::User
   
   def new_business
     Business.create(name: "New business")

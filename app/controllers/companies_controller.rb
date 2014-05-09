@@ -8,6 +8,23 @@ class CompaniesController < ApplicationController
     @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
     @companies = @search.result.page params[:page]
+    
+    respond_to do |format|
+      format.html
+      format.xls { send_data(@search.result.page.to_xls) }
+      format.json
+      # format.xls {
+      #   filename = "Posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
+      #   send_data(@posts.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+      # }
+    end
+  end
+  
+  def toxls
+    @companies = Company.find params[:id]
+    respod_to do |format|
+      format.xls { send_data(@companies.to_xls)}
+    end
   end
 
   # GET /companies/1

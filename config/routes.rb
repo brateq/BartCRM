@@ -34,6 +34,12 @@ Bartcrm::Application.routes.draw do
   resources :imports
   resources :contacts 
   
+  concern :the_role, TheRole::AdminRoutes.new
+
+  namespace :admin do
+    concerns :the_role
+  end
+  post "companies/toxls"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

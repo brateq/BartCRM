@@ -51,6 +51,9 @@
       <% end %>
     </tbody>
   </table>
-  <div class="pull-right"><%= paginate @companies %></div>
+  <div><%= link_to 'Download current view', companies_path(params.merge(format: :xls)), class: "btn btn-info" unless @companies.nil? %>
+    <div class="pull-right"><%= paginate @companies %></div>
+  </div>
+  <%= debug @search.result.page %>
   
   </div>
