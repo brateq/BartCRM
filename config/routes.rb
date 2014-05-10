@@ -1,22 +1,19 @@
 Bartcrm::Application.routes.draw do
-
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+  
   resources :products
-
   resources :documents
-
   get "raports/index", :as => "raports"
   get "raports/calls"
-  
   resources :leads
-
   resources :participants
-
   resources :trainings
-
   devise_for :users
   get '/changelog', to: "static#changelog" 
   get "static/contact"
-  root 'companies#index'
+  
   
   resources :companies do
     collection { post :import }
