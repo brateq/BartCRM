@@ -36,9 +36,11 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-5 col-md-offset-4">
     <br />
-    <img src="/img/bartCRM_logo.png">
+    <div style="padding: 30px 0 25px 0"><img src="/img/bartCRM_logo.png">
+      </div>  
+    
       <%= render 'layouts/messages' %>
       <%= yield %>
   </div>

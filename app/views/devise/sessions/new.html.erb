@@ -1,10 +1,11 @@
-<h2><p class="text-right">Sign in</p></h2>
+&nbsp;
+&nbsp;
   <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
     <%= devise_error_messages! %>
-    <%= f.input :email, :autofocus => true %>
-    <%= f.input :password %>
+    <%= f.input :email, :autofocus => true %><!-- "e-mail" -->
+    <%= f.input :password %> <!-- "password" -->
     <%= f.button :submit, 'Login' %>
-     <%= f.check_box :remember_me %> Remember me
+     <%= f.check_box :remember_me %> remember me
   <% end %>
   <br />
   <%= render "devise/shared/links" %>
