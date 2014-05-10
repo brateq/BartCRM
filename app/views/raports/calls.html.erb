@@ -3,7 +3,7 @@
 
 <div>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= line_chart  @chart %> 
+  <%= render 'calls_chart' %> 
   
   <div class="col-sm-4">
     <%= search_form_for @search do |f| %>

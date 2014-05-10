@@ -1,8 +1,6 @@
 Bartcrm::Application.routes.draw do
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
   
+  root "companies#index"
   resources :products
   resources :documents
   get "raports/index", :as => "raports"
