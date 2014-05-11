@@ -1,21 +1,16 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <h1>Calls raports</h1>
 
-
 <div>
-  
   <%= render 'calls_chart' %> 
-  
   <div class="col-sm-4">
-    <%= search_form_for @search do |f| %>
-      <div class="input-group">
-        <%= f.text_field :created_at_gteq %>
-          <span class="input-group-btn">
-            <%= f.submit 'Search', :class => "btn btn-default" %>
-          </span>
-       </div>
+    <%= search_form_for @search, url: raports_calls_path do |f| %>
+      <div class="field">
+        Date from <%= f.date_field :created_at_gteq %>
+        to <%= f.date_field :created_at_lteq %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
     <% end %>
-
     </div>
   
    <table class="table table-striped">
