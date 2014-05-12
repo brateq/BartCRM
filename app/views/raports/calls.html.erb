@@ -7,7 +7,8 @@
     <%= search_form_for @search, url: raports_calls_path do |f| %>
       <div class="field">
         Date from <%= f.date_field :created_at_gteq %>
-        to <%= f.date_field :created_at_lteq %>
+        to <%= f.date_field :created_at_lteq, value: Time.now.to_s(:db) %>
+        Caller <%= f.collection_select :user_id_eq, User.all, :id, :username, include_blank: 'All' %>
       </div>
       <div class="actions"><%= f.submit "Search" %></div>
     <% end %>
