@@ -183,15 +183,6 @@ ActiveRecord::Schema.define(version: 20140503152731) do
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
-  create_table "roles", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "title",       null: false
-    t.text     "description", null: false
-    t.json     "the_role",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "schedules", force: true do |t|
     t.string   "action_type"
     t.string   "subject"
