@@ -4,8 +4,8 @@ development:
   database: bartcrm-dev
   pool: 5
   host: localhost
-  username: action
-  password: 
+  username: brateq
+  password: blacmar1!
 
 test:
   adapter: postgresql
@@ -13,8 +13,8 @@ test:
   database: bartcrm-test
   pool: 5
   host: localhost
-  username: action
-  password: 
+  username: brateq
+  password: blacmar1!
 
 production:
   adapter: postgresql
@@ -22,5 +22,5 @@ production:
   database: bartcrm-prod
   pool: 5
   host: localhost
-  username: action
-  password: 
+  username: brateq
+  password: blacmar1!
