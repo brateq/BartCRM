@@ -4,7 +4,6 @@ ToDo:
 BartCRM 1.0
   -- 0.4 18.05
   Basic roles
-  More options for raports
   debugging
   -- 0.5 01.06
   Filter

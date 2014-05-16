@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include TheRole::User
-  
   has_many :companies
   has_many :contacts
   has_many :trainings

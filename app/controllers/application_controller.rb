@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  include TheRole::Controller
-  before_action :login_required, :search, :schedules_reminder
+  before_action :authenticate_user!, :search, :schedules_reminder
   protect_from_forgery with: :exception
   protect_from_forgery
   layout :layout_by_resource

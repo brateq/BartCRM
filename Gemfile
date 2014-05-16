@@ -52,8 +52,6 @@ gem 'kaminari' # paginaton
 gem 'bootstrap-kaminari-views' # pagination with bootstrap
 gem 'ransack' # search engine
 gem 'newrelic_rpm' # statistics
-gem 'the_role' # roles
-gem 'the_role_bootstrap3_ui'
 gem 'devise' # login and stuff
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'select2-rails', '~> 3.5.4' # autocomplete
