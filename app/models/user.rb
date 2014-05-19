@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :schedules
   has_many :leads
   has_many :products
+  belongs_to :role
 
   
   belongs_to :business

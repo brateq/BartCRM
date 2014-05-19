@@ -1,5 +1,7 @@
 Bartcrm::Application.routes.draw do
   
+  resources :roles
+
   root "companies#index"
   resources :products
   resources :documents

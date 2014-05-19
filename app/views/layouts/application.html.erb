@@ -55,7 +55,7 @@
               <li><%= link_to "Companies", companies_path  %></li>
               <li><%= link_to "Contacts", contacts_path  %></li>
               <li><%= link_to "Products", products_path %></li>
-              <li><%= link_to "Raports", raports_path %></li>
+              <li><%= link_to "Raports", raports_path if current_user.role.name == 'manager' %></li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <% if @schedules_reminder.empty? %>
