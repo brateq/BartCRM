@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
   belongs_to :business
   accepts_nested_attributes_for :business
-  before_create :new_business
+  before_create :new_business, :role_for_new_user
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -22,5 +22,10 @@ class User < ActiveRecord::Base
     Business.create(name: "New business")
     self.business_id = Business.last.id
   end
+  
+  def role_for_new_user
+    self.role_id = 1
+  end
+  
 
 end
