@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery
   layout :layout_by_resource
+  before_filter :permit_username, if: :devise_controller?
+  
   
   def access_denied
     render :text => 'access_denied: requires an role' and return
@@ -20,8 +22,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
 
+  protected
+  
+  def permit_username
+   devise_parameter_sanitizer.for(:sign_up) << :username
+  end
+    
   def layout_by_resource
     if devise_controller?
       "devise"
