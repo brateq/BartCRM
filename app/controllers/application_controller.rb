@@ -1,14 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :search, :schedules_reminder
   protect_from_forgery with: :exception
-  protect_from_forgery
   layout :layout_by_resource
   before_filter :permit_username, if: :devise_controller?
-  
-  
-  def access_denied
-    render :text => 'access_denied: requires an role' and return
-  end
+
   
   def search
     if user_signed_in?

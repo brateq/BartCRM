@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140519153831) do
     t.string   "type_of_training"
     t.string   "trade"
     t.boolean  "electronic_invoice"
+    t.string   "wojewodztwo"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

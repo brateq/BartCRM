@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/bootstrap-ruby/rails-bootstrap-forms.git
-  revision: c54c35f6fb6ce95b66adb07ce0815d1ba4595700
+  revision: 5048f09a7a67089f69597418dd3ad51a9d430182
   specs:
     bootstrap_form (2.1.1)
 
@@ -40,7 +40,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    aws-sdk (1.40.0)
+    aws-sdk (1.41.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
@@ -75,7 +75,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
-    groupdate (2.1.0)
+    groupdate (2.1.1)
       activerecord (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
@@ -97,14 +97,14 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitest (4.7.5)
     momentjs-rails (2.5.1)
       railties (>= 3.1)
-    multi_json (1.10.0)
-    newrelic_rpm (3.8.0.218)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    multi_json (1.10.1)
+    newrelic_rpm (3.8.1.221)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -136,7 +136,7 @@ GEM
       activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.3.1)
+    rake (10.3.2)
     ransack (1.2.3)
       actionpack (>= 3.0)
       activerecord (>= 3.0)

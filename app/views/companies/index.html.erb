@@ -54,9 +54,11 @@
     </table>
   </div>
   <div clas="col-md-3">
+      Search by:
       <%= search_form_for @search do |f| %>
         <div class="input-group">
-          <%= f.text_field :city_cont, placeholder: "Search city", :class => "form-control" %>
+          <%= f.text_field :city_cont, placeholder: "city", :class => "form-control" %>
+          <%= f.text_field :postcode_cont, placeholder: "postcode", class: "form-control" %>
           <%= f.submit 'Search', :class => "btn btn-default" %>
          </div>
        <% end %>

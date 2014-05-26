@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   
   def new_business
     Business.create(name: "New business")
-    self.business_id = Business.last.id
+    self.business_id = Business.last.id + 1
   end
   
   def role_for_new_user

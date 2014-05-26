@@ -10,10 +10,15 @@ Bartcrm::Application.routes.draw do
   resources :leads
   resources :participants
   resources :trainings
+  
+  
   devise_for :users
+  resources :users
+  resources :manager
+  
+
   get '/changelog', to: "static#changelog" 
   get "static/contact"
-  
   
   resources :companies do
     collection { post :import }
@@ -22,7 +27,7 @@ Bartcrm::Application.routes.draw do
   get 'companies/configuration'
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
   get 'company/:id/fulledit' => 'companies#fulledit', as: :fulledit  
-  resources :users
+
   get "settings/index"
   get "settings/main"
   resources :schedules
@@ -30,6 +35,8 @@ Bartcrm::Application.routes.draw do
   resources :notes
   resources :imports
   resources :contacts 
+  
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
