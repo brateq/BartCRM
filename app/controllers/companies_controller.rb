@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :fullshow, :fulledit]
   respond_to :html, :json
+  autocomplete :company, :city
   # GET /companies
   # GET /companies.json
   

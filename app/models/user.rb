@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   
   
   before_create :new_business, :role_for_new_user
-  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -29,6 +28,5 @@ class User < ActiveRecord::Base
   def role_for_new_user
     self.role_id = 1
   end
-  
 
 end

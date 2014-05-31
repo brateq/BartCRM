@@ -67,3 +67,5 @@ gem "chartkick"
 gem 'groupdate'
 
 gem 'to_xls-rails'
+
+gem 'rails4-autocomplete'

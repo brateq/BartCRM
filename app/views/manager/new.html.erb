@@ -1,18 +1,4 @@
-<%= simple_form_for @user, html: {class: 'form-horizontal col-md-6'} do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <%= f.input :username %>
-    <%= f.input :email %>
-    <%= f.input :password %>
-    <%= f.input :phone %>
-    <%= f.association :role %>
-    <%= f.button :submit %>
+<%= form_for User.new do |f| %>
+  <%= f.email_field :email %>
+  <%= f.submit %>
 <% end %>

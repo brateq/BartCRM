@@ -53,11 +53,11 @@
       </tbody>
     </table>
   </div>
-  <div clas="col-md-3">
+  <div clas="col-md-3" id="hide">
       Search by:
       <%= search_form_for @search do |f| %>
         <div class="input-group">
-          <%= f.text_field :city_cont, placeholder: "city", :class => "form-control" %>
+          <%= f.autocomplete_field :city_cont, :url => autocomplete_company_city_companies_path, :as => :autocomplete, placeholder: "city", :class => "form-control" %>
           <%= f.text_field :postcode_cont, placeholder: "postcode", class: "form-control" %>
           <%= f.submit 'Search', :class => "btn btn-default" %>
          </div>

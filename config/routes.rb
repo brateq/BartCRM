@@ -11,10 +11,10 @@ Bartcrm::Application.routes.draw do
   resources :participants
   resources :trainings
   
-  
-  devise_for :users
-  resources :users
   resources :manager
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  resources :users
+  
   
 
   get '/changelog', to: "static#changelog" 
@@ -23,6 +23,7 @@ Bartcrm::Application.routes.draw do
   resources :companies do
     collection { post :import }
     resources :contacts 
+    get :autocomplete_company_city, :on => :collection
   end
   get 'companies/configuration'
   get 'company/:id/fullshow' => 'companies#fullshow', as: :fullshow
