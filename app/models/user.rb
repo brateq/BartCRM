@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   
   accepts_nested_attributes_for :business
   
-  
   before_create :new_business, :role_for_new_user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,6 +18,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   validates_presence_of :username
+  validates :email, presence: :true
   
   def new_business
     Business.create(name: "New business")
