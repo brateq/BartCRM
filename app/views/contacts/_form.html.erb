@@ -12,6 +12,7 @@
   <% end %>
     <%= f.input :name %>
     <%= f.input :surname %>
+    <%= f.input :email %>
     <%= f.input :mobile_number %>
     <%= f.input :office_number %>
     <%= f.input :street %>
@@ -22,7 +23,7 @@
     <%= f.input :newslatter %>
     <%= f.input :know_from %>
     <%= f.input :description %>
-    <%= f.input :email %>
+    
     <% if @company.nil?  %>
       <%= f.input :company_id, collection: Company.all %>
     <% else %>

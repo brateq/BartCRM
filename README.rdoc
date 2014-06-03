@@ -2,13 +2,9 @@
 ToDo:
 
 BartCRM 1.0
-  -- 0.5 28.05
-  Filter
-  debugging
-  -- 0.6 
+31.06
   Autocomplete
   Tags for categories
-  add user / registration
   Final layout
   debugging
   -- 0.7 final Alpha

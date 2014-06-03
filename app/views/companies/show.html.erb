@@ -18,7 +18,8 @@
 
     <hr>
   <% end %>
-
+    <p><%= @company.phone %></p>
+    <p><%= @company.email %></p>
     <p><% unless @company.www.nil? %><%= link_to @company.www, @company.www %></p> <% end %>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>

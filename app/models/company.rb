@@ -7,6 +7,8 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :contacts
   before_save :add_http
   
+  validates :name, presence: true 
+  
   def self.header(file)
     s = open_spreadsheet(file)
     return header = s.row(1)  

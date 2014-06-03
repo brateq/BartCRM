@@ -15,10 +15,6 @@ class CompaniesController < ApplicationController
       format.html
       format.xls { send_data(@search.result.page.to_xls) }
       format.json
-      # format.xls {
-      #   filename = "Posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
-      #   send_data(@posts.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
-      # }
     end
   end
   

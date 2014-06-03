@@ -4,6 +4,7 @@ class Contact < ActiveRecord::Base
   has_many   :schedules
   has_many   :leads
   has_many   :trainings, through: :leads
-  # validate presence :name
+  
+  validates :surname, presence: :true
 end
  
