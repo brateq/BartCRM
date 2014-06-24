@@ -59,16 +59,14 @@
               <li><%= link_to "Raports", raports_path if current_user.role.name == 'manager' %></li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <% if @schedules_reminder.empty? %>
-                      <span class="glyphicon glyphicon-bell"></span></a>
-                    <% else %>
-                      <span class="glyphicon glyphicon-bell" style="color: red"></span></a>
+                    <% unless @schedules_reminder.empty? %> 
+                    <span class="glyphicon glyphicon-bell" <% if @schedules_reminder.first.time < Time.now %> style="color: red"<% end %>></span></a>
                         <ul class="dropdown-menu">
                           <% @schedules_reminder.each do |schedule| %>
                             <li>
                               <% @time = Time.now - schedule.time %>
                               <%= link_to company_path(schedule.company_id) do %>
-                              <%= schedule.subject %><small class="pull-right"><%= distance_of_time_in_words(@time) %></small>
+                                <%= schedule.subject %><small class="pull-right"><%= distance_of_time_in_words(@time) %> <%= "ago" if schedule.time < Time.now %></small>
                               <% end %>
                             </li>
                           <% end %>

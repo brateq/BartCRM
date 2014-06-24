@@ -20,7 +20,7 @@
   <% end %>
     <p><%= @company.phone %></p>
     <p><%= @company.email %></p>
-    <p><% unless @company.www.nil? %><%= link_to @company.www, @company.www %></p> <% end %>
+    <p><%= link_to @company.www, @company.www unless @company.www.nil?%></p>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
     <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
@@ -93,25 +93,26 @@
       <hr>
       </div>
     </div>
-    
-   <div class="panel-body">
-    <% @schedules.each do |schedule| %>
-     <p>
-        <% if schedule.action_type == "Meeting" then %> 
-         <span class="glyphicon glyphicon-glass"></span>
-        <% else %>
-         <span class="glyphicon glyphicon-phone-alt"></span>
-        <% end %>
-       
-       <%= schedule.subject %> <small>by</small> <%= link_to schedule.user.username, user_path(schedule.user.id) %>
-       <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
-         <%= link_to schedule_path(schedule.id), :method => :delete do %>
-           <span class="glyphicon glyphicon-remove" style="color:red"></span>
-         <% end %>
-       </small></span>
-     </p>
-    <% end %> 
-  </div>
+    <% unless @schedules.empty? %> 
+     <div class="panel-body">
+      <% @schedules.each do |schedule| %>
+       <p>
+          <% if schedule.action_type == "Meeting" then %> 
+           <span class="glyphicon glyphicon-glass"></span>
+          <% else %>
+           <span class="glyphicon glyphicon-phone-alt"></span>
+          <% end %>
+
+         <%= schedule.subject %> <small>by</small> <%= link_to schedule.user.username, user_path(schedule.user.id) %>
+         <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
+           <%= link_to schedule_path(schedule.id), :method => :delete do %>
+             <span class="glyphicon glyphicon-remove" style="color:red"></span>
+           <% end %>
+         </small></span>
+       </p>
+      <% end %> 
+    </div>
+   <% end %>
 </div> 
   
   <div class="panel panel-primary">
@@ -124,10 +125,9 @@
         <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= f.button :submit %>
       <% end %>
-      <hr>
       </div>
     </div>
-    
+  <% unless @documents.empty? %>  
    <div class="panel-body">
     <% @documents.each do |document| %>
      <p>
@@ -140,7 +140,8 @@
        </small></span>
      </p>
     <% end %> 
-  </div>
+    </div>
+  <% end %>
 </div>
   
 </div>

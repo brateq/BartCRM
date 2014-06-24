@@ -23,18 +23,15 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th><%= sort_link @search, :id, "ID" %></th>
           <th><%= sort_link @search, :name, "Name" %></th>
           <th><%= sort_link @search, :street, "Street" %></th>
           <th><%= sort_link @search, :city, "City" %></th>
           <th><%= sort_link @search, :contact_id, "Contact" %></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
       <tbody>
         <% @companies.each do |company| %>
           <tr>
-            <td><%= link_to company.id, company_path(company) %></td>
             <td><%= link_to company.name, company_path(company) %></td>
             <td><%= company.street %></td>
             <td><%= company.city %></td>
@@ -53,15 +50,21 @@
       </tbody>
     </table>
   </div>
-  <div clas="col-md-3" id="hide">
+    <div class="panel panel-primary col-md-3">
+   
+    
+      <div class="panel-body">
       Search by:
       <%= search_form_for @search do |f| %>
         <div class="input-group">
-          <%= f.autocomplete_field :city_cont, :url => autocomplete_company_city_companies_path, :as => :autocomplete, placeholder: "city", :class => "form-control" %>
-          <%= f.text_field :postcode_cont, placeholder: "postcode", class: "form-control" %>
+          <%= f.text_field :city_cont, placeholder: "city", :class => "form-control" %><br /><br />
+          <%= f.text_field :postcode_cont, placeholder: "postcode", class: "form-control" %><br /><br />
           <%= f.submit 'Search', :class => "btn btn-default" %>
          </div>
-       <% end %>
+       <% end %></div></div>
+  </div>
+  <div clas="col-md-3" id="hide">
+      
   </div>
     <div class="col-md-12">
       <%= link_to 'Download current view', companies_path(params.merge(format: :xls)), class: "btn btn-info" unless @companies.empty? %>

@@ -13,4 +13,3 @@
 $(document).ready(function() {
   $('select#simple-example').select2();
 });
-

@@ -6,6 +6,8 @@ BartCRM 1.0
   Autocomplete
   Tags for categories
   Final layout
+  Some text, when table is empty
+  When adding the person from company, back to company
   debugging
   -- 0.7 final Alpha
   Debugging!
