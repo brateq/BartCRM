@@ -38,12 +38,12 @@
             <td><%= link_to company.contacts.first.name + ' ' + company.contacts.first.surname, contact_path(company.contacts.first.id) unless company.contacts.first.nil?  %></td> 
             <td>
               <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_company_path(company), :class => 'btn btn-mini' %>
+                          edit_company_path(company), :class => 'btn btn-mini showaction' %>
               <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                           company_path(company),
                           :method => :delete,
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                          :class => 'btn btn-mini btn-danger' %>
+                          :class => 'btn btn-mini btn-danger showaction' %>
             </td>
           </tr>
         <% end %>
