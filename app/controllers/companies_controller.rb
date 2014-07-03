@@ -6,7 +6,11 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   
   def index
-    @companies = Company.where(:business_id => current_user.business_id)
+    @companies = Company.where(:business_id => current_user.business_id) 
+    if @companies.blank?
+      @empty = true
+    end
+    
     @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
     @companies = @search.result.page params[:page]
