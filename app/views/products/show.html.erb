@@ -79,7 +79,7 @@
   </div> 
   
   <div class="panel panel-primary">
-    <div class="panel-heading" data-toggle="collapse" data-target="#participants">Participants<span class="glyphicon glyphicon-plus pull-right"></span></div>
+    <div class="panel-heading" data-toggle="collapse" data-target="#participants">Clients<span class="glyphicon glyphicon-plus pull-right"></span></div>
         <div id="participants" class="collapse"> 
           <div class="panel-body">
 
@@ -94,7 +94,7 @@
                 <%= p.association :contact, label: false, prompt: "Choose a contact", :controls_html => { class: "col-lg-12" } %>
                 <%= p.input :amount, label: false, :placeholder => "Amount of $" %>
                 <%= p.input :product_id, :as => :hidden, :input_html => { :value => @product.id } %>
-                <%= p.button :submit, 'Add participant' %>
+                <%= p.button :submit, 'Add client' %>
               <% end %>
               </div>
               <div class="tab-pane fade" id="companies">

@@ -11,6 +11,7 @@ class CreateTrainings < ActiveRecord::Migration
       t.string :stage
       t.string :place
       t.integer :company_id
+      t.integer :business_id
 
       t.timestamps
     end

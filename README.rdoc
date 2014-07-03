@@ -2,12 +2,11 @@
 ToDo:
 
 BartCRM 1.0
-31.06
+
   Autocomplete
-  Tags for categories
+  Some tags for companies + history
   Final layout
   Some text, when table is empty
-  When adding the person from company, back to company
   debugging
   -- 0.7 final Alpha
   Debugging!
@@ -21,7 +20,6 @@ BartCRM 2.0
   "+" for new company
   Tutorial for a first drive
   Hostory of activity
-  "Download visible list"
   Wiki site
   Tasks
   Avatars

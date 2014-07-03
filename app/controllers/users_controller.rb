@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where(business_id: current_user.business_id)
   end
 
   # GET /users/1

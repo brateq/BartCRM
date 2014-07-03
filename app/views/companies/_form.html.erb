@@ -8,13 +8,14 @@
    <%= f.input :city %>
    <%= f.input :wojewodztwo, collection: ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie', 'lubuskie', 'łódzkie', 'małopolskie', 'mazowieckie', 'opolskie', 'podkarpackie', 'podlaskie', 'pomorskie', 'śląskie', 'świętokrzyskie', 'warmińsko-mazurskie', 'wielkopolskie', 'zachodniopomorskie' ] %>
    <%= f.input :country, priority: [ "Poland" ] %>
+   <%= f.input :tag_list %>
    <%= f.input :decription %>
    <%= f.input :legal_form %>
    <%= f.input :krs %>
    <%= f.input :nip %>
    <%= f.input :regon %>
    <%= f.input :type_of_training %>
-   <%= f.input :trade %>
+
    <%= f.input :electronic_invoice %>
    <%= f.association :user, label_method: :email, include_blank: false%>
    <%= f.button :submit, :class => "btn-success" %>

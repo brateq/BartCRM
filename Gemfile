@@ -69,3 +69,5 @@ gem 'groupdate'
 gem 'to_xls-rails'
 
 gem 'rails4-autocomplete'
+
+gem 'acts-as-taggable-on'

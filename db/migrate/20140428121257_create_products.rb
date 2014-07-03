@@ -7,10 +7,12 @@ class CreateProducts < ActiveRecord::Migration
       t.datetime :end
       t.string :code
       t.integer :user_id
+      t.integer :business_id
       t.text :description
       t.string :stage
       t.string :place
       t.string :category
+      
 
       t.timestamps
     end

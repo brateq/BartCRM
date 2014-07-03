@@ -4,6 +4,8 @@ class Company < ActiveRecord::Base
   has_many :schedules
   has_many :leads
   
+  acts_as_taggable_on :tags
+  
   accepts_nested_attributes_for :contacts
   before_save :add_http
   

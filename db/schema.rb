@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519153831) do
+ActiveRecord::Schema.define(version: 20140702093720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20140519153831) do
     t.datetime "end"
     t.string   "code"
     t.integer  "user_id"
+    t.integer  "business_id"
     t.text     "description"
     t.string   "stage"
     t.string   "place"
@@ -209,6 +210,25 @@ ActiveRecord::Schema.define(version: 20140519153831) do
   add_index "schedules", ["training_id"], name: "index_schedules_on_training_id", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
   create_table "trainings", force: true do |t|
     t.string   "topic"
     t.integer  "price"
@@ -220,6 +240,7 @@ ActiveRecord::Schema.define(version: 20140519153831) do
     t.string   "stage"
     t.string   "place"
     t.integer  "company_id"
+    t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category"

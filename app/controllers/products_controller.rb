@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @search = Product.search(params[:q])
+    @products = Product.where(:business_id => current_user.business_id)
+    @search = @products.search(params[:q])
     @products = @search.result.page params[:page]
     @how_many_products = @products.count
   end
@@ -31,7 +32,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @product.business_id = current_user.business_id
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

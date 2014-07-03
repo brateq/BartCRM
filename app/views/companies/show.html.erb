@@ -23,6 +23,7 @@
     <p><%= link_to @company.www, @company.www unless @company.www.nil?%></p>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
+    <p>Tags: <%= @company.tag_list %></p>
     <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
 
 </div>
