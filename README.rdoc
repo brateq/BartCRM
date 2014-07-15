@@ -2,11 +2,12 @@
 ToDo:
 
 BartCRM 1.0
-
+  Adding company + person in one form
   Autocomplete
   Some tags for companies + history
   Final layout
-  Some text, when table is empty
+  Statistics
+  Zawijanie długich nazw firm
   debugging
   -- 0.7 final Alpha
   Debugging!

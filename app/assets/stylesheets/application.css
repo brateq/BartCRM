@@ -15,27 +15,27 @@
 */
 
 /* Override Bootstrap 3 font locations */
+
 .navbar-brand {
   padding: 2px 15px 15px 15px;
 }
-
 .nav > li:hover {
-  background-color: #E93855;
+  color: #d2cbc4;
 }
-
 .navbar-default .navbar-nav > li > a{
   font-weight: bold;
 }
-
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #d2cbc4;
   background-color: transparent;
 }
-
 .navbar-default {
   background-color: #363636;
 }
-
+#current {
+  color: #DFDDDD;
+  background-color: #E93855;
+}
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('/assets/glyphicons-halflings-regular.eot');
