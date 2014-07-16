@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Bartcrm" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "bartCRM" %></title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <%= csrf_meta_tags %>
 
@@ -32,11 +32,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Leads", leads_path %></li>
+            <li><%= link_to "Leads", leads_path, id: "#{'current' if params[:controller] == "leads" }" %></li>
             <li><%= link_to "Companies", companies_path, id: "#{'current' if params[:controller] == "companies" }" %></li>
-              <li><%= link_to "Contacts", contacts_path  %></li>
-              <li><%= link_to "Products", products_path %></li>
-              <li><%= link_to "Raports", raports_path if current_user.role.name == 'manager' %></li>
+              <li><%= link_to "Contacts", contacts_path, id: "#{'current' if params[:controller] == "contacts" }" %></li>
+              <li><%= link_to "Products", products_path, id: "#{'current' if params[:controller] == "products" }" %></li>
+              <li><%= link_to "Raports", raports_path, id: "#{'current' if params[:controller] == "raports" }" if current_user.role.name == 'manager' %></li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <% unless @schedules_reminder.empty? %> 
@@ -60,11 +60,11 @@
                 </li>
               </ul>
             <ul class="nav navbar-nav pull-right">
-             <li style="padding-top: 7px; "> <%= search_form_for @main_search do |f| %>
+             <li style="padding-top: 7px; padding-right: 10px; "> <%= search_form_for @main_search do |f| %>
                <%= f.text_field :name_cont, :class => "form-control", :placeholder => 'Search company...' %>           
                <% end %></li>
-              <li><%= link_to ('<span class="glyphicon glyphicon-cog" style="padding-bottom: 11px; padding-top: 12px; border-top-width: 10px; font-size: 1.8em;">').html_safe, settings_index_path, style: "padding-top: 0px; padding-bottom: 0px;" %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to ('<span class="glyphicon glyphicon-cog" style="padding-bottom: 13px; padding-top: 12px; border-top-width: 10px; font-size: 1.8em;">').html_safe, settings_index_path, style: "padding-top: 0px; padding-bottom: 0px;", id: "#{'current' if params[:controller] == "settings" }" %></li>
+              <li><%= link_to ('<span class="glyphicon glyphicon-log-out" style="padding-bottom: 11px; padding-top: 12px; border-top-width: 10px; font-size: 1.8em;">').html_safe, destroy_user_session_path, :method => :delete, style: "padding-top: 0px; padding-bottom: 0px;" %></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

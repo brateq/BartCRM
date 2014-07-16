@@ -2,7 +2,6 @@
 ToDo:
 
 BartCRM 1.0
-  Adding company + person in one form
   Autocomplete
   Some tags for companies + history
   Final layout

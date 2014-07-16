@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   
   acts_as_taggable_on :tags
   
-  accepts_nested_attributes_for :contacts
+  accepts_nested_attributes_for :contacts, :reject_if => :all_blank
   before_save :add_http
   
   validates :name, presence: true 

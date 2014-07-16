@@ -52,6 +52,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     @company.business_id = current_user.business_id
+    @company.contacts.first.business_id = current_user.business_id unless @company.contacts.first.nil?
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }

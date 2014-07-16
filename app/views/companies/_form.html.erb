@@ -1,5 +1,10 @@
   <%= simple_form_for @company, html: {class: 'form-horizontal col-md-12'} do |f| %>
    <%= f.input :name, label: 'Company', :autofocus => true %>
+   <%= f.simple_fields_for :contacts, @company.contacts.build do |c| %>
+      <%= c.input :name %>
+      <%= c.input :surname %>
+      <%= c.input :email %>
+   <% end %>
    <%= f.input :phone %>
    <%= f.input :email %>
    <%= f.input :www %>
