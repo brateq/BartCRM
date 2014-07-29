@@ -2,12 +2,13 @@
 ToDo:
 
 BartCRM 1.0
+  Pagination for activities
+  Edit company
   Autocomplete
   Some tags for companies + history
   Final layout
   Statistics
   Zawijanie długich nazw firm
-  Add Polish
   debugging
   -- 0.7 final Alpha
   Debugging!
@@ -15,6 +16,8 @@ BartCRM 1.0
   -- 0.9 just before commercial relese
   
 BartCRM 2.0
+  Errors when adding a user
+  Add Polish
   Searching companies and contacts in one place
   API
   Integration with email

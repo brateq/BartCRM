@@ -1,5 +1,6 @@
 Bartcrm::Application.routes.draw do
   
+  get "dashboard/index"
   resources :roles
 
   root "companies#index"

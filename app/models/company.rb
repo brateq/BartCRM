@@ -11,6 +11,10 @@ class Company < ActiveRecord::Base
   
   validates :name, presence: true 
   
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  
+  
   def self.header(file)
     s = open_spreadsheet(file)
     return header = s.row(1)  
@@ -44,7 +48,7 @@ class Company < ActiveRecord::Base
   protected
   
   def add_http
-    unless self.www.empty?
+    unless self.www.nil?
       unless self.www[/\Ahttp:\/\//] || self.www[/\Ahttps:\/\//]
         self.www = "http://#{self.www}"
       end

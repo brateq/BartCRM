@@ -1,4 +1,4 @@
-<%= simple_form_for @user, html: {class: 'form-horizontal col-md-6'} do |f| %>
+<%= simple_form_for @user, html: {class: 'col-md-offset-2  form-horizontal col-md-8'} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -9,10 +9,10 @@
       </ul>
     </div>
   <% end %>
-    <%= f.input :username %>
+<%= f.input :username, wrapper_html: { class: 'username' }  %>
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :phone %>
-<%= f.association :role %>
+<%= f.association :role, include_blank: false, required: true %>
     <%= f.button :submit %>
 <% end %>

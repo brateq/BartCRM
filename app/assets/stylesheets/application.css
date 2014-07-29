@@ -14,8 +14,19 @@
  *= require_self
 */
 
-/* Override Bootstrap 3 font locations */
-
+/* divs and menus */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body{
+  background-color: #6c6d6c;
+  margin-bottom: 60px;
+}
+body > .container{
+  background-color: #dcdcdc;
+  padding: 60px 15px 0;
+}
 .navbar-brand {
   padding: 2px 15px 15px 15px;
 }
@@ -36,11 +47,123 @@
   color: #DFDDDD;
   background-color: #E93855;
 }
+.panel-body {
+  background-color: #666666;
+}
+.panel-primary{
+  border-color: #666666;
+}
+.panel-body{
+  padding-bottom: 8px;
+}
+.panel-body .form-control{
+  margin-top: 5px;
+}
+.panel-body .btn-lg{
+  font-size: 22px;
+  padding-bottom: 0;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: black;
+}
+.container .text-muted {
+  margin: 10px 0;
+}
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+code {
+  font-size: 80%;
+}
+.col-md-9{
+  margin-bottom: 10px;
+}
+
+/* tables */
+
+
+.table-striped tbody,
+.table-striped tbody a{
+  color: #797979;
+}
+.table tbody tr:hover a,
+.table tbody tr:hover{
+  background-color: #E93855;
+  color: white;
+}
+.table-striped > tbody > tr:nth-child(odd):hover > td  {
+  background-color: #E93855;
+}
+.table-striped thead th{
+  background-color: #6c6d6c;
+}
+.table-striped thead a{
+  color: white;
+}
+.table-striped tbody tr:hover a:hover{
+  color: #D6D6D6;
+}
+.table-striped th:nth-child(1){
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.table-striped th:nth-last-child(1){
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+}
+/* buttons */
+.btn-primary {
+  background-color: #d1354f;
+  border-color: #d1354f;
+  font-size: 20px
+}
+.btn-primary:hover {
+  background-color: #d1354f;
+  border-color: #d1354f;
+}
+
+
+.xls-download{
+  display: inline-block;
+  width: 30px;
+  height: 44px;
+  background: url('/img/xlsdownload.png');
+}
+.xls-download:hover{
+  background: url('/img/xlsdownload_hover.png');
+}
+
+/* fonts */
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('/assets/glyphicons-halflings-regular.eot');
     src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
+
+h3{
+  margin: 12px 0 14px 0;
+}
+.yellow:hover{
+  color:yellow;
+}
+
+/* forms */
+.form-control:focus{
+  border-color: #E93855;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 56, 85, .6);
+           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 56, 85, .6);
+}
+/* rest */
+
+
 .showaction{
   visibility: hidden;
 }

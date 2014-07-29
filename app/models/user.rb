@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  validates_presence_of :username
-  validates :email, presence: :true
+  validates_presence_of :username, :email, :password
+  validate :email, email: true
   
   
   def new_business

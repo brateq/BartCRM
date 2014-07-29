@@ -54,12 +54,12 @@ gem 'ransack' # search engine
 gem 'newrelic_rpm' # statistics
 gem 'devise' # login and stuff
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
-gem 'select2-rails', '~> 3.5.4' # autocomplete
+gem 'select2-rails' # autocomplete
 gem 'rails_12factor' # heroku gem
 gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
 gem 'country_select' # simple_form addon
-gem 'momentjs-rails', '~> 2.5.0' # require for datetimepicker
-gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0' # datepicker
+gem 'momentjs-rails' # require for datetimepicker
+gem 'bootstrap3-datetimepicker-rails' # datepicker
 gem 'jquery-ui-rails' # require for datetimepicker
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk' # Amazon S3 SDK
@@ -72,3 +72,4 @@ gem 'rails4-autocomplete'
 
 gem 'acts-as-taggable-on'
 gem 'jquery-turbolinks'
+gem 'public_activity', github: 'pokonski/public_activity'

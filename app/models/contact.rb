@@ -4,5 +4,8 @@ class Contact < ActiveRecord::Base
   has_many   :schedules
   has_many   :leads
   has_many   :trainings, through: :leads
+  
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 end
  

@@ -1,0 +1,8 @@
+<span class="glyphicon glyphicon-user"></span>
+<%= link_to activity.owner.username, activity.owner if activity.owner %>
+edit a contact
+<% if activity.trackable %>
+<%= link_to activity.trackable.name, activity.trackable %>
+<% else %>
+  which has since been removed
+<% end %>

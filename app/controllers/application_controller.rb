@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
   before_action :authenticate_user!, :search, :schedules_reminder
   protect_from_forgery with: :exception
   layout :layout_by_resource
