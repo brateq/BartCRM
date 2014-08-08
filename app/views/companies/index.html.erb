@@ -36,7 +36,7 @@
           <% @companies.each do |company| %>
             <tr>
 
-              <td><%= link_to company.name, company_path(company) %></td>
+              <td><%= link_to (truncate company.name, length: 50), company_path(company) %></td>
               <td><%= company.street %></td>
               <td><%= company.city %></td>
               <td><%= link_to company.contacts.first.name + ' ' + company.contacts.first.surname, contact_path(company.contacts.first.id) unless company.contacts.first.nil?  %></td> 

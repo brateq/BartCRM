@@ -42,6 +42,7 @@ body > .container{
 }
 .navbar-default {
   background-color: #363636;
+  border: none;
 }
 #current {
   color: #DFDDDD;
@@ -117,6 +118,10 @@ code {
   -webkit-border-top-right-radius: 5px;
   -moz-border-radius-topright: 5px;
   border-top-right-radius: 5px;
+}
+.table-striped td:nth-last-child(1){
+  min-width: 100px;
+}
 }
 /* buttons */
 .btn-primary {

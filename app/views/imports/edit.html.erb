@@ -3,7 +3,6 @@
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>BartCRM header</th>
       <th>Spreedsheet header</th>
       <th>Sample data</th>
     </tr>
@@ -11,7 +10,7 @@
   <%= simple_form_for @import do |f| %>
     <% @header.each_with_index do |h, index| %>
       <tr>
-        <td><%= f.input :header, collection: @fields, label: false %> </td>
+        <%= f.input :header, collection: @fields, label: false, :as => :hidden %>
         <td><%= h %></td> 
         <td><%= @sample[index] %></td>
       </tr>
@@ -19,5 +18,4 @@
   <%= f.button :submit, :class => "btn-success" %>
   <% end %>
   
-</table>
-<%= debug @import %>     
+</table>    

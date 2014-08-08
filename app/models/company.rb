@@ -25,14 +25,15 @@ class Company < ActiveRecord::Base
     return sample = s.row(2)
   end
   
-  def self.import(file)
-    allowed_attributes = ["name","user_id","business_id"]
+  def self.import(file, user_business, column)
+    allowed_attributes = ["name", "address", "telephone", "www", "email",	"legal_form",	"street",	"postcode",	"city",	"country", "krs",	"decription",	"nip", "regon",	"progress",	"type_of_training",	"trade",	"electronic_invoice",	"tag_list",	"wojewodztwo"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = new
       product.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      product.business_id = user_business
       product.save!
     end
   end

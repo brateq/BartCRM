@@ -64,7 +64,7 @@
              <li style="padding-top: 7px; padding-right: 10px; "> <%= search_form_for @main_search do |f| %>
                <%= f.text_field :name_cont, :class => "form-control", :placeholder => 'Search company...' %>           
                <% end %></li>
-              <li><%= link_to ('<span class="glyphicon glyphicon-cog menu-icons" style="padding-bottom: 13px; padding-top: 14px; border-top-width: 10px; font-size: 1.4em;">').html_safe, settings_index_path, style: "padding-top: 0px; padding-bottom: 0px;", id: "#{'current' if params[:controller] == "settings" || params[:controller] == "users" || params[:controller] == "imports" }" %></li>
+              <li><%= link_to ('<span class="glyphicon glyphicon-cog menu-icons" style="padding-bottom: 13px; padding-top: 14px; border-top-width: 10px; font-size: 1.4em;">').html_safe, settings_index_path, style: "padding-top: 0px; padding-bottom: 3px;", id: "#{'current' if params[:controller] == "settings" || params[:controller] == "users" || params[:controller] == "imports" }" %></li>
               <li><%= link_to ('<span class="glyphicon glyphicon-log-out" style="padding-bottom: 11px; padding-top: 14px; border-top-width: 10px; font-size: 1.4em;">').html_safe, destroy_user_session_path, :method => :delete, style: "padding-top: 0px; padding-bottom: 0px;" %></li>
           </ul>
         </div><!--/.nav-collapse -->

@@ -1,14 +1,14 @@
-    == README
+== README
 ToDo:
 
 BartCRM 1.0
-  Pagination for activities
-  Edit company
-  Autocomplete
-  Some tags for companies + history
-  Final layout
+  Solid import module
   Statistics
+  Some tags for companies + history
   Zawijanie długich nazw firm
+  Autocomplete
+  Better export module
+  Final layout
   debugging
   -- 0.7 final Alpha
   Debugging!
