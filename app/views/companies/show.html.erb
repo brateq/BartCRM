@@ -25,7 +25,7 @@
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
 
-    <p> <%= "Tags: " + @company.tag_list unless @company.tag_list.empty? %></p>
+    <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
     <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
     
 

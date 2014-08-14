@@ -13,19 +13,18 @@ class CompaniesController < ApplicationController
     
     @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
-    @companies = @search.result.page params[:page]
+    
+    
+    if request.format == "xls"
+      @companies = @search
+    else
+      @companies = @search.result.page params[:page]
+    end
     
     respond_to do |format|
       format.html
-      format.xls { send_data(@search.result.page.to_xls) }
+      format.xls { send_data(@search.result.all.to_xls) }
       format.json
-    end
-  end
-  
-  def toxls
-    @companies = Company.find params[:id]
-    respod_to do |format|
-      format.xls { send_data(@companies.to_xls)}
     end
   end
 
@@ -41,6 +40,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @tags = Company.where(:business_id == current_user.business_id).tag_counts
+    
   end
 
   # GET /companies/1/edit

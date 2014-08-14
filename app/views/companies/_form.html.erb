@@ -1,4 +1,9 @@
-  <%= simple_form_for @company, html: {class: 'form-horizontal col-md-12'} do |f| %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#company_tag_list').select2({tags: <%=raw @tags.map(&:name) %>})
+});
+</script>
+<%= simple_form_for @company, html: {class: 'form-horizontal col-md-12'} do |f| %>
    <%= f.input :name, label: 'Company', :autofocus => true %>
    <%= f.simple_fields_for :contacts, @company.contacts.build do |c| %>
       <%= c.input :name %>
@@ -27,3 +32,5 @@
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   companies_path, :class => 'btn' %>  
 <% end %>
+
+<%= debug(@tags) %>

@@ -2,10 +2,7 @@
 ToDo:
 
 BartCRM 1.0
-  Some tags for companies + history
-  Zawijanie długich nazw firm
   Autocomplete
-  Better export module
   Final layout
   debugging
   -- 0.7 final Alpha
@@ -20,7 +17,6 @@ BartCRM 2.0
   Searching companies and contacts in one place
   API
   Integration with email
-  "+" for new company
   Tutorial for a first drive
   Hostory of activity
   Wiki site
