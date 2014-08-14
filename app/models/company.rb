@@ -14,19 +14,14 @@ class Company < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
   
-  
-  def self.header(file)
+
+  def self.prepare(file, row_number)
     s = open_spreadsheet(file)
-    return header = s.row(1)  
-  end
-  
-  def self.prepare(file)
-    s = open_spreadsheet(file)
-    return sample = s.row(2)
+    return data = s.row(row_number)
   end
   
   def self.import(file, user_business, column)
-    allowed_attributes = ["name", "address", "telephone", "www", "email",	"legal_form",	"street",	"postcode",	"city",	"country", "krs",	"decription",	"nip", "regon",	"progress",	"type_of_training",	"trade",	"electronic_invoice",	"tag_list",	"wojewodztwo"]
+    allowed_attributes = ["name", "address", "phone", "www", "email",	"legal_form",	"street",	"postcode",	"city",	"country", "krs",	"decription",	"nip", "regon",	"progress",	"type_of_training",	"trade",	"electronic_invoice",	"tag_list",	"wojewodztwo"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|

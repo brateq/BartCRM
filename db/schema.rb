@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
 
   create_table "imports", force: true do |t|
     t.integer  "user_id"
-    t.string   "to"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "base_file_name"

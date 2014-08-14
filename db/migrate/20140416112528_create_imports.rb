@@ -2,7 +2,7 @@ class CreateImports < ActiveRecord::Migration
   def change
     create_table :imports do |t|
       t.integer :user_id
-      t.string :to
+      t.string :category
 
       t.timestamps
     end

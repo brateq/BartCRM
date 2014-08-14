@@ -2,8 +2,6 @@
 ToDo:
 
 BartCRM 1.0
-  Solid import module
-  Statistics
   Some tags for companies + history
   Zawijanie długich nazw firm
   Autocomplete
@@ -16,6 +14,7 @@ BartCRM 1.0
   -- 0.9 just before commercial relese
   
 BartCRM 2.0
+  Statistics
   Errors when adding a user
   Add Polish
   Searching companies and contacts in one place

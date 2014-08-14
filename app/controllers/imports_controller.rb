@@ -13,10 +13,10 @@ class ImportsController < ApplicationController
   end 
 
   def edit
-    @header = Company.header(@import.base)
-    @sample = Company.prepare(@import.base)
-    
-    @fields = "name", "address", "telephone", "www", "email"  
+    @header = Company.prepare(@import.base, 1)
+    @sample = Company.prepare(@import.base, 2)
+    @sample2 = Company.prepare(@import.base, 3)
+    @sample3 = Company.prepare(@import.base, 4)
   end
 
   def create
@@ -35,7 +35,13 @@ class ImportsController < ApplicationController
 
   def update
     user_business = current_user.business_id
-    Company.import(@import.base, user_business, @import.header)
+    
+    case @import.category
+      when 'companies'
+        Company.import(@import.base, user_business, @import.header)
+      when 'contacts'
+        Contact.import(@import.base, user_business, @import.header)
+    end
     respond_to do |format|
       if @import.update(import_params)
         format.html { redirect_to :root, notice: 'Import was successfully updated.' }
@@ -61,7 +67,7 @@ class ImportsController < ApplicationController
     end
   
     def import_params
-      params.require(:import).permit(:base, :user_id)
+      params.require(:import).permit(:category, :base, :user_id)
     end
 end
      

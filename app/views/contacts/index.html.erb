@@ -35,7 +35,7 @@
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= link_to contact.name + " " + contact.surname, contact %></td>
+        <td><%= link_to contact.surname + " " + (contact.name ? contact.name : ''), contact %></td>
         <td><%= contact.mobile_number %></td>
         <td><%= contact.office_number %></td>
         <td><%= contact.city %></td>

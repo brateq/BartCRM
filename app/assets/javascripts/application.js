@@ -20,4 +20,5 @@ $(document).ready(function() {
   $('select#simple-example').select2();
 });
 
+
 <!-- require jquery.ui.all -->

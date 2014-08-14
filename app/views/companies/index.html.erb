@@ -10,15 +10,18 @@
             <%= f.text_field :tags_name_cont, placeholder: "tag", class: "form-control"  %>
         
             <%= f.button '<span class="glyphicon glyphicon-search" style="color: white;">'.html_safe, :class => "btn-lg pull-right", :style => "background-color: #666666; border-color: #666666; border: 0" %>
-
-           
-        <% end %>
+       <% end %>
       </div> <!-- /.panel-body -->
     </div> <!-- /.panel -->
    </div>
 
   <div class="col-md-9">
-    <h3><%= @how_many_companies %> Companies</h3>
+    <div>
+      <span style="font-size:2em"><%= @how_many_companies %> Companies</span>
+      <%= paginate @companies %>
+      
+    </div>
+    
     <table class="table table-striped">
       <thead>
         <tr>
