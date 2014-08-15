@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   
   def index
-    @companies = Company.where(:business_id => current_user.business_id) 
+    @companies = Company.where(:business_id => current_user.business_id).order(:created_at)
     if @companies.blank?
       @empty = true
     end

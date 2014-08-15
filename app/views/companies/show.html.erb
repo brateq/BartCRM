@@ -21,7 +21,7 @@
     <p><%= @company.phone %></p>
     <p><%= @company.fax %></p>
     <p><%= @company.email %></p>
-    <p><%= link_to @company.www, @company.www unless @company.www.nil? || @company.www == "http://"%></p>
+    <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
     <p><%= @company.street %></p>
     <p><%= @company.city %></p>
 

@@ -8,8 +8,9 @@
             <%= f.text_field :city_cont, placeholder: "city", :class => "form-control" %>
             <%= f.text_field :postcode_cont, placeholder: "postcode", class: "form-control" %>
             <%= f.text_field :tags_name_cont, placeholder: "tag", class: "form-control"  %>
-        
+            
             <%= f.button '<span class="glyphicon glyphicon-search" style="color: white;">'.html_safe, :class => "btn-lg pull-right", :style => "background-color: #666666; border-color: #666666; border: 0" %>
+            <%= link_to '<span class="glyphicon glyphicon-refresh" style="color: white;">'.html_safe, companies_path, :class => "btn-lg pull-left", :style => "background-color: #666666; border-color: #666666; border: 0" %>
        <% end %>
       </div> <!-- /.panel-body -->
     </div> <!-- /.panel -->

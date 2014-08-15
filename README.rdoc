@@ -10,7 +10,6 @@ BartCRM 1.0
   -- 0.8 beggining of the beta
   -- 0.9 just before commercial relese
   BK: /companies reset search button
-  BK: /companies company preview: www.adres.pl should open in a new tab
   
 BartCRM 2.0
   Statistics
