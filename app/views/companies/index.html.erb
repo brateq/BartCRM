@@ -56,6 +56,7 @@
           <% end %>
         <% end %>
       </tbody>
+      <tfoot><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr></tfoot>
     </table>
     
     <%= link_to '', companies_path(params.merge(format: :xls)), class: "xls-download" unless @companies.empty? %>

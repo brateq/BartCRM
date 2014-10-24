@@ -2,14 +2,12 @@
 ToDo:
 
 BartCRM 1.0
-  Autocomplete
   Final layout
   debugging
   -- 0.7 final Alpha
   Debugging!
   -- 0.8 beggining of the beta
   -- 0.9 just before commercial relese
-  BK: /companies reset search button
   
 BartCRM 2.0
   Statistics

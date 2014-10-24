@@ -1,78 +1,60 @@
 <%- model_class = Company -%>
 <div class="page-header">
-    <h1><%= link_to @company.name, fullshow_path %>   <small><%= link_to 'edit', edit_company_path(@company) %></small></h1>
+    <h1><%= link_to @company.name, fullshow_path %>   <small><%= link_to ("<span class='glyphicon glyphicon-pencil'>").html_safe, edit_company_path(@company), class: "pull-right" %></small></h1>
 </div>
 
 
 <div class="col-md-3">
-  <% @company.contacts.each do |contact| %>
-    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + contact.name + ' ' + contact.surname, contact_path(contact.id) %></h3></p>
+  <div class="top-bar">
+      company details
+  </div>
+  <p><%= @company.phone %></p>
+  <p><%= @company.fax %></p>
+  <p><%= @company.email %></p>
+  <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
+  <p><%= @company.street %></p>
+  <p><%= @company.city %></p>
+  <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
 
-    <% unless contact.mobile_number.nil? %>
-      <p><span class="glyphicon glyphicon-earphone"></span> <%= contact.mobile_number %></p>
-    <% end %>
-
-    <% unless contact.email.nil? %>
-      <p><a href="mailto:<%= contact.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= contact.email %></a></p>
-    <% end %>
-
+<div class="bottom-bar">
+</div>
     <hr>
-  <% end %>
-    <p><%= @company.phone %></p>
-    <p><%= @company.fax %></p>
-    <p><%= @company.email %></p>
-    <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
-    <p><%= @company.street %></p>
-    <p><%= @company.city %></p>
+  
 
-    <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
-    <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
     
 
-</div>
+    
+    
+<div class="top-bar">documents</div>
+    
+     <div class="panel-body">
+      <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
+        <%= f.file_field :data, label: false %> <br />
+        <%= f.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+        <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= f.button :submit %>
+      <% end %>
+      </div>
+    </div>
+  <% unless @documents.empty? %>  
+   <div class="panel-body">
+    <% @documents.each do |document| %>
+     <p>
+       <span class="glyphicon glyphicon-file"></span>
+       <%= link_to document.data_file_name, document.data.url %>
+       <span class="pull-right"><small>
+         <%= link_to document_path(document.id), :method => :delete do %>
+           <span class="glyphicon glyphicon-trash"></span>
+         <% end %>
+       </small></span>
+     </p>
+    <% end %> 
+    </div>
+  <% end %>
 
 
 <div class="col-lg-5">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#note" data-toggle="tab">New note</a></li>
-    <li><a href="#call" data-toggle="tab">New call</a></li>
-  </ul>
-  <p></p>
-  <div class="tab-content">
-    <div class="tab-pane active" id="note">
-      <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
-      <% end %>
-    </div>
-    
-    <div class="tab-pane" id="call">
-      <%= simple_form_for Call.new, :url => { :controller => "calls", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :subject, label: false, placeholder: 'Call result', controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["First contact", "Negotiation", "Support"], include_blank: false , controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
-      <% end %>
-    </div>
-  </div>
-  <hr>
-  <div style="margin-top:150px;">
-     <% @notes.each do |note| %>
-    <p><span class="glyphicon glyphicon-envelope"></span> <%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-     <% @calls.each do |call| %>
-      <p><span class="glyphicon glyphicon-earphone"></span> <%= call.subject %> by <%= link_to call.user.username, user_path(call.user_id) %> <span class="pull-right"><small><%= call.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-  </div>
-</div>   
-
-
-<div class="col-lg-4">
+  
   <div class="panel panel-primary">
     <div class="panel-heading" data-toggle="collapse" data-target="#calls"><span class="glyphicon glyphicon-time"></span> Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
     
@@ -117,36 +99,61 @@
       <% end %> 
     </div>
    <% end %>
+    
+    
+    
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#note" data-toggle="tab">New note</a></li>
+    <li><a href="#call" data-toggle="tab">New call</a></li>
+  </ul>
+  <p></p>
+  <div class="tab-content">
+    <div class="tab-pane active" id="note">
+      <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
+        <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
+        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= n.button :submit %>
+      <% end %>
+    </div>
+    
+    <div class="tab-pane" id="call">
+      <%= simple_form_for Call.new, :url => { :controller => "calls", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
+        <%= n.input :subject, label: false, placeholder: 'Call result', controls_html: { class: 'col-lg-12' } %>
+        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["First contact", "Negotiation", "Support"], include_blank: false , controls_html: { class: 'col-lg-12' } %>
+        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= n.button :submit %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <div style="margin-top:150px;">
+     <% @notes.each do |note| %>
+    <p><span class="glyphicon glyphicon-envelope"></span> <%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
+       <hr>
+     <% end %> 
+     <% @calls.each do |call| %>
+      <p><span class="glyphicon glyphicon-earphone"></span> <%= call.subject %> by <%= link_to call.user.username, user_path(call.user_id) %> <span class="pull-right"><small><%= call.created_at.to_formatted_s(:short)  %></small></span></p>
+       <hr>
+     <% end %> 
+  </div>
+</div>   
+</div>
+
+<div class="col-lg-4">
+    <% @company.contacts.each do |contact| %>
+    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + contact.name + ' ' + contact.surname, contact_path(contact.id) %></h3></p>
+
+    <% unless contact.mobile_number.nil? %>
+      <p><span class="glyphicon glyphicon-earphone"></span> <%= contact.mobile_number %></p>
+    <% end %>
+
+    <% unless contact.email.nil? %>
+      <p><a href="mailto:<%= contact.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= contact.email %></a></p>
+    <% end %>
+  <% end %>
+
+  <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
 </div> 
   
-  <div class="panel panel-primary">
-    <div class="panel-heading" data-toggle="collapse" data-target="#documents"><span class="glyphicon glyphicon-file"></span> Documents<span class="glyphicon glyphicon-plus pull-right"></span></div>
-    
-    <div id="documents" class="collapse"> <div class="panel-body">
-      <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
-        <%= f.file_field :data, label: false %> <br />
-        <%= f.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= f.button :submit %>
-      <% end %>
-      </div>
-    </div>
-  <% unless @documents.empty? %>  
-   <div class="panel-body">
-    <% @documents.each do |document| %>
-     <p>
-       <span class="glyphicon glyphicon-file"></span>
-       <%= link_to document.data_file_name, document.data.url %>
-       <span class="pull-right"><small>
-         <%= link_to document_path(document.id), :method => :delete do %>
-           <span class="glyphicon glyphicon-trash"></span>
-         <% end %>
-       </small></span>
-     </p>
-    <% end %> 
-    </div>
-  <% end %>
-</div>
-  
-</div>
-   
