@@ -1,20 +1,20 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL_ASCII
   database: bartcrm-dev
   pool: 5
   host: localhost
-  username: action
-  password: 
+  username: postgres
+  password: blacmar1!
 
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL_ASCII
   database: bartcrm-test
   pool: 5
   host: localhost
-  username: action
-  password: 
+  username: postgres
+  password: blacmar1!
 
 production:
   adapter: postgresql

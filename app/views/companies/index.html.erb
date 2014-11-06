@@ -20,7 +20,6 @@
     <div>
       <span style="font-size:2em"><%= @how_many_companies %> Companies</span>
       <%= paginate @companies %>
-      
     </div>
     
     <table class="table table-striped">
@@ -35,7 +34,7 @@
       </thead>
       <tbody>
         <% if @empty %>
-          <tr><td> <%= link_to "Start with adding a new company!", new_company_path %> </td></tr>
+          <tr><td> <%= link_to "Start with adding a new company!", new_company_path %> </td><td></td><td></td><td></td><td></td></tr>
         <% else %>
           <% @companies.each do |company| %>
             <tr>
