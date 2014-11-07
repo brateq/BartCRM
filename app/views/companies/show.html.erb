@@ -8,23 +8,27 @@
   <div class="top-bar">
       company details
   </div>
-  <p><%= @company.phone %></p>
-  <p><%= @company.fax %></p>
-  <p><%= @company.email %></p>
-  <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
-  <p><%= @company.street %></p>
-  <p><%= @company.city %></p>
-  <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
+  <div class="details" >
+      <p><%= @company.street %></p>
+      <p><%= @company.postcode %> <%= @company.city %></p>
+      <p><%= @company.country %></p>
+      <p><%= @company.phone %></p>
+      <p><%= @company.fax %></p>
+      <p><%= @company.email %></p>
+      <br />
+      <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
+      <br />
+      <p><%= @company.nip %></p>
+      <p><%= @company.krs %></p>
+      <p><%= @company.regon %></p>
 
+      <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
+   </div>
 <div class="bottom-bar">
 </div>
     <hr>
   
 
-    
-
-    
-    
 <div class="top-bar">documents</div>
     
      <div class="panel-body">
