@@ -25,7 +25,7 @@ body{
 }
 body > .container{
   background-color: #dcdcdc;
-  padding: 60px 15px 0;
+  padding: 60px 15px 40px 15px;
 }
 .navbar-brand {
   padding: 2px 15px 15px 15px;
