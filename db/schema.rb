@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
     t.string   "city"
     t.string   "country"
     t.integer  "krs",                limit: 8
-    t.text     "decription"
+    t.text     "description"
     t.integer  "nip",                limit: 8
     t.integer  "regon",              limit: 8
     t.string   "progress"
