@@ -30,44 +30,40 @@
       </p>
       
    </div>
-<div class="bottom-bar">
-</div>
-<div class="top-bar">
-      description
-</div>
-<div class="details">
-    <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
-    <p><%= @company.description %></p>
-</div>
-<div class="bottom-bar"></div>
-
-<div class="top-bar">documents</div>
+    <div class="bottom-bar"></div>
+    <div class="top-bar">description</div>
+        <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
+        <p><%= @company.description %></p>
+    <div class="bottom-bar"></div>
     
-     <div class="panel-body">
-      <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
-        <%= f.file_field :data, label: false %> <br />
-        <%= f.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= f.button :submit %>
-      <% end %>
-      </div>
-    </div>
-  <% unless @documents.empty? %>  
-   <div class="panel-body">
-    <% @documents.each do |document| %>
-     <p>
-       <span class="glyphicon glyphicon-file"></span>
-       <%= link_to document.data_file_name, document.data.url %>
-       <span class="pull-right"><small>
-         <%= link_to document_path(document.id), :method => :delete do %>
-           <span class="glyphicon glyphicon-trash"></span>
-         <% end %>
-       </small></span>
-     </p>
-    <% end %> 
-    </div>
-  <% end %>
+    <div class="top-bar">documents</div>
 
+        <% unless @documents.empty? %>  
+           <div class="panel-body">
+            <% @documents.each do |document| %>
+             <p>
+               <span class="glyphicon glyphicon-file"></span>
+               <%= link_to document.data_file_name, document.data.url %>
+               <span class="pull-right"><small>
+                 <%= link_to document_path(document.id), :method => :delete do %>
+                   <span class="glyphicon glyphicon-trash"></span>
+                 <% end %>
+               </small></span>
+             </p>
+            <% end %> 
+            </div>
+          <% end %>
+    
+        <div class="panel-body">
+          <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
+            <%= f.file_field :data, label: false %> <br />
+            <%= f.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
+            <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+    <div class="bottom-bar"></div>
+</div>
 
 <div class="col-lg-5">
   

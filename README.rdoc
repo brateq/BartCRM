@@ -4,6 +4,7 @@ ToDo:
 BartCRM 1.0
   Final layout
   debugging
+  change database to UTF-8
   -- 0.7 final Alpha
   Debugging!
   -- 0.8 beggining of the beta

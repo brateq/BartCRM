@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  encoding: SQL_ASCII
+  encoding: utf8
   database: bartcrm-dev
   pool: 5
   host: localhost
