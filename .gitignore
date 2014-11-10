@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore cloud 9 files
-.c9/
+/.c9/
 
 # Ignore public photos
 /public/system/

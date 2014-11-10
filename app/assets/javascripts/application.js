@@ -20,7 +20,12 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   $("#add").click(function(){
-    $("#adddiv").toggle();
+    if ($("#adddiv").is(":visible")){
+        $("#add").html("add");
+    }else {
+        $("#add").html("hide");
+    }
+    $("#adddiv").toggle(700);
   });
 });
 
