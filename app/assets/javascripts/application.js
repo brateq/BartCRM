@@ -18,5 +18,10 @@ $(document).ready(function() {
   $('select#simple-example').select2();
 });
 
+$(document).ready(function(){
+  $("#add").click(function(){
+    $("#adddiv").toggle();
+  });
+});
 
 <!-- require jquery.ui.all -->

@@ -189,16 +189,13 @@ code {
 .first a:hover, .last a:hover, .next a:hover, .prev a:hover, .page a:hover{
   color: white;
 }
-.btn-primary {
-  background-color: #d1354f;
-  border-color: #d1354f;
-  font-size: 20px;
-}
-.btn-primary:hover {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
   background-color: #d1354f;
   border-color: #d1354f;
 }
-
 .xls-download{
   display: inline-block;
   width: 30px;
@@ -239,6 +236,7 @@ h3{
 .showaction{
   visibility: hidden;
 }
+p:hover .showaction,
 tr:hover .showaction{
   visibility: visible;
 }
