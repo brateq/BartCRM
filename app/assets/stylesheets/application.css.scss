@@ -53,7 +53,25 @@ body > .container{
   border-color: #666666;
 }
 .panel-body{
-  padding-bottom: 8px;
+  padding: 0 0 8px 0;
+  
+  p {
+    font-size: 0.9em;
+    margin-bottom: 0;
+    padding: 2px 5px 0 5px;
+    a {
+      color: #333333;
+    }
+  }
+  .current {
+    padding: 5px;
+  }
+  .current:hover {
+    background-color: #d1354f;
+    a {
+      color: white;
+    }
+  }
 }
 .panel-body .form-control{
   margin-top: 5px;
@@ -62,6 +80,7 @@ body > .container{
   font-size: 22px;
   padding-bottom: 0;
 }
+.panel-body 
 .footer {
   position: absolute;
   bottom: 0;
@@ -87,6 +106,7 @@ code {
   color: white;
   padding-left: 10px;
   padding-top: 3px;
+  margin-bottom: 10px;
   height: 25px;
   
   -webkit-border-top-left-radius: 5px;
@@ -95,7 +115,7 @@ code {
   border-top-right-radius: 5px;
 }
 .bottom-bar{
-  height: 20px;
+  height: 10px;
   background-color: #6c6d6c;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -103,14 +123,7 @@ code {
   border-bottom-left-radius: 5px;
   margin-bottom: 15px
 }
-.details {
-  padding: 7px;
-  
-  p {
-    font-size: 0.9em;
-    margin-bottom: 0;
-  }
-}
+
 
 
 /* tables */

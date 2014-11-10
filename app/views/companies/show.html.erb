@@ -8,7 +8,7 @@
   <div class="top-bar">
       company details
   </div>
-  <div class="details">
+  <div class="panel-body">
       <p><%= @company.street %></p>
       <p><%= @company.postcode %> <%= @company.city %></p>
       <p><%= @company.country %></p>
@@ -32,8 +32,10 @@
    </div>
     <div class="bottom-bar"></div>
     <div class="top-bar">description</div>
+    <div class="panel-body">
         <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
         <p><%= @company.description %></p>
+    </div>
     <div class="bottom-bar"></div>
     
     <div class="top-bar">documents</div>
@@ -41,8 +43,7 @@
         <% unless @documents.empty? %>  
            <div class="panel-body">
             <% @documents.each do |document| %>
-             <p>
-               <span class="glyphicon glyphicon-file"></span>
+             <p class="current">
                <%= link_to document.data_file_name, document.data.url %>
                <span class="pull-right"><small>
                  <%= link_to document_path(document.id), :method => :delete do %>
