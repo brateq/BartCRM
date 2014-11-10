@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore cloud 9 files
+/.c9
+
+# Ignore public photos
+/public/system
