@@ -36,7 +36,7 @@
         <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
         <p><%= @company.description %></p>
     </div>
-    
+    <%= render partial: 'documents' %>
 </div>
 
 <div class="col-lg-5">
