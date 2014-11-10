@@ -1,0 +1,22 @@
+.bottom-bar
+.top-bar documents
+- unless @documents.empty?
+  .panel-body
+    - @documents.each do |document|
+      %p.current
+        = link_to document.data_file_name, document.data.url
+        %span.pull-right
+          %small
+            = link_to document_path(document.id), :method => :delete do
+              %span.glyphicon.glyphicon-trash.showaction
+%button#add.btn.btn-primary.btn-sm add
+%br/
+%br/
+#adddiv.panel-body{:style => "display:none"}
+  = simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f|
+    = f.file_field :data, label: false
+    %br/
+    = f.input :company_id, :as => :hidden, :input_html => { :value => @company.id }
+    = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+    = f.button :submit, "upload file"
+.bottom-bar
