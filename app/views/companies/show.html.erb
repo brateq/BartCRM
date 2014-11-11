@@ -40,91 +40,11 @@
 </div>
 
 <div class="col-lg-5">
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading" data-toggle="collapse" data-target="#calls"><span class="glyphicon glyphicon-time"></span> Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
-    
-    <div id="calls" class="collapse"> <div class="panel-body">
-       <%= simple_form_for Schedule.new, :url => {:controller => "schedules", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |c| %>
-        <%= c.input :action_type, label: false, collection: ["Meeting"], prompt: "Call" %>
-        <%= c.input :subject, label: false, placeholder: 'Subject', :controls_html => { class: "col-lg-12" } %>
-        <%= c.input :time, label: false, as: :string, placeholder: 'Date', :input_html => {:id => "dt5"}, :controls_html => { class: "col-lg-8"} %>
-        <%= c.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= c.button :submit %>
-      <% end %>
-      
-      <script type="text/javascript">
-        $(function() {
-          $('#dt5').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm:ss'
-          });
-        });
-      </script>
-      
-      <hr>
-      </div>
-    </div>
-    <% unless @schedules.empty? %> 
-     <div class="panel-body">
-      <% @schedules.each do |schedule| %>
-       <p>
-          <% if schedule.action_type == "Meeting" then %> 
-           <span class="glyphicon glyphicon-glass"></span>
-          <% else %>
-           <span class="glyphicon glyphicon-phone-alt"></span>
-          <% end %>
-
-         <%= schedule.subject %> <small>by</small> <%= link_to schedule.user.username, user_path(schedule.user.id) %>
-         <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
-           <%= link_to schedule_path(schedule.id), :method => :delete do %>
-             <span class="glyphicon glyphicon-remove" style="color:red"></span>
-           <% end %>
-         </small></span>
-       </p>
-      <% end %> 
-    </div>
-   <% end %>
+ <%= render partial: 'schedule' %> 
+ <%= render partial: 'notes' %>
     
     
-    
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#note" data-toggle="tab">New note</a></li>
-    <li><a href="#call" data-toggle="tab">New call</a></li>
-  </ul>
-  <p></p>
-  <div class="tab-content">
-    <div class="tab-pane active" id="note">
-      <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
-      <% end %>
-    </div>
-    
-    <div class="tab-pane" id="call">
-      <%= simple_form_for Call.new, :url => { :controller => "calls", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :subject, label: false, placeholder: 'Call result', controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["First contact", "Negotiation", "Support"], include_blank: false , controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
-      <% end %>
-    </div>
-  </div>
-  <hr>
-  <div style="margin-top:150px;">
-     <% @notes.each do |note| %>
-    <p><span class="glyphicon glyphicon-envelope"></span> <%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-     <% @calls.each do |call| %>
-      <p><span class="glyphicon glyphicon-earphone"></span> <%= call.subject %> by <%= link_to call.user.username, user_path(call.user_id) %> <span class="pull-right"><small><%= call.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-  </div>
-</div>   
+ 
 </div>
 
 <div class="col-lg-4">
