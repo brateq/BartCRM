@@ -13,19 +13,23 @@
 
 
 
-
+/* quick select element */
 $(document).ready(function() {
   $('select#simple-example').select2();
 });
 
+
+/* show / hide button */
 $(document).ready(function(){
-  $("#add").click(function(){
-    if ($("#adddiv").is(":visible")){
-        $("#add").html("add");
+  $("button.add").click(function(){
+
+    if ($( "#" + this.dataset.add ).is(":visible")){
+        $( this ).html("add");
     }else {
-        $("#add").html("hide");
+        $( this ).html("hide");
     }
-    $("#adddiv").toggle(700);
+    
+    $( "#" + this.dataset.add).toggle(400);
   });
 });
 

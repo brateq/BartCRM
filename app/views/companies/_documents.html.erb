@@ -15,9 +15,9 @@
     </div>
 <% end %>
 
-<button id="add" class="btn btn-primary btn-sm ">add</button>
+<button data-add="file" class="add btn btn-primary btn-sm">add</button>
 <br /><br />
-<div class="panel-body" id="adddiv" style="display:none">
+<div class="panel-body" id="file" style="display:none">
     <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>
         <%= f.file_field :data, label: false %> <br />
             <%= f.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>

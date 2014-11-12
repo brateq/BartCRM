@@ -1,7 +1,28 @@
-<div class="panel panel-primary">
-    <div class="panel-heading" data-toggle="collapse" data-target="#calls"><span class="glyphicon glyphicon-time"></span> Schedule<span class="glyphicon glyphicon-plus pull-right"></span></div>
-    
-    <div id="calls" class="collapse"> <div class="panel-body">
+<div class="top-bar">schedule</div>
+<% unless @schedules.empty? %> 
+    <div class="panel-body">
+      <% @schedules.each do |schedule| %>
+       <p class="current">
+          <% if schedule.action_type == "Meeting" then %> 
+           <span class="glyphicon glyphicon-user"></span>
+          <% else %>
+           <span class="glyphicon glyphicon-phone-alt"></span>
+          <% end %>
+
+         <%= schedule.subject %> <small>by <%= link_to schedule.user.username, user_path(schedule.user.id) %></small>
+         <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
+           <%= link_to schedule_path(schedule.id), :method => :delete do %>
+             <span class="glyphicon glyphicon-trash showaction"></span>
+           <% end %>
+         </small></span>
+       </p>
+      <% end %> 
+    </div>
+<% end %>
+
+<button data-add="call" class="add btn btn-primary btn-sm">add</button>
+<br /><br />
+<div class="panel-body" id="call" style="display:none">
        <%= simple_form_for Schedule.new, :url => {:controller => "schedules", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |c| %>
         <%= c.input :action_type, label: false, collection: ["Meeting"], prompt: "Call" %>
         <%= c.input :subject, label: false, placeholder: 'Subject', :controls_html => { class: "col-lg-12" } %>
@@ -18,28 +39,6 @@
           });
         });
       </script>
-      
-      <hr>
-      </div>
-    </div>
-    <% unless @schedules.empty? %> 
-     <div class="panel-body">
-      <% @schedules.each do |schedule| %>
-       <p>
-          <% if schedule.action_type == "Meeting" then %> 
-           <span class="glyphicon glyphicon-glass"></span>
-          <% else %>
-           <span class="glyphicon glyphicon-phone-alt"></span>
-          <% end %>
-
-         <%= schedule.subject %> <small>by</small> <%= link_to schedule.user.username, user_path(schedule.user.id) %>
-         <span class="pull-right"><small><%= schedule.time.to_formatted_s(:short)  %>  
-           <%= link_to schedule_path(schedule.id), :method => :delete do %>
-             <span class="glyphicon glyphicon-remove" style="color:red"></span>
-           <% end %>
-         </small></span>
-       </p>
-      <% end %> 
-    </div>
-   <% end %>
 </div>
+
+<div class="bottom-bar"></div>
