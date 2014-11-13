@@ -24,7 +24,7 @@ $(document).ready(function(){
   $("button.add").click(function(){
 
     if ($( "#" + this.dataset.add ).is(":visible")){
-        $( this ).html("add");
+        $(this).html("add");
     }else {
         $( this ).html("hide");
     }
@@ -32,5 +32,3 @@ $(document).ready(function(){
     $( "#" + this.dataset.add).toggle(400);
   });
 });
-
-<!-- require jquery.ui.all -->
