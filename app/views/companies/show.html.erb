@@ -5,37 +5,15 @@
 
 
 <div class="col-md-3">
-  <div class="top-bar">
-      company details
-  </div>
-  <div class="panel-body">
-      <p><%= @company.street %></p>
-      <p><%= @company.postcode %> <%= @company.city %></p>
-      <p><%= @company.country %></p>
-      <% unless @company.phone.nil? %><p><span class="glyphicon glyphicon-earphone"></span> <%= @company.phone %></p><% end %>
-      <% unless @company.fax.nil? %> <p><span class="glyphicon glyphicon-file"></span> <%= @company.fax %></p><% end %>
-      <% unless @company.email.nil? %> <p><span class="glyphicon glyphicon-envelope"></span> <%= @company.email %></p><% end %>
-      <br />
-      <p><%= link_to @company.www, @company.www, :target => "_blank" unless @company.www.nil? || @company.www == "http://"%></p>
-      <br />
-      <% unless @company.nip.nil? %> <p>NIP <%= @company.nip %></p><% end %>
-      <% unless @company.krs.nil? %><p>KRS <%= @company.krs %></p><% end %>
-      <% unless @company.regon.nil? %><p>REGON <%= @company.regon %></p><% end %>
-      <p><% if @company.electronic_invoice %>
-            <span class="glyphicon glyphicon-check"></span>
-         <% else %>
-             <span class="glyphicon glyphicon-remove-sign"></span>
-         <% end %>
-          e-invoice
-      </p>
-      
-   </div>
-    <div class="bottom-bar"></div>
+    <%= render partial: 'companydetails' %>
+    
     <div class="top-bar">description</div>
     <div class="panel-body">
         <p> Tags:<%= @company.tag_list unless @company.tag_list.empty? %></p>
         <p><%= @company.description %></p>
     </div>
+    <div class="bottom-bar"></div>
+
     <%= render partial: 'documents' %>
 </div>
 

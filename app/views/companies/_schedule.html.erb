@@ -31,14 +31,6 @@
         <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= c.button :submit %>
       <% end %>
-      
-      <script type="text/javascript">
-        $(function() {
-          $('#dt5').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm:ss'
-          });
-        });
-      </script>
 </div>
 
 <div class="bottom-bar"></div>

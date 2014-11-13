@@ -3,3 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
+$ ->
+  $("#dt5").datetimepicker format: "DD/MM/YYYY HH:mm:ss"
+  return
