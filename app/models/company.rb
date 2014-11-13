@@ -44,7 +44,7 @@ class Company < ActiveRecord::Base
   protected
   
   def add_http
-    unless self.www.nil?
+    unless self.www.empty?
       unless self.www[/\Ahttp:\/\//] || self.www[/\Ahttps:\/\//]
         self.www = "http://#{self.www}"
       end
