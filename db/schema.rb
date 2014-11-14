@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
 
   create_table "notes", force: true do |t|
     t.text     "text"
+    t.string   "action_type"
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "contact_id"

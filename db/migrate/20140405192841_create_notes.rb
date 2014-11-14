@@ -2,6 +2,7 @@ class CreateNotes < ActiveRecord::Migration
   def change
     create_table :notes do |t|
       t.text :text
+      t.string :action_type
       t.integer :user_id
       t.integer :company_id
       t.integer :contact_id

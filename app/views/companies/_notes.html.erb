@@ -1,38 +1,31 @@
- <div>   
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#note" data-toggle="tab">New note</a></li>
-    <li><a href="#call" data-toggle="tab">New call</a></li>
-  </ul>
-  <p></p>
-  <div class="tab-content">
-    <div class="tab-pane active" id="note">
-      <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
-      <% end %>
+<div class="top-bar">Notes</div>
+<div>   
+  <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal'} do |n| %>
+    <%= n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" name="note[action_type]" autocomplete="off" value="remark" id="note_action_type_remark"  checked> remark
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="note[action_type]" autocomplete="off" value="call" id="note_action_type_call" > call
+      </label>
     </div>
-    
-    <div class="tab-pane" id="call">
-      <%= simple_form_for Call.new, :url => { :controller => "calls", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-        <%= n.input :subject, label: false, placeholder: 'Call result', controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :call_type, label: false, placeholder: 'Subject', collection: ["First contact", "Negotiation", "Support"], include_blank: false , controls_html: { class: 'col-lg-12' } %>
-        <%= n.input :company_id, :as => :hidden, :input_html => { :value => @company.id } %>
-        <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= n.button :submit %>
+    <%= n.submit :submit, class: 'btn btn-primary btn-sm pull-right', inline: true %>
+  <% end %>
+</div>
+
+<div class="panel-body">
+  <% @notes.each do |note| %>
+    <p class="current">
+      <% if note.action_type == 'remark' %>
+        <span class="glyphicon glyphicon-envelope">
+      <% elsif note.action_type == 'call' %>
+        <span class='glyphicon glyphicon-phone-alt'>
       <% end %>
-    </div>
-  </div>
-  <hr>
-  <div style="margin-top:150px;">
-     <% @notes.each do |note| %>
-    <p><span class="glyphicon glyphicon-envelope"></span> <%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-     <% @calls.each do |call| %>
-      <p><span class="glyphicon glyphicon-earphone"></span> <%= call.subject %> by <%= link_to call.user.username, user_path(call.user_id) %> <span class="pull-right"><small><%= call.created_at.to_formatted_s(:short)  %></small></span></p>
-       <hr>
-     <% end %> 
-  </div>
-</div>  
+        </span> <%= note.text %><small> by <%= link_to note.user.username, user_path(note.user_id) %> </small>
+    <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small><%= link_to note_path(note.id), :method => :delete do %>
+             <span class="glyphicon glyphicon-trash showaction"></span>
+           <% end %></span></p>
+  <% end %> 
+</div>
+<div class="bottom-bar"></div>

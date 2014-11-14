@@ -1,10 +1,9 @@
 <div class="top-bar">documents</div>
 
-<% unless @documents.empty? %>
-    <div class="panel-body">
-        <% @documents.each do |document| %>
-            <p class="current">
-                <%= link_to document.data_file_name, document.data.url %>
+<div class="panel-body">
+    <% @documents.each do |document| %>
+        <p class="current">
+            <%= link_to document.data_file_name, document.data.url %>
                 <span class="pull-right"><small>
                     <%= link_to document_path(document.id), :method => :delete do %>
                         <span class="glyphicon glyphicon-trash showaction"></span>
@@ -12,12 +11,10 @@
                 </small></span>
             </p>
         <% end %>
-    </div>
-<% end %>
+    <button data-add="file" class="add btn btn-primary btn-sm">add</button>
+</div>
 
-<button data-add="file" class="add btn btn-primary btn-sm">add</button>
 
-<br /><br />
 
 <div class="panel-body" id="file" style="display:none">
     <%= simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f| %>

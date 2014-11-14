@@ -25,7 +25,8 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
-
+    @note.user_id = current_user.id
+    @note.company_id = current_user.business_id
     respond_to do |format|
       if @note.save
         format.html { redirect_to :back, notice: 'Note was successfully created.' }
@@ -56,7 +57,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:text, :user_id, :company_id, :contact_id, :training_id)
+      params.require(:note).permit(:text, :action_type, :user_id, :company_id, :contact_id, :training_id)
     end
 end
