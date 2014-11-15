@@ -17,24 +17,11 @@
     <%= render partial: 'documents' %>
 </div>
 
-<div class="col-lg-5">
+<div class="col-lg-6">
  <%= render partial: 'schedule' %> 
  <%= render partial: 'notes' %>
 </div>
 
-<div class="col-lg-4">
-    <% @company.contacts.each do |contact| %>
-    <p><h3> <%= link_to  '<span class="glyphicon glyphicon-user"></span>'.html_safe + ' ' + contact.name + ' ' + contact.surname, contact_path(contact.id) %></h3></p>
-
-    <% unless contact.mobile_number.nil? %>
-      <p><span class="glyphicon glyphicon-earphone"></span> <%= contact.mobile_number %></p>
-    <% end %>
-
-    <% unless contact.email.nil? %>
-      <p><a href="mailto:<%= contact.email %>"><span class="glyphicon glyphicon-envelope"></span> <%= contact.email %></a></p>
-    <% end %>
-  <% end %>
-
-  <%= button_to "Add contact", new_company_contact_path(@company.id), :method => :get, :class => " btn btn-primary" %> 
+<div class="col-lg-3">
+    <%= render partial: 'contact' %>
 </div> 
-  
