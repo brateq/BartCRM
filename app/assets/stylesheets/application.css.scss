@@ -154,6 +154,7 @@ code {
 .table-striped tbody tr:hover a:hover{
   color: #D6D6D6;
 }
+
 .table-striped th:nth-child(1)
 {
   -webkit-border-top-left-radius: 5px;
@@ -164,11 +165,11 @@ code {
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-.table-striped td:nth-child(1){
+.table-striped tfoot td:nth-child(1){
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.table-striped td:nth-last-child(1){
+.table-striped tfoot td:nth-last-child(1){
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -176,7 +177,9 @@ code {
 .table-striped td:nth-last-child(1){
   min-width: 100px;
 }
-
+.table-striped>tbody>tr>td{
+  padding: 9px 8px 0 8px;
+}
 
 /* buttons */
 .first a, .last a, .next a, .prev a, .page a, .current_page_pagination{
