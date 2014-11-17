@@ -1,31 +1,11 @@
-<h1><%= @contact.name + ' ' + @contact.surname %></h1>
-<p><strong>Name:</strong> <%= @contact.name %></p>
-<p><strong>Surname:</strong> <%= @contact.surname %></p>
-<% if @contact.company %><p>Company:  <%= @contact.company.name %></p><% end %>
-<p><strong>Mobile number:</strong> <%= @contact.mobile_number %></p>
-<p><strong>Office number:</strong> <%= @contact.office_number %></p>
-<p><strong>Street:</strong> <%= @contact.street %></p>
+<div class="page-header">
+  <h1><%= @contact.name + ' ' + @contact.surname %>
+  <small><%= link_to ("<span class='glyphicon glyphicon-pencil'>").html_safe, edit_contact_path(@contact), class: "pull-right" %></small></h1>
+</div>
 
-<p><strong>Postalcode:</strong><%= @contact.postalcode %></p>
-
-<p><strong>City:</strong><%= @contact.city %></p>
-
-<p><strong>Country:</strong><%= @contact.country %></p>
-
-<p><strong>Dont call:</strong><%= @contact.dont_call %></p>
-
-<p><strong>Newslatter:</strong><%= @contact.newslatter %></p>
-
-<p><strong>Created by:</strong><%= @contact.created_by %></p>
-
-<p><strong>Modified by:</strong><%= @contact.modified_by %></p>
-
-<p><strong>Know from:</strong><%= @contact.know_from %></p>
-
-<p><strong>Description:</strong><%= @contact.description %></p>
-
-<p><strong>Email:</strong><%= @contact.email %></p>
-
+<div class="col-md-3">
+    <%= render partial: 'details' %>
+</div>
 <div class="col-lg-6">
   <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
     <%= n.input :text, label: false, :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
@@ -39,5 +19,8 @@
   <hr>
   <% end %> 
 </div>  
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+
+<div class="col-md-3">
+  
+  
+</div>

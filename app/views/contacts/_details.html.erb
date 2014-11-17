@@ -1,0 +1,24 @@
+<div class="top-bar">contact details</div>
+<div class="panel-body">
+    <% if @contact.company %><p>Company:  <%= @contact.company.name %></p><% end %>
+    <% unless @contact.mobile_number.nil? %><p><%= @contact.mobile_number %></p><% end %>
+    <% unless @contact.office_number.nil? %><p><%= @contact.office_number %></p><% end %>
+    <% unless @contact.street.empty? %><p><%= @contact.street %></p><% end %>
+    <% unless @contact.postalcode.empty? %><p><%= @contact.postalcode %></p><% end %>
+    <% unless @contact.city.empty? %><p><%= @contact.city %></p><% end %>
+    <% unless @contact.country.empty? %><p><%= @contact.country %></p><% end %>
+    <% unless @contact.newslatter.empty? %><p><%= @contact.newslatter %></p><% end %>
+    <% unless @contact.know_from.empty? %><p><%= @contact.know_from %></p><% end %>
+    <% unless @contact.email.empty? %><p><%= @contact.email %></p><% end %>
+    <p>
+        <% if @contact.dont_call.nil? %>
+            <span class="glyphicon glyphicon-check"></span>
+        <% else %>
+                 <span class="glyphicon glyphicon-remove-sign"></span>
+        <% end %>
+        don't call
+    </p>
+</div>
+<div class="bottom-bar"></div>
+
+<p><%= @contact.description %></p>
