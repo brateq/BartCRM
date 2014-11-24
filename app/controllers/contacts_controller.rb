@@ -13,7 +13,9 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    @notes = Note.where(contact_id: @contact.id).order(:created_at).reverse
+    @notes = Note.where(company_id: @contact.id).order(:created_at).reverse
+    @documents = Document.where(company_id: @contact.id).order(:created_at)
+    @schedules = Schedule.where(company_id: @contact.id).order(:time)
   end
 
   # GET /contacts/new

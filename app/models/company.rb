@@ -13,7 +13,6 @@ class Company < ActiveRecord::Base
   
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
-  
 
   def self.prepare(file, row_number)
     s = open_spreadsheet(file)

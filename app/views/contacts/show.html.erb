@@ -4,16 +4,12 @@
 </div>
 
 <div class="col-md-3">
-    <%= render partial: 'details' %>
+    <%= render 'details' %>
+    <%= render 'documents' %>
 </div>
 <div class="col-lg-6">
-  <%= simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n| %>
-    <%= n.input :text, label: false, :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' } %>
-    <%= n.input :contact_id, :as => :hidden, :input_html => { :value => @contact.id } %>
-    <%= n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= n.button :submit %>
-  <% end %>
-  <br /><br /><br /><br /><br /><br /><hr>
+  <%= render 'schedule' %>
+  <%= render 'notes' %>
   <% @notes.each do |note| %>
   <p><%= note.text %> by <%= link_to note.user.username, user_path(note.user_id) %> <span class="pull-right"><small><%= note.created_at.to_formatted_s(:short)  %></small></span></p>
   <hr>
