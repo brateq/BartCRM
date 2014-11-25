@@ -2,6 +2,7 @@
 ToDo:
 
 BartCRM 1.0
+  live validation
   Final layout
   debugging
   -- 0.7 final Alpha
