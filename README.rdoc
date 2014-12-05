@@ -8,7 +8,7 @@ BartCRM 1.0
   -- 0.7 final Alpha
   Debugging!
   -- 0.8 beggining of the beta
-  -- 0.9 just before commercial relese
+  -- 0.9 just before commercial relese 
   
 BartCRM 2.0
   Statistics
