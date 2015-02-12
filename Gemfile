@@ -35,13 +35,13 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-asdasd
+asd123
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-asdasd
+asd123
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-asdasd
+asd123
   
 gem "therubyracer"
 gem 'roo' # import xls
