@@ -1,0 +1,20 @@
+.top-bar contacts
+.panel-body
+  - @company.contacts.each do |contact|
+    .current
+      %p
+        = link_to contact.name + ' ' + contact.surname, contact_path(contact.id)
+      - unless contact.mobile_number.nil?
+        %p
+          %span.glyphicon.glyphicon-earphone
+          = contact.mobile_number
+      - unless contact.email.nil?
+        %p
+          %a{:href => "mailto:#{contact.email}"}
+            %span.glyphicon.glyphicon-envelope
+            = contact.email
+          %span.pull-right
+            = link_to ("<span class='glyphicon glyphicon-pencil showaction'></span>").html_safe, edit_contact_path(contact.id)
+            = link_to ("<span class='glyphicon glyphicon-trash showaction'></span>").html_safe, contact_path(contact.id), :method => :delete
+  = button_to "Add", new_company_contact_path(@company.id), :method => :get, :class => "btn btn-primary btn-sm"
+.bottom-bar

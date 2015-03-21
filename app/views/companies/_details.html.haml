@@ -1,0 +1,41 @@
+.top-bar company details
+.panel-body
+  - unless @company.street.empty?
+    %p= @company.street
+  - unless @company.postcode.empty?
+    %p
+      = @company.postcode
+      = @company.city
+  %p= @company.country
+  - unless @company.phone.nil?
+    %p
+      %span.glyphicon.glyphicon-earphone
+      = @company.phone
+  - unless @company.fax.nil?
+    %p
+      %span.glyphicon.glyphicon-file
+      = @company.fax
+  - unless @company.email.empty?
+    %p
+      %span.glyphicon.glyphicon-envelope
+      = @company.email
+  - unless @company.www.empty?
+    %br/
+    %p= link_to @company.www, @company.www, :target => "_blank"
+    %br/
+  - unless @company.nip.nil?
+    %p
+      NIP #{@company.nip}
+  - unless @company.krs.nil?
+    %p
+      KRS #{@company.krs}
+  - unless @company.regon.nil?
+    %p
+      REGON #{@company.regon}
+  %p
+    - if @company.electronic_invoice
+      %span.glyphicon.glyphicon-check
+    - else
+      %span.glyphicon.glyphicon-remove-sign
+    e-invoice
+.bottom-bar

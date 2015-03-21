@@ -1,0 +1,76 @@
+.page-header
+  %h1= @company.name
+.row
+  .col-lg-12
+    %table.table-hover.col-lg-6
+      %tr
+        %td.text-right.col-lg-6
+          %strong Company:
+        %td
+          = @company.name
+      %tr
+        %td.text-right.col-lg-6
+          %strong Site:
+        %td
+          = link_to @company.www, @company.www
+      %tr
+        %td.text-right.col-lg-6
+          %strong Street:
+        %td
+          = @company.street
+      %tr
+        %td.text-right.col-lg-6
+          %strong Postcode:
+        %td
+          = @company.postcode
+      %tr
+        %td.text-right.col-lg-6
+          %strong City:
+        %td
+          = @company.city
+      %tr
+        %td.text-right.col-lg-6
+          %strong Description:
+        %td
+          = @company.decription
+      %tr
+        %td.text-right.col-lg-6
+          %strong Country:
+        %td
+          = @company.country
+    %table.table-hover.col-lg-6
+      %tr
+        %td.text-right.col-lg-6
+          %strong KRS:
+        %td
+          = @company.krs
+      %tr
+        %td.text-right.col-lg-6
+          %strong Country:
+        %td
+          = @company.country
+      %tr
+        %td.text-right.col-lg-6
+          %strong REGON:
+        %td
+          = @company.regon
+      %tr
+        %td.text-right.col-lg-6
+          %strong Progress:
+        %td
+          = @company.progress
+      %tr
+        %td.text-right.col-lg-6
+          %strong Type of Training:
+        %td
+          = @company.type_of_training
+      %tr
+        %td.text-right.col-lg-6
+          %strong Trade:
+        %td
+          = @company.trade
+      %tr
+        %td.text-right.col-lg-6
+          %strong Electronic invoice:
+        %td
+          = @company.electronic_invoice

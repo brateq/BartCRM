@@ -1,0 +1,27 @@
+= simple_form_for @contact, html: {class: 'form-horizontal'} do |f|
+  - if @contact.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@contact.errors.count, "error")
+        prohibited this contact from being saved:
+      %ul
+        - @contact.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :name
+  = f.input :surname
+  = f.input :email
+  = f.input :mobile_number
+  = f.input :office_number
+  = f.input :street
+  = f.input :postalcode
+  = f.input :city
+  = f.input :country
+  = f.input :dont_call
+  = f.input :newslatter
+  = f.input :know_from
+  = f.input :description
+  - if @company.nil?
+    = f.input :company_id, collection: Company.all
+  - else
+    = f.input :company_id, input_html: { value: @company.id }, :as => :hidden
+  = f.button :submit

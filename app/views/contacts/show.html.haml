@@ -1,0 +1,18 @@
+.page-header
+  %h1
+    = @contact.name + ' ' + @contact.surname
+    %small= link_to ("<span class='glyphicon glyphicon-pencil'>").html_safe, edit_contact_path(@contact), class: "pull-right"
+.col-md-3
+  = render 'details'
+  = render 'documents'
+.col-lg-6
+  = render 'schedule'
+  = render 'notes'
+  - @notes.each do |note|
+    %p
+      = note.text
+      by #{link_to note.user.username, user_path(note.user_id)}
+      %span.pull-right
+        %small= note.created_at.to_formatted_s(:short)
+    %hr/
+.col-md-3

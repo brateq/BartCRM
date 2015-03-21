@@ -64,6 +64,7 @@ gem 'rails4-autocomplete'
 gem 'acts-as-taggable-on'
 gem 'jquery-turbolinks'
 gem 'public_activity'
+gem 'haml'
 
 group :development, :test do
   gem 'better_errors'
