@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activities", force: true do |t|
+  create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
     t.string   "trackable_type"
     t.integer  "owner_id"
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
-  create_table "businesses", force: true do |t|
+  create_table "businesses", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "calls", force: true do |t|
+  create_table "calls", force: :cascade do |t|
     t.string   "subject"
     t.string   "call_type"
     t.datetime "time"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "calls", ["contact_id"], name: "index_calls_on_contact_id", using: :btree
   add_index "calls", ["user_id"], name: "index_calls_on_user_id", using: :btree
 
-  create_table "companies", force: true do |t|
+  create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "www"
     t.string   "email"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "companies", ["business_id"], name: "index_companies_on_business_id", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
-  create_table "contacts", force: true do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
     t.integer  "mobile_number"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
-  create_table "documents", force: true do |t|
+  create_table "documents", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "contact_id"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "documents", ["training_id"], name: "index_documents_on_training_id", using: :btree
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
 
-  create_table "imports", force: true do |t|
+  create_table "imports", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "category"
     t.datetime "created_at"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
 
   add_index "imports", ["user_id"], name: "index_imports_on_user_id", using: :btree
 
-  create_table "leads", force: true do |t|
+  create_table "leads", force: :cascade do |t|
     t.string   "status"
     t.integer  "amount"
     t.integer  "user_id"
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "leads", ["training_id"], name: "index_leads_on_training_id", using: :btree
   add_index "leads", ["user_id"], name: "index_leads_on_user_id", using: :btree
 
-  create_table "notes", force: true do |t|
+  create_table "notes", force: :cascade do |t|
     t.text     "text"
     t.string   "action_type"
     t.integer  "user_id"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "notes", ["training_id"], name: "index_notes_on_training_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
     t.datetime "start"
@@ -204,13 +204,13 @@ ActiveRecord::Schema.define(version: 20140716121317) do
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "schedules", force: true do |t|
+  create_table "schedules", force: :cascade do |t|
     t.string   "action_type"
     t.string   "subject"
     t.datetime "time"
@@ -229,7 +229,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "schedules", ["training_id"], name: "index_schedules_on_training_id", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -241,14 +241,14 @@ ActiveRecord::Schema.define(version: 20140716121317) do
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "trainings", force: true do |t|
+  create_table "trainings", force: :cascade do |t|
     t.string   "topic"
     t.integer  "price"
     t.datetime "start"
@@ -268,7 +268,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
   add_index "trainings", ["company_id"], name: "index_trainings_on_company_id", using: :btree
   add_index "trainings", ["user_id"], name: "index_trainings_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
     t.string   "name"

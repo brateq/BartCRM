@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -51,20 +51,22 @@ gem 'devise' # login and stuff
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'select2-rails' # autocomplete
 gem 'rails_12factor' # heroku gem
-gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
+gem 'simple_form'
 gem 'country_select' # simple_form addon
 gem 'momentjs-rails' # require for datetimepicker
 gem 'bootstrap3-datetimepicker-rails' # datepicker
 gem 'jquery-ui-rails' # require for datetimepicker
-gem "paperclip", "~> 4.1"
-gem 'aws-sdk' # Amazon S3 SDK
+gem "paperclip"
 gem "chartkick"
 gem 'groupdate'
-
 gem 'to_xls-rails'
-
 gem 'rails4-autocomplete'
-
 gem 'acts-as-taggable-on'
 gem 'jquery-turbolinks'
-gem 'public_activity', github: 'pokonski/public_activity'
+gem 'public_activity'
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+end

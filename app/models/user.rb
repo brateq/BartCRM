@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   validates_presence_of :username, :email, :password
-  validate :email, email: true
+  # validates :email, email: true
   
   
   def new_business
