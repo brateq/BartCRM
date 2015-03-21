@@ -48,7 +48,6 @@ gem 'bootstrap-kaminari-views' # pagination with bootstrap
 gem 'ransack' # search engine
 gem 'newrelic_rpm' # statistics
 gem 'devise' # login and stuff
-gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'select2-rails' # autocomplete
 gem 'rails_12factor' # heroku gem
 gem 'simple_form'
