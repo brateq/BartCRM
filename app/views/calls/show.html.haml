@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Subject:
+  = @call.subject
+%p
+  %strong Call type:
+  = @call.call_type
+%p
+  %strong Time:
+  = @call.time
+%p
+  %strong User:
+  = @call.user_id
+%p
+  %strong Company:
+  = @call.company_id
+%p
+  %strong Contact:
+  = @call.contact_id
+= link_to 'Edit', edit_call_path(@call)
+|
+\#{link_to 'Back', calls_path}

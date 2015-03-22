@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Role:
+  = @participant.role
+%p
+  %strong Amount:
+  = @participant.amount
+%p
+  %strong Contact:
+  = @participant.contact_id
+%p
+  %strong Training:
+  = @participant.training_id
+%p
+  %strong Company:
+  = @participant.company_id
+= link_to 'Edit', edit_participant_path(@participant)
+|
+\#{link_to 'Back', participants_path}

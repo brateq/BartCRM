@@ -1,0 +1,9 @@
+.container
+  .col-md-10
+    %h1 Settings
+    %ul
+      %li= link_to "Main settings", settings_main_path
+      %li= link_to "My profile", user_path(current_user)
+      %li= link_to "Users", users_path
+      %li= link_to "Import", new_import_path
+      %li= link_to "ChangeLog", changelog_path

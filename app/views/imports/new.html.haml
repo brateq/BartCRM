@@ -1,0 +1,11 @@
+.container
+  .col-md-12
+    %h1 Import your base
+    = simple_form_for @import, :html => { :multipart => true, class: 'col-md-offset-2  form-horizontal col-md-8' } do |f|
+      = f.input :base, hint: "You can upload in *.xls, *.xlsx or *.csv"
+      = f.input :category, collection: ["companies", "contacts"], include_blank: false
+      = f.button :submit, "Upload base and configure import"
+    %p Examples
+    = link_to "Companies", "https://docs.google.com/spreadsheets/d/1bwpGvzKg1f4GZWo1aH4Khat-647NU9zt6UA8XZyH8wE/edit?usp=sharing"
+    %br/
+    = link_to "Contacts", "https://docs.google.com/spreadsheets/d/1aHiCr39WJT09xHhA76e_qCTsUs3ZAC-D3MJJDCS0oGc/edit?usp=sharing"

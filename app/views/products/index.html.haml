@@ -1,0 +1,38 @@
+.col-md-12
+  .page-header
+    %h4= "Products (#{@how_many_products})"
+  .row
+    .col-sm-2
+      = link_to 'New product', new_product_path, class: "btn btn-primary"
+    .col-lg-4
+      = search_form_for @search do |f|
+        .input-group
+          = f.text_field :name_or_code_cont, placeholder: 'Product name or code', :class => "form-control"
+          %span.input-group-btn
+            = f.submit 'Search', :class => "btn btn-default"
+    .pull-right= paginate @products
+    %br/
+    %br/
+  .col-md-10
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= sort_link @search, :id, "ID"
+          %th= sort_link @search, :topic, "Name"
+          %th= t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= link_to product.id, product_path(product)
+            %td= link_to product.name, product_path(product)
+            %td= product.place
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")), |
+                edit_product_path(product), :class => 'btn btn-mini'     |
+              -#
+              = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
+                product_path(product),                                                                                       |
+                :method => :delete,                                                                                          |
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+                :class => 'btn btn-mini btn-danger'                                                                          |
+  .pull-right= paginate @products

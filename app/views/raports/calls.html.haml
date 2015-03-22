@@ -1,0 +1,29 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+%h1 Calls raports
+%div
+  = render 'calls_chart'
+  .col-sm-4
+    = search_form_for @search, url: raports_calls_path do |f|
+      .field
+        Date from #{f.date_field :created_at_gteq}
+        to #{f.date_field :created_at_lteq, value: Time.now.to_s(:db)}
+        Caller #{f.collection_select :user_id_eq, User.all, :id, :username, include_blank: 'All'}
+      .actions= f.submit "Search"
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= sort_link @search, :id, "ID"
+        %th= sort_link @search, :call_type, "Call type"
+        %th= sort_link @search, :subject, "Subject"
+        %th= sort_link @search, :contact_id, "To"
+        %th= sort_link @search, :user_id, "By"
+        %th= sort_link @search, :created_at, "Day"
+    %tbody
+      - @calls.each do |call|
+        %tr
+          %td= call.id
+          %td= call.call_type
+          %td= call.subject
+          %td= call.company.name
+          %td= call.user.username
+          %td= call.created_at

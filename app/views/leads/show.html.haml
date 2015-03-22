@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Status:
+  = @lead.status
+%p
+  %strong Amount:
+  = @lead.amount
+%p
+  %strong User:
+  = @lead.user_id
+%p
+  %strong Company:
+  = @lead.company_id
+%p
+  %strong Training:
+  = @lead.training_id
+%p
+  %strong Contact:
+  = @lead.contact_id
+%p
+  %strong Note:
+  = @lead.note_id
+%p
+  %strong Schedule:
+  = @lead.schedule_id
+= link_to 'Edit', edit_lead_path(@lead)
+|
+\#{link_to 'Back', leads_path}

@@ -1,0 +1,25 @@
+%h1 Listing participants
+%table
+  %thead
+    %tr
+      %th Role
+      %th Amount
+      %th Contact
+      %th Training
+      %th Company
+      %th
+      %th
+      %th
+  %tbody
+    - @participants.each do |participant|
+      %tr
+        %td= participant.role
+        %td= participant.amount
+        %td= participant.contact_id
+        %td= participant.training_id
+        %td= participant.company_id
+        %td= link_to 'Show', participant
+        %td= link_to 'Edit', edit_participant_path(participant)
+        %td= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Participant', new_participant_path

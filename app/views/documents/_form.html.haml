@@ -1,0 +1,10 @@
+= simple_form_for(@document) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :user_id
+    = f.input :company_id
+    = f.input :contact_id
+    = f.input :lead_id
+    = f.input :training_id
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,20 @@
+= simple_form_for @training, html: {class: 'form-horizontal'} do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :topic
+    = f.input :category, :collection => ["Open", "Close"]
+    = f.input :price
+    = f.input :start, as: :string, :input_html => {:id => "start"}
+    = f.input :end, as: :string, :input_html => {:id => "end"}
+    = f.input :training_code
+    = f.input :stage
+    = f.input :place
+    = f.association :user, label_method: :username, prompt: :current_user
+    = f.input :description, :input_html => {:rows => 12}
+    :javascript
+      $(function() {
+        $('#start').datetimepicker({format: 'DD/MM/YYYY HH:mm:ss'}); 
+        $('#end').datetimepicker({format: 'DD/MM/YYYY HH:mm:ss'});
+      });
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,11 @@
+= simple_form_for(@schedule) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :type
+    = f.input :subject
+    = f.input :time
+    = f.input :company_id
+    = f.input :contact_id
+    = f.input :user_id
+  .form-actions
+    = f.button :submit

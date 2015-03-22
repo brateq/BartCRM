@@ -1,20 +1,24 @@
 == README
-ToDo:
-Just a test massange for branch 3
 
 BartCRM 1.0
+  repair bell on top bar
+  better form for companies
+  solid settings
+  add Polish
   live validation
   Final layout
   debugging
+
   -- 0.7 final Alpha
-  Debugging!
+  pre-beta debugging!
   -- 0.8 beggining of the beta
-  -- 0.9 just before commercial relese 
+  -- 0.9 
+  -- 1.0 full, stable version
   
 BartCRM 2.0
   Statistics
   Errors when adding a user
-  Add Polish
+  
   Searching companies and contacts in one place
   API
   Integration with email

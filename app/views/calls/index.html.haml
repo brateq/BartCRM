@@ -1,0 +1,27 @@
+%h1 Listing calls
+%table
+  %thead
+    %tr
+      %th Subject
+      %th Call type
+      %th Time
+      %th User
+      %th Company
+      %th Contact
+      %th
+      %th
+      %th
+  %tbody
+    - @calls.each do |call|
+      %tr
+        %td= call.subject
+        %td= call.call_type
+        %td= call.time
+        %td= call.user_id
+        %td= call.company_id
+        %td= call.contact_id
+        %td= link_to 'Show', call
+        %td= link_to 'Edit', edit_call_path(call)
+        %td= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Call', new_call_path

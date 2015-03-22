@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Text:
+  = @note.text
+%p
+  %strong User:
+  = @note.user_id
+%p
+  %strong Company:
+  = @note.company_id
+%p
+  %strong Contact:
+  = @note.contact_id
+= link_to 'Edit', edit_note_path(@note)
+|
+\#{link_to 'Back', notes_path}

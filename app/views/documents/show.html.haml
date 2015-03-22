@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @document.user_id
+%p
+  %strong Company:
+  = @document.company_id
+%p
+  %strong Contact:
+  = @document.contact_id
+%p
+  %strong Lead:
+  = @document.lead_id
+%p
+  %strong Training:
+  = @document.training_id
+= link_to 'Edit', edit_document_path(@document)
+|
+\#{link_to 'Back', documents_path}

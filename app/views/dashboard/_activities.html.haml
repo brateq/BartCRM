@@ -1,0 +1,12 @@
+%tr.post
+  - if @activities.empty?
+    Nothing... yet. Mayby start with #{link_to 'adding new company?', new_company_path}
+  - else
+    - @activities.each do |activity|
+      - unless activity.created_at.to_date == @group_day
+        %br/
+        %h4= activity.created_at.to_date.to_formatted_s(:long_ordinal)
+      - @group_day = activity.created_at.to_date
+      .activity
+        = render_activity activity
+        %span.pull-right= activity.created_at.strftime("%I:%M%p")

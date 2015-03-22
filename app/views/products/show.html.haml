@@ -1,0 +1,147 @@
+.page-header
+  %h1
+    = link_to @product.name, "#"
+    %small= link_to 'edit', edit_product_path
+.col-md-3
+  %p
+    Category:
+    %strong= @product.category
+  %p
+    Price:
+    %strong
+      = @product.price
+      zł
+  %p
+    Start:
+    %strong= @product.start
+  %p
+    End:
+    %strong= @product.end
+  %p
+    product code:
+    %strong= @product.code
+  %p
+    By:
+    %strong= @product.user.username
+  %p
+    Stage:
+    %strong= @product.stage
+  %p
+    Place:
+    %strong= @product.place
+  %p= simple_format(truncate @product.description, length: 300)
+.col-lg-5
+  = simple_form_for Note.new, :url => { :controller => "notes", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |n|
+    = n.input :text, label: false, placeholder: 'Your note', :input_html => {:rows => 3}, controls_html: { class: 'col-lg-12' }
+    = n.input :product_id, :as => :hidden, :input_html => { :value => @product.id }
+    = n.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+    = n.button :submit
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  %hr/
+  - @notes.each do |note|
+    %p
+      = note.text
+      by #{link_to note.user.username, user_path(note.user_id)}
+      %span.pull-right
+        %small= note.created_at.to_formatted_s(:short)
+    %hr/
+.col-lg-4
+  .panel.panel-primary
+    .panel-heading{"data-target" => "#calls", "data-toggle" => "collapse"}
+      Schedule
+      %span.glyphicon.glyphicon-plus.pull-right
+    #calls.collapse
+      .panel-body
+        = simple_form_for Schedule.new, :url => {:controller => "schedules", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |c|
+          = c.input :action_type, label: false, collection: ["Meeting"], prompt: "Call"
+          = c.input :subject, label: false, placeholder: 'Subject', :controls_html => { class: "col-lg-12" }
+          = c.input :time, label: false, as: :string, placeholder: 'Date', :input_html => {:id => "dt5"}, :controls_html => { class: "col-lg-8"}
+          = c.input :product_id, :as => :hidden, :input_html => { :value => @product.id }
+          = c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+          = c.button :submit
+        :javascript
+          $(function() {
+            $('#dt5').datetimepicker({
+              format: 'DD/MM/YYYY HH:mm:ss'
+            });
+          });
+        %hr/
+    .panel-body
+      - @schedules.each do |schedule|
+        %p
+          - if schedule.action_type == "Meeting" then
+            %span.glyphicon.glyphicon-glass
+          - else
+            %span.glyphicon.glyphicon-phone-alt
+          = schedule.subject
+          %small by
+          = link_to schedule.user.username, user_path(schedule.user.id)
+          %span.pull-right
+            %small
+              = schedule.time.to_formatted_s(:short)
+              = link_to schedule_path(schedule.id), :method => :delete do
+                %span.glyphicon.glyphicon-remove{:style => "color:red"}
+  .panel.panel-primary
+    .panel-heading{"data-target" => "#participants", "data-toggle" => "collapse"}
+      Clients
+      %span.glyphicon.glyphicon-plus.pull-right
+    #participants.collapse
+      .panel-body
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#contacts"} Contacts
+          %li
+            %a{"data-toggle" => "tab", :href => "#companies"} Companies
+        %p
+        .tab-content
+          #contacts.tab-pane.fade.in.active
+            = simple_form_for Lead.new, :url => {:controller => "leads", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |p|
+              = p.association :contact, label: false, prompt: "Choose a contact", :controls_html => { class: "col-lg-12" }
+              = p.input :amount, label: false, :placeholder => "Amount of $"
+              = p.input :product_id, :as => :hidden, :input_html => { :value => @product.id }
+              = p.button :submit, 'Add client'
+          #companies.tab-pane.fade
+            = simple_form_for Lead.new, :url => {:controller => "leads", :action => "create" }, :html => {:method => :post}, html: {class: 'form-horizontal col-lg-12'} do |p|
+              = p.association :company, label: false, prompt: "Choose a company", :controls_html => { class: "col-lg-12" }
+              = p.input :amount, label: false, :placeholder => "Amount of $"
+              = p.input :product_id, :as => :hidden, :input_html => { :value => @product.id }
+              = p.button :submit, 'Add participant'
+        %hr/
+    .panel-body
+      - @leads.each do |lead|
+        %p
+          - unless lead.contact.blank? #brrrr
+            = link_to lead.contact.name + ' ' + lead.contact.surname, lead_path(lead.id)
+          - else
+            = link_to lead.company.name, lead_path(lead.id)
+          %span.pull-right
+            %small
+              = link_to lead_path(lead.id), :method => :delete do
+                %span.glyphicon.glyphicon-remove{:style => "color:red"}
+  .panel.panel-primary
+    .panel-heading{"data-target" => "#documents", "data-toggle" => "collapse"}
+      Documents
+      %span.glyphicon.glyphicon-plus.pull-right
+    #documents.collapse
+      .panel-body
+        = simple_form_for Document.new, :html => { :multipart => true, class: 'form-horizontal' } do |f|
+          = f.file_field :data, label: false
+          %br/
+          = f.input :product_id, :as => :hidden, :input_html => { :value => @product.id }
+          = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+          = f.button :submit
+        %hr/
+    .panel-body
+      - @documents.each do |document|
+        %p
+          %span.glyphicon.glyphicon-file
+          = link_to document.data_file_name, document.data.url
+          %span.pull-right
+            %small
+              = link_to document_path(document.id), :method => :delete do
+                %span.glyphicon.glyphicon-trash

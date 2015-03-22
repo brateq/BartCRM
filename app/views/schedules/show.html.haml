@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Type:
+  = @schedule.action_type
+%p
+  %strong Subject:
+  = @schedule.subject
+%p
+  %strong Time:
+  = @schedule.time
+%p
+  %strong Company:
+  = @schedule.company_id
+%p
+  %strong Contact:
+  = @schedule.contact_id
+%p
+  %strong User:
+  = @schedule.user_id
+= link_to 'Edit', edit_schedule_path(@schedule)
+|
+\#{link_to 'Back', schedules_path}
