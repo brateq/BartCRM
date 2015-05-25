@@ -9,6 +9,7 @@
       %input#note_action_type_call{:autocomplete => "off", :name => "note[action_type]", :type => "radio", :value => "call"}/
       call
   = n.submit :submit, class: 'btn btn-primary btn-sm pull-right', inline: true
+  
 .panel-body
   - @notes.each do |note|
     %p.current

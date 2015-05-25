@@ -14,54 +14,11 @@
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
   %body
-    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "#"}
-            %img{:height => "45", :src => "/img/bartCRM_logo.png"}/
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Dashboard", dashboard_index_path, id: "#{'current' if params[:controller] == "dashboard" }"
-            %li= link_to "Leads", leads_path, id: "#{'current' if params[:controller] == "leads" }"
-            %li= link_to "Companies", companies_path, id: "#{'current' if params[:controller] == "companies" }"
-            %li= link_to "Contacts", contacts_path, id: "#{'current' if params[:controller] == "contacts" }"
-            %li= link_to "Products", products_path, id: "#{'current' if params[:controller] == "products" }"
-            %li= link_to "Raports", raports_path, id: "#{'current' if params[:controller] == "raports" }" if current_user.role.name == 'manager'
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                - unless @schedules_reminder.empty?
-                  %span.glyphicon.glyphicon-bell
-                    - if @schedules_reminder.first.time < Time.now
-                      -# Add red bell
-                      %ul.dropdown-menu
-                        - @schedules_reminder.each do |schedule|
-                          %li
-                            - @time = Time.now - schedule.time
-                            = link_to company_path(schedule.company_id) do
-                              = schedule.subject
-                              %small.pull-right
-                                = distance_of_time_in_words(@time)
-                                = "ago" if schedule.time < Time.now
-                    - else
-                      %span.glyphicon.glyphicon-bell
-                      %ul.dropdown-menu
-                        %li
-                          %a{:href => "#"} Nothing to remind
-          %ul.nav.navbar-nav.pull-right
-            %li{:style => "padding-top: 7px; padding-right: 10px; "}
-              = search_form_for @main_search do |f|
-                = f.text_field :name_cont, :class => "form-control", :placeholder => 'Search company...'
-            %li= link_to ('<span class="glyphicon glyphicon-cog menu-icons" style="padding-bottom: 13px; padding-top: 14px; border-top-width: 10px; font-size: 1.4em;">').html_safe, settings_index_path, style: "padding-top: 0px; padding-bottom: 3px;", id: "#{'current' if params[:controller] == "settings" || params[:controller] == "users" || params[:controller] == "imports" }"
-            %li= link_to ('<span class="glyphicon glyphicon-log-out" style="padding-bottom: 11px; padding-top: 14px; border-top-width: 10px; font-size: 1.4em;">').html_safe, destroy_user_session_path, :method => :delete, style: "padding-top: 0px; padding-bottom: 0px;"
-        / /.nav-collapse
+    = render 'layouts/menu'
     .container
       = render 'layouts/messages'
       = yield
     .footer
       .container
         %p.text-muted © BartCRM 2014
+        

@@ -2,6 +2,7 @@
 
 BartCRM 1.0
   repair bell on top bar
+  jquery calendar load after first view
   better form for companies
   solid settings
   add Polish

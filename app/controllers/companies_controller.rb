@@ -2,8 +2,6 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :fullshow, :fulledit]
   respond_to :html, :json
   autocomplete :company, :city
-  # GET /companies
-  # GET /companies.json
   
   def index
     @companies = Company.where(:business_id => current_user.business_id).order(:created_at)
@@ -28,28 +26,21 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
-    @notes = Note.where(company_id: @company.id).order(:created_at).reverse
+    @notes = Note.where(company_id: @company.business_id).order(:created_at).reverse
     @calls = Call.where(company_id: @company.id).order(:created_at).reverse
     @schedules = Schedule.where(company_id: @company.id).order(:time)
     @documents = Document.where(company_id: @company.id).order(:created_at)
   end
 
-  # GET /companies/new
   def new
     @company = Company.new
     @tags = Company.where(:business_id == current_user.business_id).tag_counts
-    
   end
 
-  # GET /companies/1/edit
   def edit
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
     @company = Company.new(company_params)
     @company.business_id = current_user.business_id
@@ -65,8 +56,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /companies/1
-  # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
       if @company.update(company_params)
@@ -79,8 +68,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
     @company.destroy
     respond_to do |format|
@@ -100,13 +87,12 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_company
       @company = Company.find(params[:id])
       @owner_check_object = @company
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :fax, :street, :postcode, :city, :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, :tag_list, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
     end

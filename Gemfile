@@ -39,7 +39,8 @@ end
 # gem 'capistrano', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-  
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem "therubyracer"
 gem 'roo' # import xls
 gem 'iconv' #?
@@ -66,6 +67,12 @@ gem 'haml'
 
 group :development, :test do
   gem 'better_errors'
+  gem "binding_of_caller"
+  gem 'pry'
   gem 'rspec-rails'
   gem "factory_girl_rails"
+end
+
+group :development do
+  gem 'quiet_assets'
 end

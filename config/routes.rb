@@ -13,7 +13,13 @@ Bartcrm::Application.routes.draw do
   resources :trainings
   
   resources :manager
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users,
+    controllers: { registrations: "registrations" },
+    :path => '',
+    :path_names => {
+                    :sign_in => 'login',
+                    :sign_out => 'logout'
+                  }
   resources :users
   
   
