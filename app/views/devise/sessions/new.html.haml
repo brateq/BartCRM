@@ -4,15 +4,16 @@
     %label.col-sm-2.control-label{:for => "inputEmail3"} e-mail
     .col-sm-9
       = f.text_field :email, class: "form-control col-sm-10", autofocus: true, id: "person"
-      / "e-mail"
       #iperson
   .form-group
     %label.col-sm-2.control-label{:for => "inputPassword3"} password
     .col-sm-9
       = f.password_field :password, class: "form-control col-sm-10"
-      / "password"
-  = f.submit 'Login', class: 'btn btn-primary'
-  = f.check_box :remember_me
-  remember me
-%br/
-= render "devise/shared/links"
+
+  .col-sm-2= f.submit 'Login', class: 'btn btn-primary'
+  .col-sm-9
+    = f.check_box :remember_me
+    remember me
+
+.col-sm-12.top-buffer
+  = render "devise/shared/links"
