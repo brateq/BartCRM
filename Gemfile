@@ -1,47 +1,19 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5'
 
-# Use sqlite3 as the database for Active Record
 gem 'pg'
-
-# Use SCSS for stylesheets
 gem 'sass-rails'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-
-# Use unicorn as the app server
-# gem 'unicorn'
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-gem "less-rails"
-gem "twitter-bootstrap-rails"
-gem "therubyracer"
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
 gem 'roo' # import xls
 gem 'iconv' #?
 gem 'kaminari' # paginaton
@@ -55,8 +27,8 @@ gem 'country_select' # simple_form addon
 gem 'momentjs-rails' # require for datetimepicker
 gem 'bootstrap3-datetimepicker-rails' # datepicker
 gem 'jquery-ui-rails' # require for datetimepicker
-gem "paperclip"
-gem "chartkick"
+gem 'paperclip'
+gem 'chartkick'
 gem 'groupdate'
 gem 'to_xls-rails'
 gem 'rails4-autocomplete'
@@ -66,13 +38,21 @@ gem 'public_activity'
 gem 'haml'
 
 group :development, :test do
-  gem 'better_errors'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'pry'
-  gem 'rspec-rails'
-  gem "factory_girl_rails"
 end
 
 group :development do
   gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'rubocop'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :doc do
+  gem 'sdoc', require: false
 end
