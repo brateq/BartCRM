@@ -1,11 +1,11 @@
 class ManagerController < ApplicationController
-  skip_before_filter :authenticate_user!
-  skip_before_filter :require_no_authentication
-  
+  skip_before_action :authenticate_user!
+  skip_before_action :require_no_authentication
+
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params)
     @user.business_id = current_user.business_id

@@ -10,7 +10,7 @@ class ImportsController < ApplicationController
 
   def new
     @import = Import.new
-  end 
+  end
 
   def edit
     @header = Company.prepare(@import.base, 1)
@@ -35,12 +35,12 @@ class ImportsController < ApplicationController
 
   def update
     user_business = current_user.business_id
-    
+
     case @import.category
-      when 'companies'
-        Company.import(@import.base, user_business, @import.header)
-      when 'contacts'
-        Contact.import(@import.base, user_business, @import.header)
+    when 'companies'
+      Company.import(@import.base, user_business, @import.header)
+    when 'contacts'
+      Contact.import(@import.base, user_business, @import.header)
     end
     respond_to do |format|
       if @import.update(import_params)
@@ -50,7 +50,7 @@ class ImportsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @import.errors, status: :unprocessable_entity }
       end
-     end
+    end
   end
 
   def destroy
@@ -62,12 +62,12 @@ class ImportsController < ApplicationController
   end
 
   private
-    def set_import
-      @import = Import.find(params[:id])
-    end
-  
-    def import_params
-      params.require(:import).permit(:category, :base, :user_id)
-    end
+
+  def set_import
+    @import = Import.find(params[:id])
+  end
+
+  def import_params
+    params.require(:import).permit(:category, :base, :user_id)
+  end
 end
-     

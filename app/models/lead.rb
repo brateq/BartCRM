@@ -5,6 +5,5 @@ class Lead < ActiveRecord::Base
   belongs_to :training
   belongs_to :product
   has_many :notes
-  has_many :schedules  
+  has_many :schedules
 end
- 

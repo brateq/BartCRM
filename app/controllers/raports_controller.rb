@@ -8,4 +8,3 @@ class RaportsController < ApplicationController
     @calls = @search.result.page params[:page]
   end
 end
- 

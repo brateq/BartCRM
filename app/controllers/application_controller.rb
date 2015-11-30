@@ -3,36 +3,34 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :search, :schedules_reminder
   protect_from_forgery with: :exception
   layout :layout_by_resource
-  before_filter :permit_username, if: :devise_controller?
+  before_action :permit_username, if: :devise_controller?
 
-  
   def search
     if user_signed_in?
-      @main_search = Company.where(:business_id => current_user.business_id).search(params[:q]) 
+      @main_search = Company.where(business_id: current_user.business_id).search(params[:q])
     end
   end
-   
+
   def schedules_reminder
     if user_signed_in?
-      @schedules_reminder = Schedule.
-                                    where(user_id: current_user.id).
-                                    order(:time).
-                                    first(5)
+      @schedules_reminder = Schedule
+                            .where(user_id: current_user.id)
+                            .order(:time)
+                            .first(5)
     end
   end
 
-
   protected
-  
+
   def permit_username
-   devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :username
   end
-    
+
   def layout_by_resource
     if devise_controller?
-      "devise"
+      'devise'
     else
-      "application"
+      'application'
     end
   end
 end

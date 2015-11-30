@@ -62,13 +62,14 @@ class CallsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_call
-      @call = Call.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def call_params
-      params.require(:call).permit(:subject, :call_type, :time, :user_id, :company_id, :contact_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_call
+    @call = Call.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def call_params
+    params.require(:call).permit(:subject, :call_type, :time, :user_id, :company_id, :contact_id)
+  end
 end

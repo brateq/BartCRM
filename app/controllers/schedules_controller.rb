@@ -30,7 +30,7 @@ class SchedulesController < ApplicationController
       if @schedule.save
         format.html { redirect_to :back, notice: 'Schedule was successfully created.' }
         format.json { render action: 'show', status: :created, location: @schedule }
-        
+
       else
         format.html { render action: 'new' }
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
@@ -63,13 +63,14 @@ class SchedulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_schedule
-      @schedule = Schedule.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def schedule_params
-      params.require(:schedule).permit(:action_type, :subject, :time, :company_id, :contact_id, :user_id, :product_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def schedule_params
+    params.require(:schedule).permit(:action_type, :subject, :time, :company_id, :contact_id, :user_id, :product_id)
+  end
 end

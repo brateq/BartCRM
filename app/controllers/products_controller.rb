@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(:business_id => current_user.business_id)
+    @products = Product.where(business_id: current_user.business_id)
     @search = @products.search(params[:q])
     @products = @search.result.page params[:page]
     @how_many_products = @products.count
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def show
     @notes = Note.where(product_id: @product.id).order(:created_at).reverse
     @schedules = Schedule.where(product_id: @product.id).order(:time)
-    @leads = Lead.where(product_id: @product.id) 
+    @leads = Lead.where(product_id: @product.id)
     @documents = Document.where(product_id: @product.id)
   end
 
@@ -69,13 +69,14 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :price, :start, :end, :code, :user_id, :description, :stage, :place, :category)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:name, :price, :start, :end, :code, :user_id, :description, :stage, :place, :category)
+  end
 end

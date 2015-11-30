@@ -5,18 +5,18 @@ class DocumentsControllerTest < ActionController::TestCase
     @document = documents(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:documents)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create document" do
+  test 'should create document' do
     assert_difference('Document.count') do
       post :create, document: { company_id: @document.company_id, contact_id: @document.contact_id, lead_id: @document.lead_id, training_id: @document.training_id, user_id: @document.user_id }
     end
@@ -24,22 +24,22 @@ class DocumentsControllerTest < ActionController::TestCase
     assert_redirected_to document_path(assigns(:document))
   end
 
-  test "should show document" do
+  test 'should show document' do
     get :show, id: @document
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @document
     assert_response :success
   end
 
-  test "should update document" do
+  test 'should update document' do
     patch :update, id: @document, document: { company_id: @document.company_id, contact_id: @document.contact_id, lead_id: @document.lead_id, training_id: @document.training_id, user_id: @document.user_id }
     assert_redirected_to document_path(assigns(:document))
   end
 
-  test "should destroy document" do
+  test 'should destroy document' do
     assert_difference('Document.count', -1) do
       delete :destroy, id: @document
     end

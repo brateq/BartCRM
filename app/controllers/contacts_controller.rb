@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.where(:business_id => current_user.business_id)
+    @contacts = Contact.where(business_id: current_user.business_id)
     @how_many_contacts = @contacts.count
     @search = @contacts.search(params[:q])
     @contacts = @search.result.page params[:page]
@@ -69,14 +69,14 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require(:contact).permit(:name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id)
+  end
 end
-  

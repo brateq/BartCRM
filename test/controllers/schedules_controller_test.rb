@@ -5,18 +5,18 @@ class SchedulesControllerTest < ActionController::TestCase
     @schedule = schedules(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:schedules)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create schedule" do
+  test 'should create schedule' do
     assert_difference('Schedule.count') do
       post :create, schedule: { company_id: @schedule.company_id, contact_id: @schedule.contact_id, subject: @schedule.subject, time: @schedule.time, type: @schedule.type, user_id: @schedule.user_id }
     end
@@ -24,22 +24,22 @@ class SchedulesControllerTest < ActionController::TestCase
     assert_redirected_to schedule_path(assigns(:schedule))
   end
 
-  test "should show schedule" do
+  test 'should show schedule' do
     get :show, id: @schedule
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @schedule
     assert_response :success
   end
 
-  test "should update schedule" do
+  test 'should update schedule' do
     patch :update, id: @schedule, schedule: { company_id: @schedule.company_id, contact_id: @schedule.contact_id, subject: @schedule.subject, time: @schedule.time, type: @schedule.type, user_id: @schedule.user_id }
     assert_redirected_to schedule_path(assigns(:schedule))
   end
 
-  test "should destroy schedule" do
+  test 'should destroy schedule' do
     assert_difference('Schedule.count', -1) do
       delete :destroy, id: @schedule
     end

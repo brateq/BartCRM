@@ -14,7 +14,7 @@ class TrainingsController < ApplicationController
   def show
     @notes = Note.where(training_id: @training.id).order(:created_at).reverse
     @schedules = Schedule.where(training_id: @training.id).order(:time)
-    @leads = Lead.where(training_id: @training.id) 
+    @leads = Lead.where(training_id: @training.id)
     @documents = Document.where(training_id: @training.id)
   end
 
@@ -68,14 +68,14 @@ class TrainingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_training
-      @training = Training.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def training_params
-      params.require(:training).permit(:topic, :category, :price, :start, :end, :training_code, :user_id, :description, :stage, :place, :company_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_training
+    @training = Training.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def training_params
+    params.require(:training).permit(:topic, :category, :price, :start, :end, :training_code, :user_id, :description, :stage, :place, :company_id)
+  end
 end
-  

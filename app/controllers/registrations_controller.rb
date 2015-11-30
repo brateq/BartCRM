@@ -1,17 +1,18 @@
 class RegistrationsController < Devise::RegistrationsController
-  skip_before_filter :require_no_authentication
-  before_filter :authenticate_user!
+  skip_before_action :require_no_authentication
+  before_action :authenticate_user!
   def new
     super
   end
+
   def create
     build_resource(sign_up_params)
-    if user_signed_in? 
+    if user_signed_in?
       resource.business_id = current_user.business_id
     else
-      resource.business_id = Business.last.id if Business.create(name: "Best business ever!")
+      resource.business_id = Business.last.id if Business.create(name: 'Best business ever!')
     end
-    
+
     if resource.save
       yield resource if block_given?
       if resource.active_for_authentication?
@@ -20,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
           redirect_to users_path
         else
           set_flash_message :notice, :signed_up if is_flashing_format?
-          sign_up(resource_name, resource) 
+          sign_up(resource_name, resource)
           respond_with resource, location: after_sign_up_path_for(resource)
         end
       else
@@ -30,17 +31,18 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      
+
       if user_signed_in?
-        redirect_to new_user_path, notice: "Ups..."
+        redirect_to new_user_path, notice: 'Ups...'
       else
-        respond_with resource  
+        respond_with resource
       end
     end
   end
+
   protected
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     root_url
   end
 end

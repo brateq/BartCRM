@@ -2,23 +2,20 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :fullshow, :fulledit]
   respond_to :html, :json
   autocomplete :company, :city
-  
+
   def index
-    @companies = Company.where(:business_id => current_user.business_id).order(:created_at)
-    if @companies.blank?
-      @empty = true
-    end
-    
+    @companies = Company.where(business_id: current_user.business_id).order(:created_at)
+    @empty = true if @companies.blank?
+
     @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
-    
-    
-    if request.format == "xls"
+
+    if request.format == 'xls'
       @companies = @search
     else
       @companies = @search.result.page params[:page]
     end
-    
+
     respond_to do |format|
       format.html
       format.xls { send_data(@search.result.all.to_xls) }
@@ -75,26 +72,24 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def import
-    
   end
-  
+
   def fullshow
   end
-  
+
   def fulledit
   end
 
   private
-    
-    def set_company
-      @company = Company.find(params[:id])
-      @owner_check_object = @company
-    end
 
-    def company_params
-      params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :fax, :street, :postcode, :city, :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, :tag_list, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
-    end
+  def set_company
+    @company = Company.find(params[:id])
+    @owner_check_object = @company
+  end
+
+  def company_params
+    params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :fax, :street, :postcode, :city, :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, :tag_list, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
+  end
 end
-    

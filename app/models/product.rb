@@ -4,5 +4,4 @@ class Product < ActiveRecord::Base
   has_many :schedules
   has_many :leads
   has_many :contacts, through: :leads
-  
 end
