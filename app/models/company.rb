@@ -16,11 +16,12 @@ class Company < ActiveRecord::Base
 
   def self.prepare(file, row_number)
     s = open_spreadsheet(file)
-    data = s.row(row_number)
+    s.row(row_number)
   end
 
   def self.import(file, user_business, _column)
-    allowed_attributes = %w(name address phone www email legal_form street postcode city country krs decription nip regon progress type_of_training trade electronic_invoice tag_list wojewodztwo)
+    allowed_attributes = %w(name address phone www email legal_form street postcode city country krs decription nip
+                            regon progress type_of_training trade electronic_invoice tag_list wojewodztwo)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
@@ -44,10 +45,7 @@ class Company < ActiveRecord::Base
   protected
 
   def add_http
-    unless www.empty?
-      unless www[/\Ahttp:\/\//] || www[/\Ahttps:\/\//]
-        self.www = "http://#{www}"
-      end
-    end
+    return if www.empty?
+    self.www = "http://#{www}" unless www[/\Ahttp:\/\//] || www[/\Ahttps:\/\//]
   end
 end

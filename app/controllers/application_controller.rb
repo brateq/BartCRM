@@ -6,18 +6,16 @@ class ApplicationController < ActionController::Base
   before_action :permit_username, if: :devise_controller?
 
   def search
-    if user_signed_in?
-      @main_search = Company.where(business_id: current_user.business_id).search(params[:q])
-    end
+    return unless user_signed_in?
+    @main_search = Company.where(business_id: current_user.business_id).search(params[:q])
   end
 
   def schedules_reminder
-    if user_signed_in?
-      @schedules_reminder = Schedule
-                            .where(user_id: current_user.id)
-                            .order(:time)
-                            .first(5)
-    end
+    return unless user_signed_in?
+    @schedules_reminder = Schedule
+                          .where(user_id: current_user.id)
+                          .order(:time)
+                          .first(5)
   end
 
   protected

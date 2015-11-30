@@ -5,9 +5,6 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.where(business_id: current_user.business_id).order(:created_at)
-    @empty = true if @companies.blank?
-
-    @how_many_companies = @companies.count
     @search = @companies.search(params[:q])
 
     if request.format == 'xls'
@@ -42,14 +39,10 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.business_id = current_user.business_id
     @company.contacts.first.business_id = current_user.business_id unless @company.contacts.first.nil?
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @company }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.save
+      redirect_to @company, notice: 'Company was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
@@ -90,6 +83,13 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :fax, :street, :postcode, :city, :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress, :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id, :tag_list, contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street, :postalcode, :city, :country, :dont_call, :newslatter, :created_by, :modified_by, :know_from, :description, :email, :user_id, :company_id, :business_id])
+    params.require(:company).permit(:name, :www, :email, :legal_form, :phone, :fax, :street, :postcode, :city,
+                                    :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress,
+                                    :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id,
+                                    :tag_list,
+                                    contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street,
+                                                          :postalcode, :city, :country, :dont_call, :newslatter,
+                                                          :created_by, :modified_by, :know_from, :description, :email,
+                                                          :user_id, :company_id, :business_id])
   end
 end

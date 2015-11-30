@@ -1,5 +1,5 @@
 module ApplicationHelper
   def datepicket
-    ddf = 'data-date-format'
+    'data-date-format'
   end
 end

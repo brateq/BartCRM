@@ -17,7 +17,7 @@
 .col-md-9
   %div
     %span{:style => "font-size:2em"}
-      = @how_many_companies
+      = @companies.count
       Companies
     = paginate @companies
   %table.table.table-striped
@@ -29,7 +29,7 @@
         %th= sort_link @search, :contact_id, "Contact"
         %th
     %tbody
-      - if @empty
+      - if @companies.empty?
         %tr
           %td{colspan: "5"}
             = link_to "Start with adding a new company!", new_company_path

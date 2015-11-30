@@ -42,14 +42,10 @@ class ImportsController < ApplicationController
     when 'contacts'
       Contact.import(@import.base, user_business, @import.header)
     end
-    respond_to do |format|
-      if @import.update(import_params)
-        format.html { redirect_to :root, notice: 'Import was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @import.errors, status: :unprocessable_entity }
-      end
+    if @import.update(import_params)
+      redirect_to :root, notice: 'Import was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 

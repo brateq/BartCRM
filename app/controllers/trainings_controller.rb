@@ -1,16 +1,12 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
 
-  # GET /trainings
-  # GET /trainings.json
   def index
     @search = Training.search(params[:q])
     @trainings = @search.result.page params[:page]
     @how_many_trainings = @trainings.count
   end
 
-  # GET /trainings/1
-  # GET /trainings/1.json
   def show
     @notes = Note.where(training_id: @training.id).order(:created_at).reverse
     @schedules = Schedule.where(training_id: @training.id).order(:time)
@@ -18,17 +14,13 @@ class TrainingsController < ApplicationController
     @documents = Document.where(training_id: @training.id)
   end
 
-  # GET /trainings/new
   def new
     @training = Training.new
   end
 
-  # GET /trainings/1/edit
   def edit
   end
 
-  # POST /trainings
-  # POST /trainings.json
   def create
     @training = Training.new(training_params)
 
@@ -43,8 +35,6 @@ class TrainingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trainings/1
-  # PATCH/PUT /trainings/1.json
   def update
     respond_to do |format|
       if @training.update(training_params)
@@ -57,8 +47,6 @@ class TrainingsController < ApplicationController
     end
   end
 
-  # DELETE /trainings/1
-  # DELETE /trainings/1.json
   def destroy
     @training.destroy
     respond_to do |format|
@@ -69,13 +57,12 @@ class TrainingsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_training
     @training = Training.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def training_params
-    params.require(:training).permit(:topic, :category, :price, :start, :end, :training_code, :user_id, :description, :stage, :place, :company_id)
+    params.require(:training).permit(:topic, :category, :price, :start, :end, :training_code, :user_id,
+                                     :description, :stage, :place, :company_id)
   end
 end

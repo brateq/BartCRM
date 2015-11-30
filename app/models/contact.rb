@@ -13,7 +13,8 @@ class Contact < ActiveRecord::Base
   attr_accessor :work_in_company
 
   def self.import(file, user_business, _column)
-    allowed_attributes = %w(name surname work_in_company mobile_number office_number street postalcode city country dont_call newslatter know_from description email)
+    allowed_attributes = %w(name surname work_in_company mobile_number office_number street postalcode
+                            city countrydont_call newslatter know_from description email)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
