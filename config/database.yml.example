@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bartcrm_development
+
+test:
+  <<: *default
+  database: bartcrm_test
+
+production:
+  <<: *default
+  database: bartcrm
+  username: bartcrm
+  password: <%= ENV['BARTCRM_DATABASE_PASSWORD'] %>
