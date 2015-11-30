@@ -13,12 +13,13 @@
     .pull-right= paginate @products
     %br/
     %br/
-  .col-md-10
+  .row
     %table.table.table-striped
       %thead
         %tr
           %th= sort_link @search, :id, "ID"
           %th= sort_link @search, :topic, "Name"
+          %th
           %th= t '.actions', :default => t("helpers.actions")
       %tbody
         - @products.each do |product|
@@ -27,9 +28,7 @@
             %td= link_to product.name, product_path(product)
             %td= product.place
             %td
-              = link_to t('.edit', :default => t("helpers.links.edit")), |
-                edit_product_path(product), :class => 'btn btn-mini'     |
-              -#
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(product), :class => 'btn btn-mini'
               = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
                 product_path(product),                                                                                       |
                 :method => :delete,                                                                                          |

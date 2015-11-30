@@ -7,20 +7,13 @@
     %p= @contact.mobile_number
   - unless @contact.office_number.nil?
     %p= @contact.office_number
-  - unless @contact.street.empty?
-    %p= @contact.street
-  - unless @contact.postalcode.empty?
-    %p= @contact.postalcode
-  - unless @contact.city.empty?
-    %p= @contact.city
-  - unless @contact.country.empty?
-    %p= @contact.country
-  - unless @contact.newslatter.empty?
-    %p= @contact.newslatter
-  - unless @contact.know_from.empty?
-    %p= @contact.know_from
-  - unless @contact.email.empty?
-    %p= @contact.email
+  %p= @contact.street
+  %p= @contact.postalcode
+  %p= @contact.city
+  %p= @contact.country
+  %p= @contact.newslatter
+  %p= @contact.know_from
+  %p= @contact.email
   %p
     - if @contact.dont_call.nil?
       %span.glyphicon.glyphicon-check

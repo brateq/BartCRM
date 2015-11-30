@@ -22,7 +22,7 @@
     %strong= @product.code
   %p
     By:
-    %strong= @product.user.username
+    %strong= @product.user.try(:username)
   %p
     Stage:
     %strong= @product.stage
