@@ -4,6 +4,7 @@ ruby '2.2.3'
 gem 'rails', '4.2.5'
 
 gem 'pg'
+gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
