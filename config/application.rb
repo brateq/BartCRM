@@ -6,11 +6,11 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
 module Bartcrm
   class Application < Rails::Application
-    config.assets.enabled = true	
+    config.assets.enabled = true
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
     config.assets.precompile = ['*.js', '*.css', '*.eot', '*.svg', '*.ttf', '*.woff']
     # Settings in config/environments/* take precedence over those specified here.
