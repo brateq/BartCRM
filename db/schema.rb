@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20140716121317) do
     t.datetime "updated_at"
     t.string   "data_file_name"
     t.string   "data_content_type"
-    t.integer  "data_file_size"
+    t.integer  "data_file_size",    limit: 8
     t.datetime "data_updated_at"
     t.integer  "product_id"
   end
@@ -139,9 +139,9 @@ ActiveRecord::Schema.define(version: 20140716121317) do
     t.datetime "updated_at"
     t.string   "base_file_name"
     t.string   "base_content_type"
-    t.integer  "base_file_size"
+    t.integer  "base_file_size",    limit: 8
     t.datetime "base_updated_at"
-    t.string   "header",            default: [], array: true
+    t.string   "header",                      default: [], array: true
   end
 
   add_index "imports", ["user_id"], name: "index_imports_on_user_id", using: :btree

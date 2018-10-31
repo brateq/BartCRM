@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def permit_username
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
   def layout_by_resource
