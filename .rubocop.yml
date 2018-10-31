@@ -1,16 +1,25 @@
-#inherit_from: .rubocop_todo.yml
-
 AllCops:
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
+    - 'db/schema.rb'
     - 'bin/*'
 
-Style/Encoding:
+MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+
+AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+
+Rails:
+  Enabled: true
+
+Documentation:
   Enabled: false
 
 Metrics/LineLength:
@@ -25,5 +34,11 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 200
 
-Documentation:
+Style/AsciiComments:
   Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
