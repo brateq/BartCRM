@@ -1,7 +1,7 @@
-class StaticController < ApplicationController
-  def changelog
-  end
+# frozen_string_literal: true
 
-  def contact
-  end
+class StaticController < ApplicationController
+  def changelog; end
+
+  def contact; end
 end

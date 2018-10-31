@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :fullshow, :fulledit]
+  before_action :set_company, only: %i[show edit update destroy fullshow fulledit]
   respond_to :html, :json
   autocomplete :company, :city
 
@@ -7,11 +9,11 @@ class CompaniesController < ApplicationController
     @companies = Company.where(business_id: current_user.business_id).order(:created_at)
     @search = @companies.search(params[:q])
 
-    if request.format == 'xls'
-      @companies = @search
-    else
-      @companies = @search.result.page params[:page]
-    end
+    @companies = if request.format == 'xls'
+                   @search
+                 else
+                   @search.result.page params[:page]
+                 end
 
     respond_to do |format|
       format.html
@@ -29,11 +31,10 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
-    @tags = Company.where(:business_id == current_user.business_id).tag_counts
+    @tags = Company.where(current_user.business_id == :business_id).tag_counts
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @company = Company.new(company_params)
@@ -66,14 +67,11 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def import
-  end
+  def import; end
 
-  def fullshow
-  end
+  def fullshow; end
 
-  def fulledit
-  end
+  def fulledit; end
 
   private
 
@@ -87,9 +85,9 @@ class CompaniesController < ApplicationController
                                     :wojewodztwo, :country, :krs, :description, :nip, :regon, :progress,
                                     :type_of_training, :trade, :electronic_invoice, :contact_id, :user_id, :business_id,
                                     :tag_list,
-                                    contacts_attributes: [:id, :name, :surname, :mobile_number, :office_number, :street,
-                                                          :postalcode, :city, :country, :dont_call, :newslatter,
-                                                          :created_by, :modified_by, :know_from, :description, :email,
-                                                          :user_id, :company_id, :business_id])
+                                    contacts_attributes: %i[id name surname mobile_number office_number street
+                                                            postalcode city country dont_call newslatter
+                                                            created_by modified_by know_from description email
+                                                            user_id company_id business_id])
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddProductIdToSchedules < ActiveRecord::Migration
   def change
     add_column :schedules, :product_id, :integer

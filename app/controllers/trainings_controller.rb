@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:show, :edit, :update, :destroy]
+  before_action :set_training, only: %i[show edit update destroy]
 
   def index
     @search = Training.search(params[:q])
@@ -18,8 +20,7 @@ class TrainingsController < ApplicationController
     @training = Training.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @training = Training.new(training_params)

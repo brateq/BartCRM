@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class ImportsController < ApplicationController
-  before_action :set_import, only: [:show, :edit, :update, :destroy]
+  before_action :set_import, only: %i[show edit update destroy]
   respond_to :html, :json
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def new
     @import = Import.new

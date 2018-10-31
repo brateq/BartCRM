@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DashboardController < ApplicationController
   def index
     @users = User.where(business_id: current_user.business_id)

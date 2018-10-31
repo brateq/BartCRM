@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LeadsController < ApplicationController
-  before_action :set_lead, only: [:show, :edit, :update, :destroy]
+  before_action :set_lead, only: %i[show edit update destroy]
 
   def index
     @search = Lead.search(params[:q])
@@ -7,15 +9,13 @@ class LeadsController < ApplicationController
     @how_many_leads = @leads.count
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @lead = Lead.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @lead = Lead.new(lead_params)

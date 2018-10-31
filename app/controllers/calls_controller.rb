@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show, :edit, :update, :destroy]
+  before_action :set_call, only: %i[show edit update destroy]
 
   # GET /calls
   # GET /calls.json
@@ -9,8 +11,7 @@ class CallsController < ApplicationController
 
   # GET /calls/1
   # GET /calls/1.json
-  def show
-  end
+  def show; end
 
   # GET /calls/new
   def new
@@ -18,8 +19,7 @@ class CallsController < ApplicationController
   end
 
   # GET /calls/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /calls
   # POST /calls.json

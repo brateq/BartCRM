@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RolesController < ApplicationController
-  before_action :set_role, only: [:show, :edit, :update, :destroy]
+  before_action :set_role, only: %i[show edit update destroy]
 
   # GET /roles
   # GET /roles.json
@@ -9,8 +11,7 @@ class RolesController < ApplicationController
 
   # GET /roles/1
   # GET /roles/1.json
-  def show
-  end
+  def show; end
 
   # GET /roles/new
   def new
@@ -18,8 +19,7 @@ class RolesController < ApplicationController
   end
 
   # GET /roles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /roles
   # POST /roles.json

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
@@ -12,7 +14,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :stage
       t.string :place
       t.string :category
-      
 
       t.timestamps
     end

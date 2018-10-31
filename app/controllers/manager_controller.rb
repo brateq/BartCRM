@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ManagerController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :require_no_authentication

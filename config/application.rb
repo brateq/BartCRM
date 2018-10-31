@@ -1,8 +1,9 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+
+require File.expand_path('boot', __dir__)
 
 require 'roo'
 require 'rails/all'
-
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,4 +27,3 @@ module Bartcrm
     # config.i18n.default_locale = :de
   end
 end
-
