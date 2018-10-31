@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddAttachmentDataToDocuments < ActiveRecord::Migration
   def self.up
     change_table :documents do |t|

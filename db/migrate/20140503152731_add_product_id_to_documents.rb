@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddProductIdToDocuments < ActiveRecord::Migration
   def change
     add_column :documents, :product_id, :integer

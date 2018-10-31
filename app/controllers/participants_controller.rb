@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ParticipantsController < ApplicationController
-  before_action :set_participant, only: [:show, :edit, :update, :destroy]
+  before_action :set_participant, only: %i[show edit update destroy]
 
   # GET /participants
   # GET /participants.json
@@ -9,8 +11,7 @@ class ParticipantsController < ApplicationController
 
   # GET /participants/1
   # GET /participants/1.json
-  def show
-  end
+  def show; end
 
   # GET /participants/new
   def new
@@ -18,8 +19,7 @@ class ParticipantsController < ApplicationController
   end
 
   # GET /participants/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /participants
   # POST /participants.json

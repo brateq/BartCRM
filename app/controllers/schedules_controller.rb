@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: %i[show edit update destroy]
 
   # GET /schedules
   # GET /schedules.json
@@ -9,8 +11,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1
   # GET /schedules/1.json
-  def show
-  end
+  def show; end
 
   # GET /schedules/new
   def new
@@ -18,8 +19,7 @@ class SchedulesController < ApplicationController
   end
 
   # GET /schedules/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /schedules
   # POST /schedules.json

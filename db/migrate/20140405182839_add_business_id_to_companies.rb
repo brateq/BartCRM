@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddBusinessIdToCompanies < ActiveRecord::Migration
   def change
     add_column :companies, :business_id, :integer

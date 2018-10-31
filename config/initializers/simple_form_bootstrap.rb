@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SimpleForm.setup do |config|
   config.error_notification_class = 'alert alert-danger'
   config.button_class = 'btn btn-default'
@@ -130,7 +132,7 @@ SimpleForm.setup do |config|
     check_boxes: :vertical_radio_and_checkboxes,
     radio_buttons: :vertical_radio_and_checkboxes,
     file: :vertical_file_input,
-    boolean: :vertical_boolean,
+    boolean: :vertical_boolean
   }
 
   config.wrappers :vertical_input_group, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|

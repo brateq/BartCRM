@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Call < ActiveRecord::Base
   belongs_to :company
   belongs_to :user

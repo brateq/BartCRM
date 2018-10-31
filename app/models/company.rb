@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Company < ActiveRecord::Base
   has_many :contacts
   belongs_to :user
@@ -20,8 +22,8 @@ class Company < ActiveRecord::Base
   end
 
   def self.import(file, user_business, _column)
-    allowed_attributes = %w(name address phone www email legal_form street postcode city country krs decription nip
-                            regon progress type_of_training trade electronic_invoice tag_list wojewodztwo)
+    allowed_attributes = %w[name address phone www email legal_form street postcode city country krs decription nip
+                            regon progress type_of_training trade electronic_invoice tag_list wojewodztwo]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
@@ -38,7 +40,7 @@ class Company < ActiveRecord::Base
     when '.csv' then Roo::CSV.new(file.path)
     when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
     when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
-    else fail "Unknown file type: #{file.original_filename}"
+    else raise "Unknown file type: #{file.original_filename}"
     end
   end
 
@@ -46,6 +48,7 @@ class Company < ActiveRecord::Base
 
   def add_http
     return if www.empty?
+
     self.www = "http://#{www}" unless www[/\Ahttp:\/\//] || www[/\Ahttps:\/\//]
   end
 end

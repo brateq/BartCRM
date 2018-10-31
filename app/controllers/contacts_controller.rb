@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: %i[show edit update destroy]
 
   # GET /contacts
   # GET /contacts.json
@@ -25,8 +27,7 @@ class ContactsController < ApplicationController
   end
 
   # GET /contacts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /contacts
   # POST /contacts.json

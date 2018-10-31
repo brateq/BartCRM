@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Bartcrm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -77,6 +79,6 @@ Bartcrm::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  
+
   config.assets.precompile = ['*.js', '*.css', '*.eot', '*.svg', '*.ttf', '*.woff']
 end

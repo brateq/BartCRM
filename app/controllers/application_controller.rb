@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
   before_action :authenticate_user!, :search, :schedules_reminder
@@ -7,11 +9,13 @@ class ApplicationController < ActionController::Base
 
   def search
     return unless user_signed_in?
+
     @main_search = Company.where(business_id: current_user.business_id).search(params[:q])
   end
 
   def schedules_reminder
     return unless user_signed_in?
+
     @schedules_reminder = Schedule
                           .where(user_id: current_user.id)
                           .order(:time)
